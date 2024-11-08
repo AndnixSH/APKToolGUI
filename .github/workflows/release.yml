@@ -26,6 +26,9 @@ jobs:
         with:
           dotnet-version: '8.x'  # Automatically pulls the latest .NET 8 version
 
+      - name: Restore missing packages using NuGet
+        run: nuget install Costura.Fody -Version 5.7.0 -OutputDirectory ./packages
+
       - name: Restore NuGet packages
         run: nuget restore APKToolGUI.sln
 
