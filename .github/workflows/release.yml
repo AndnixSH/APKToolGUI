@@ -24,10 +24,10 @@ jobs:
       - name: Set up .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.x'  # Use the latest .NET 8 version
+          dotnet-version: '8.x'  # Automatically pulls the latest .NET 8 version
 
-      - name: Restore NuGet packages
-        run: dotnet restore APKToolGUI/APKToolGUI/APKToolGUI.csproj --packages ./packages
+      - name: Restore missing packages using NuGet
+        run: nuget restore APKToolGUI/APKToolGUI.sln
 
       - name: Build APKToolGUI
         run: dotnet build APKToolGUI/APKToolGUI/APKToolGUI.csproj --configuration Release
