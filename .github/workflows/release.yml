@@ -24,19 +24,16 @@ jobs:
       - name: Set up .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.x'  # Automatically pulls the latest .NET 8 version
-
-      - name: Restore missing packages using NuGet
-        run: nuget install Costura.Fody -Version 5.7.0 -OutputDirectory ./packages
+          dotnet-version: '8.x'  # Use the latest .NET 8 version
 
       - name: Restore NuGet packages
-        run: nuget restore APKToolGUI.sln
+        run: dotnet restore APKToolGUI/APKToolGUI/APKToolGUI.csproj --packages ./packages
 
       - name: Build APKToolGUI
-        run: dotnet build --configuration Release
+        run: dotnet build APKToolGUI/APKToolGUI/APKToolGUI.csproj --configuration Release
 
       - name: Publish as EXE
-        run: dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -o ./output
+        run: dotnet publish APKToolGUI/APKToolGUI/APKToolGUI.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -o ./output
 
       - name: Create GitHub Release
         id: create_release
