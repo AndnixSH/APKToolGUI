@@ -277,6 +277,9 @@
   <data name="groupBox_DECODE_Options.Text" xml:space="preserve">
     <value>Optionen</value>
   </data>
+  <data name="checkBox3.Text" xml:space="preserve">
+    <value>Anzahl der zu verwendenden Threads festlegen.</value>
+  </data>
   <data name="checkBox7.Size" type="System.Drawing.Size, System.Drawing">
     <value>457, 17</value>
   </data>
