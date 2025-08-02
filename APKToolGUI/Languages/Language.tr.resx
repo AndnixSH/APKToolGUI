@@ -142,7 +142,7 @@
     <value>Ayarlar</value>
   </data>
   <data name="ErrorJavaDetect" xml:space="preserve">
-    <value>Java yüklü değil veya yanlış yüklenmiş. Lütfen Java’yı yükleyin veya Ayarlar’dan özel konumu ayarlayın</value>
+    <value>Java yüklü değil ya da hatalı yüklenmiş. Lütfen Java'yı yükleyin veya Ayarlar'dan özel konumunu belirtin.</value>
   </data>
   <data name="ErrorReadSettings" xml:space="preserve">
     <value>Ayarlar okunurken hata oluştu!</value>
@@ -151,25 +151,25 @@
     <value>Yeni bir sürüm mevcut. Güncellemek ister misiniz?</value>
   </data>
   <data name="UpdateNoUpdates" xml:space="preserve">
-    <value>Güncelleme mevcut değil.</value>
+    <value>Yeni bir güncelleme yok.</value>
   </data>
   <data name="WarningDecodingFolderNotSelected" xml:space="preserve">
-    <value>Çözümleme klasörü seçilmedi!</value>
+    <value>Kod çözme klasörü seçilmedi!</value>
   </data>
   <data name="WarningFileForDecodingNotSelected" xml:space="preserve">
-    <value>Çözümleme için dosya seçilmedi!</value>
+    <value>Kod çözülecek dosya seçilmedi!</value>
   </data>
   <data name="WarningFileForSigningNotSelected" xml:space="preserve">
-    <value>İmzalama için dosya seçilmedi!</value>
+    <value>İmzalanacak dosya seçilmedi!</value>
   </data>
   <data name="WarningFrameworkNotSelected" xml:space="preserve">
-    <value>Çerçeve seçilmedi!</value>
+    <value>Framework seçilmedi!</value>
   </data>
   <data name="ErrorSaveSettings" xml:space="preserve">
     <value>Ayarlar kaydedilirken hata oluştu!</value>
   </data>
   <data name="NeedRestart" xml:space="preserve">
-    <value>Değişikliklerin etkili olması için programı yeniden başlatmanız gerekiyor. Şimdi yapmak ister misiniz?</value>
+    <value>Değişikliklerin etkili olması için programı yeniden başlatmalısınız. Şimdi yapmak ister misiniz?</value>
   </data>
   <data name="FileNotFound" xml:space="preserve">
     <value>Dosya bulunamadı</value>
@@ -181,13 +181,13 @@
     <value>Hata</value>
   </data>
   <data name="Build" xml:space="preserve">
-    <value>Derle</value>
+    <value>Oluştur</value>
   </data>
   <data name="Decode" xml:space="preserve">
-    <value>Çözümle</value>
+    <value>Kod Çöz</value>
   </data>
   <data name="InstallFramework" xml:space="preserve">
-    <value>Çerçeveyi yükle</value>
+    <value>Framework Kur</value>
   </data>
   <data name="Sign" xml:space="preserve">
     <value>İmzala</value>
@@ -208,76 +208,76 @@
     <value>Apktool sürümü tespit edilemedi.</value>
   </data>
   <data name="DecompilingSuccessfullyCompleted" xml:space="preserve">
-    <value>Çözümleme başarıyla tamamlandı. Çıkış dizini "{0}".</value>
+    <value>Ayrıştırma başarıyla tamamlandı. Çıktı dizini: "{0}".</value>
   </data>
   <data name="ErrorUpdateChecking" xml:space="preserve">
     <value>Güncelleme kontrolü hatası:</value>
   </data>
   <data name="SignSuccessfullyCompleted" xml:space="preserve">
-    <value>İmzalama başarıyla tamamlandı. Dosya "{0}" konumuna kaydedildi.</value>
+    <value>İmzalama başarıyla tamamlandı. Dosya şuraya kaydedildi: "{0}".</value>
   </data>
   <data name="Aligning" xml:space="preserve">
-    <value>Hizalama</value>
+    <value>Hizalanıyor</value>
   </data>
   <data name="ErrorCompiling" xml:space="preserve">
-    <value>Derleme başarısız</value>
+    <value>Derleme başarısız oldu</value>
   </data>
   <data name="ErrorEnteringFrameworkTag" xml:space="preserve">
-    <value>Çerçeve etiketi girilirken hata oluştu.</value>
+    <value>Framework etiketi girilirken hata oluştu.</value>
   </data>
   <data name="ErrorSelectedFileNotExist" xml:space="preserve">
     <value>Seçilen dosya mevcut değil.</value>
   </data>
   <data name="ErrorSelectingFrameworkDirectory" xml:space="preserve">
-    <value>Çerçeve dizini seçilirken hata oluştu.</value>
+    <value>Framework dizini seçilirken hata oluştu.</value>
   </data>
   <data name="ErrorSelectingFrameworkFile" xml:space="preserve">
-    <value>Çerçeve dosyası seçilirken hata oluştu. Dosya mevcut değil.</value>
+    <value>Framework dosyası seçilirken hata oluştu. Dosya mevcut değil.</value>
   </data>
   <data name="ErrorSigning" xml:space="preserve">
-    <value>İmzalama başarısız.</value>
+    <value>İmzalama başarısız oldu.</value>
   </data>
   <data name="FrameworkInstallationNotStarted" xml:space="preserve">
-    <value>Hata. Çerçeve kurulumu başlatılmadı.</value>
+    <value>Hata. Framework kurulumu başlatılamadı.</value>
   </data>
   <data name="InstallingFramework" xml:space="preserve">
-    <value>Çerçeve yükleniyor</value>
+    <value>Framework kuruluyor</value>
   </data>
   <data name="Signing" xml:space="preserve">
     <value>İmzalanıyor</value>
   </data>
   <data name="SignInputFileNotFound" xml:space="preserve">
-    <value>Giriş dosyası bulunamadı.</value>
+    <value>Girdi dosyası bulunamadı.</value>
   </data>
   <data name="SignPrivateKeyNotFound" xml:space="preserve">
-    <value>Özel anahtar bulunamadı.</value>
+    <value>Özel anahtar (private key) bulunamadı.</value>
   </data>
   <data name="SignPublicKeyNotFound" xml:space="preserve">
-    <value>Genel anahtar bulunamadı.</value>
+    <value>Genel anahtar (public key) bulunamadı.</value>
   </data>
   <data name="ZIPArchives" xml:space="preserve">
     <value>ZIP arşivleri</value>
   </data>
   <data name="DecodeCouldNotCreate" xml:space="preserve">
-    <value>Seçilen çözümleme dizini, geçersiz karakterler içerdiği için oluşturulamadı.</value>
+    <value>Seçilen ayrıştırma dizini geçersiz karakterler içerdiği için oluşturulamadı.</value>
   </data>
   <data name="DecodeDirNotSelected" xml:space="preserve">
-    <value>Çözümleme dizini seçilmedi.</value>
+    <value>Ayrıştırma dizini seçilmedi.</value>
   </data>
   <data name="DecodeSelectedFrameworkNotExist" xml:space="preserve">
-    <value>Seçilen çerçeve dizini mevcut değil.</value>
+    <value>Seçilen framework dizini mevcut değil.</value>
   </data>
   <data name="Decoding" xml:space="preserve">
-    <value>Çözümleniyor</value>
+    <value>Kod çözülüyor</value>
   </data>
   <data name="ErrorDecompiling" xml:space="preserve">
-    <value>Çözümleme başarısız</value>
+    <value>Ayrıştırma başarısız oldu</value>
   </data>
   <data name="ExecutableFile" xml:space="preserve">
     <value>Çalıştırılabilir dosya</value>
   </data>
   <data name="ChangedTargetSdkTo29" xml:space="preserve">
-    <value>Hedef SDK 29’a değiştirildi</value>
+    <value>Hedef SDK 29 olarak değiştirildi</value>
   </data>
   <data name="ErrorVersionParsing" xml:space="preserve">
     <value>Sürüm ayrıştırılamadı</value>
@@ -286,10 +286,10 @@
     <value>AndroidManifest.xml düzeltildi</value>
   </data>
   <data name="RemoveApkToolDummies" xml:space="preserve">
-    <value>Tüm ApkTool kuklaları kaldırıldı</value>
+    <value>Tüm ApkTool geçici dosyaları (dummies) kaldırıldı</value>
   </data>
   <data name="APKSelected" xml:space="preserve">
-    <value>APK Seçildi:</value>
+    <value>Seçilen APK:</value>
   </data>
   <data name="ErrorSelectedFolderNotExist" xml:space="preserve">
     <value>Seçilen klasör mevcut değil.</value>
@@ -298,55 +298,55 @@
     <value>AndroidManifest.xml mevcut değil</value>
   </data>
   <data name="DecompiledAPKNotExist" xml:space="preserve">
-    <value>Çözümlenmiş APK dizini mevcut değil</value>
+    <value>Ayrıştırılmış APK dizini mevcut değil</value>
   </data>
   <data name="MainActivityFound" xml:space="preserve">
-    <value>Ana aktivite "{0}" içinde bulundu</value>
+    <value>Ana aktivite (Main activity) "{0}" içinde bulundu</value>
   </data>
   <data name="MainActivityNotFoundPleaseFindManually" xml:space="preserve">
-    <value>MainActivity bulunamadı. Lütfen manuel olarak bulun</value>
+    <value>Ana aktivite bulunamadı. Lütfen manuel olarak bulun.</value>
   </data>
   <data name="ClearingFramework" xml:space="preserve">
-    <value>Çerçeve temizleniyor</value>
+    <value>Framework temizleniyor</value>
   </data>
   <data name="CompilingSuccessfullyCompleted" xml:space="preserve">
-    <value>Derleme başarıyla tamamlandı. Çıkış dizini "{0}"</value>
+    <value>Derleme başarıyla tamamlandı. Çıktı dizini: "{0}"</value>
   </data>
   <data name="ErrorZipalign" xml:space="preserve">
-    <value>Zipalign başarısız</value>
+    <value>Zipalign işlemi başarısız oldu</value>
   </data>
   <data name="ZipalignFileSavedTo" xml:space="preserve">
-    <value>Zipalign başarıyla tamamlandı. Dosya "{0}" konumuna kaydedildi</value>
+    <value>Zipalign başarıyla tamamlandı. Dosya şuraya kaydedildi: "{0}"</value>
   </data>
   <data name="ErrorClearingFw" xml:space="preserve">
-    <value>Çerçeve temizlenirken hata oluştu</value>
+    <value>Framework temizlenirken hata oluştu</value>
   </data>
   <data name="FrameworkCacheCleared" xml:space="preserve">
-    <value>Çerçeve önbelleği temizlendi</value>
+    <value>Framework önbelleği temizlendi</value>
   </data>
   <data name="AllDone" xml:space="preserve">
-    <value>Hepsi tamamlandı!</value>
+    <value>Tüm işlemler tamamlandı!</value>
   </data>
   <data name="FrameworkInstalled" xml:space="preserve">
-    <value>Çerçeve başarıyla yüklendi</value>
+    <value>Framework başarıyla yüklendi</value>
   </data>
   <data name="FrameworkDirNotExist" xml:space="preserve">
-    <value>Çerçeve dizini mevcut değil</value>
+    <value>Framework dizini mevcut değil</value>
   </data>
   <data name="DecompilingDex" xml:space="preserve">
-    <value>Dex çözümlemesi yapılıyor</value>
+    <value>DEX ayrıştırılıyor</value>
   </data>
   <data name="ErrorSelectedOutputFolderNotExist" xml:space="preserve">
-    <value>Seçilen çıkış klasörü mevcut değil.</value>
+    <value>Seçilen çıktı klasörü mevcut değil.</value>
   </data>
   <data name="CompilingDex" xml:space="preserve">
-    <value>Dex derleniyor</value>
+    <value>DEX derleniyor</value>
   </data>
   <data name="DragDropNotSupported" xml:space="preserve">
-    <value>Yönetici olarak çalışıyorsunuz. Sürükle ve bırak desteklenmeyebilir</value>
+    <value>Yönetici olarak çalıştırıyorsunuz. Sürükle ve bırak desteklenmeyebilir.</value>
   </data>
   <data name="DragDropSupported" xml:space="preserve">
-    <value>Sürükle ve bırak destekleniyor</value>
+    <value>Sürükle ve bırak destekleniyor.</value>
   </data>
   <data name="ErrorNotAnApk" xml:space="preserve">
     <value>Bu dizin bir Android paketi değil</value>
@@ -361,97 +361,97 @@
     <value>Zipalign</value>
   </data>
   <data name="CompileApk" xml:space="preserve">
-    <value>APK’yı derle</value>
+    <value>APK Derle</value>
   </data>
   <data name="CompileDex" xml:space="preserve">
-    <value>DEX’i birleştir</value>
+    <value>DEX Birleştir</value>
   </data>
   <data name="DecompileApk" xml:space="preserve">
-    <value>APK’yı çözümle</value>
+    <value>APK Ayrıştır</value>
   </data>
   <data name="DecompileDex" xml:space="preserve">
-    <value>DEX’i parçala</value>
+    <value>DEX Ayrıştır</value>
   </data>
   <data name="GetApkInfo" xml:space="preserve">
     <value>APK Bilgilerini Görüntüle</value>
   </data>
   <data name="NotDecompiledApk" xml:space="preserve">
-    <value>Bu klasör çözümlenmiş bir APK değil</value>
+    <value>Bu klasör, ayrıştırılmış bir APK değildir</value>
   </data>
   <data name="NotDecompiledDex" xml:space="preserve">
-    <value>Bu klasör çözümlenmiş bir DEX değil</value>
+    <value>Bu klasör, ayrıştırılmış bir DEX değildir</value>
   </data>
   <data name="RequiredFilesMissing" xml:space="preserve">
     <value>Gerekli dosyalar eksik</value>
   </data>
   <data name="SignApk" xml:space="preserve">
-    <value>APK’yı imzala</value>
+    <value>APK İmzala</value>
   </data>
   <data name="TextFile" xml:space="preserve">
     <value>Metin dosyası</value>
   </data>
   <data name="ZipalignApk" xml:space="preserve">
-    <value>APK’yı zipalign yap</value>
+    <value>APK Hizala (Zipalign)</value>
   </data>
   <data name="CreateUnsignedApk" xml:space="preserve">
-    <value>İmzasız APK oluşturuluyor</value>
+    <value>İmzasız APK Oluşturuluyor</value>
   </data>
   <data name="MetainfNotExist" xml:space="preserve">
-    <value>META-INF klasörü mevcut değil. Atlandı</value>
+    <value>META-INF klasörü mevcut değil. Atlandı.</value>
   </data>
   <data name="ErrorGettingApkInfo" xml:space="preserve">
-    <value>APK bilgileri alınırken hata oluştu</value>
+    <value>APK bilgileri alınırken bir hata oluştu</value>
   </data>
   <data name="InputDirectory" xml:space="preserve">
-    <value>Giriş dizini: {0}</value>
+    <value>Girdi dizini: {0}</value>
   </data>
   <data name="InputFile" xml:space="preserve">
-    <value>Giriş dosyası: {0}</value>
+    <value>Girdi dosyası: {0}</value>
   </data>
   <data name="DeleteFile" xml:space="preserve">
-    <value>"{0}" dosyasını sil</value>
+    <value>"{0}" dosyası siliniyor</value>
   </data>
   <data name="CopyFileToTemp" xml:space="preserve">
-    <value>"{0}" dosyasını "{1}" geçici dizinine kopyala</value>
+    <value>"{0}" dosyası geçici dizine kopyalanıyor: "{1}"</value>
   </data>
   <data name="CopyFolderToTemp" xml:space="preserve">
-    <value>Çözümlenmiş apk klasörünü "{0}" "{1}" geçici dizinine kopyala</value>
+    <value>Ayrıştırılmış apk klasörü "{0}" geçici dizine kopyalanıyor: "{1}"</value>
   </data>
   <data name="DecodeDesDirExists" xml:space="preserve">
     <value>Hedef dizin "{0}" zaten mevcut. Üzerine yazmak istiyorsanız "Hedef dizini zorla sil" seçeneğini etkinleştirin.</value>
   </data>
   <data name="MoveTempApkFileToOutput" xml:space="preserve">
-    <value>Geçici klasörü "{0}" çıkış dizinine "{1}" taşı</value>
+    <value>Geçici klasör "{0}" çıktı dizinine taşınıyor: "{1}"</value>
   </data>
   <data name="MoveTempApkToOutput" xml:space="preserve">
-    <value>Geçici apk’yı "{0}" çıkış dizinine "{1}" taşı</value>
+    <value>Geçici apk "{0}" çıktı dizinine taşınıyor: "{1}"</value>
   </data>
   <data name="ParsingApkInfo" xml:space="preserve">
     <value>APK Bilgileri Ayrıştırılıyor...</value>
   </data>
   <data name="RestartApplicationPrompt" xml:space="preserve">
-    <value>Değişiklikleri uygulamak için yeniden başlatma gerekiyor. Uygulamayı şimdi yeniden başlatmak ister misiniz?</value>
+    <value>Değişikliklerin uygulanması için yeniden başlatma gerekiyor. Uygulamayı yeniden başlatmak ister misiniz?</value>
   </data>
   <data name="DecompilingAllApkFiles" xml:space="preserve">
-    <value>Tüm APK dosyaları çözümleniyor</value>
+    <value>Tüm APK dosyaları ayrıştırılıyor</value>
   </data>
   <data name="DetectedAsBase" xml:space="preserve">
-    <value>{0} temel olarak algılandı</value>
+    <value>"{0}" temel APK olarak algılandı</value>
   </data>
   <data name="DetectedAsSplit" xml:space="preserve">
-    <value>{0} bölünmüş olarak algılandı</value>
+    <value>"{0}" bölünmüş APK olarak algılandı</value>
   </data>
   <data name="ExtractingAllApkFiles" xml:space="preserve">
     <value>Tüm APK dosyaları çıkarılıyor</value>
   </data>
   <data name="MergeFinishedMoveDir" xml:space="preserve">
-    <value>Birleştirme tamamlandı. Dizin "{0}" konumuna taşınıyor</value>
+    <value>Birleştirme tamamlandı. Dizin şuraya taşınıyor: "{0}"</value>
   </data>
   <data name="MergingApk" xml:space="preserve">
     <value>APK birleştiriliyor</value>
   </data>
   <data name="MovingBasedirectory" xml:space="preserve">
-    <value>Temel dizin "{0}" konumuna taşınıyor</value>
+    <value>Temel dizin şuraya taşınıyor: "{0}"</value>
   </data>
   <data name="DirNotExist" xml:space="preserve">
     <value>"{0}" dizini mevcut değil</value>
@@ -460,13 +460,13 @@
     <value>Geçici dizin: "{0}"</value>
   </data>
   <data name="ErrorMerging" xml:space="preserve">
-    <value>Birleştirme başarısız</value>
+    <value>Birleştirme başarısız oldu</value>
   </data>
   <data name="MergingApkEditor" xml:space="preserve">
-    <value>APK, APKEditor.jar kullanılarak birleştiriliyor</value>
+    <value>APKEditor.jar kullanılarak APK birleştiriliyor</value>
   </data>
   <data name="Aborted" xml:space="preserve">
-    <value>İptal edildi</value>
+    <value>İptal Edildi</value>
   </data>
   <data name="CancelProcess" xml:space="preserve">
     <value>İşlemi iptal etmek istediğinizden emin misiniz?</value>
@@ -478,31 +478,31 @@
     <value>Lütfen bekleyin...</value>
   </data>
   <data name="ConfirmKillingAdbServer" xml:space="preserve">
-    <value>ADB sunucusunu sonlandırmak istediğinizden emin misiniz? Cihazınızı yeniden bağlamanız veya emülatörü yeniden başlatmanız gerekebilir</value>
+    <value>ADB sunucusunu sonlandırmak istediğinizden emin misiniz? Cihazınızı yeniden bağlamanız veya emülatörü yeniden başlatmanız gerekebilir.</value>
   </data>
   <data name="DeviceNotSelected" xml:space="preserve">
     <value>Cihaz seçilmedi</value>
   </data>
   <data name="DeviceSelected" xml:space="preserve">
-    <value>Cihaz seçildi "{0}"</value>
+    <value>Cihaz seçildi: "{0}"</value>
   </data>
   <data name="DevicesFound" xml:space="preserve">
     <value>{0} cihaz bulundu</value>
   </data>
   <data name="InstallApkFailed" xml:space="preserve">
-    <value>APK Kurulumu başarısız</value>
+    <value>APK kurulumu başarısız oldu</value>
   </data>
   <data name="InstallApkSuccessful" xml:space="preserve">
-    <value>APK Kurulumu başarılı</value>
+    <value>APK başarıyla yüklendi</value>
   </data>
   <data name="InstallingApk" xml:space="preserve">
     <value>APK yükleniyor</value>
   </data>
   <data name="InstallingApkPath" xml:space="preserve">
-    <value>"{0}" APK’sı yükleniyor</value>
+    <value>"{0}" APK'sı yükleniyor</value>
   </data>
   <data name="NoDevicesFound" xml:space="preserve">
-    <value>Cihaz bulunamadı. Cihazınızın bilgisayara bağlı olduğundan ve adb hata ayıklamasının açık olduğundan emin olun. Emülatör kullanıyorsanız, yeniden başlatın ve açılmasını bekleyin</value>
+    <value>Hiçbir cihaz bulunamadı. Cihazınızın ADB hata ayıklaması açık bir şekilde bilgisayara bağlı olduğundan emin olun. Emülatör kullanıyorsanız, yeniden başlatın ve açılmasını bekleyin.</value>
   </data>
   <data name="TimeEnded" xml:space="preserve">
     <value>Bitiş zamanı: {0}</value>
@@ -511,7 +511,7 @@
     <value>Başlangıç zamanı: {0}</value>
   </data>
   <data name="ClearFrameworkPrompt" xml:space="preserve">
-    <value>Apktool sürümü değiştirildikten sonra beklenmedik hataları önlemek için çerçeve önbelleğini temizlemek gerekiyor. Şimdi temizlemek ister misiniz?</value>
+    <value>Beklenmedik hatalardan kaçınmak için Apktool sürümünü değiştirdikten sonra framework önbelleğini temizlemek gereklidir. Şimdi temizlemek ister misiniz?</value>
   </data>
   <data name="ClearTempFolder" xml:space="preserve">
     <value>Geçici klasör temizleniyor</value>
@@ -523,16 +523,16 @@
     <value>"{0}" dizini mevcut değil</value>
   </data>
   <data name="OpenComFolder" xml:space="preserve">
-    <value>Derleme çıkış klasörünü aç</value>
+    <value>Derleme çıktı klasörünü aç</value>
   </data>
   <data name="OpenDecFolder" xml:space="preserve">
-    <value>Çözümleme çıkış klasörünü aç</value>
+    <value>Ayrıştırma çıktı klasörünü aç</value>
   </data>
   <data name="FixApktoolYml" xml:space="preserve">
     <value>apktool.yml düzeltildi</value>
   </data>
   <data name="CopyFileTo" xml:space="preserve">
-    <value>"{0}" dosyasını "{1}" konumuna kopyala</value>
+    <value>"{0}" dosyası "{1}" konumuna kopyalanıyor</value>
   </data>
   <data name="SplitApkNotFound" xml:space="preserve">
     <value>Bölünmüş APK seçilmedi</value>
