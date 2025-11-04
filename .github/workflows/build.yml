@@ -1,0 +1,46 @@
+name: Build
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      name: Checkout Code
+
+    - name: Setup MSBuild Path
+      uses: microsoft/setup-msbuild@v1.3.1
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v2
+
+    - name: Restore NuGet Packages
+      run: nuget restore APKToolGUI.sln
+
+    - name: Build Application
+      run: msbuild APKToolGUI.sln /p:Configuration=Release
+
+    - name: Create package directory
+      run: mkdir package
+
+    - name: Copy essential files to package
+      run: |
+        cp APKToolGUI/bin/Release/APKToolGUI.exe package/
+        cp -r APKToolGUI/bin/Release/Resources package/
+        cp APKToolGUI/bin/Release/*.dll package/
+
+    - name: Create placeholder config.xml
+      run: New-Item -Path package/ -Name "config.xml" -ItemType "file"
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: APKToolGUI
+        path: package/

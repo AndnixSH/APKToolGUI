@@ -157,7 +157,7 @@ namespace APKToolGUI.Properties {
                 this["Sign_OutputDir"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.SettingsProviderAttribute(typeof(Bluegrams.Application.PortableSettingsProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
