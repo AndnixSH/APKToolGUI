@@ -54,7 +54,7 @@ namespace APKToolGUI.Handlers
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                ofd.Filter = "Android Package (*.apk, *.xapk, *.zip, *.apkm, *.apks)|*.apk;*.xapk;*.zip;*.apkm;*.apks";
+                ofd.Filter = "Android Package (*.apk;*.xapk;*.zip;*.apkm;*.apks)|*.apk;*.xapk;*.zip;*.apkm;*.apks";
 
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
