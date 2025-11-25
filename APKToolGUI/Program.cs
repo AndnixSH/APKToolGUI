@@ -135,19 +135,19 @@ namespace APKToolGUI
         public static void SetLanguage()
         {
             String settingsCulture = Settings.Default.Culture;
+            if (settingsCulture.Equals("Auto"))
+            {
+                // Let .NET handle the resource fallback process.
+                // It will automatically use the system's language if a satellite assembly is available,
+                // otherwise it will fall back to the neutral language defined in the main assembly (English).
+                return;
+            }
+
             try
             {
-                if (settingsCulture.Equals("Auto"))
-                {
-                    System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.InstalledUICulture;
-                    System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InstalledUICulture;
-                }
-                else
-                {
-                    System.Globalization.CultureInfo _settingsCulture = System.Globalization.CultureInfo.GetCultureInfo(settingsCulture);
-                    System.Threading.Thread.CurrentThread.CurrentUICulture = _settingsCulture;
-                    System.Threading.Thread.CurrentThread.CurrentCulture = _settingsCulture;
-                }
+                System.Globalization.CultureInfo culture = System.Globalization.CultureInfo.GetCultureInfo(settingsCulture);
+                System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
+                System.Threading.Thread.CurrentThread.CurrentCulture = culture;
             }
             catch (System.Globalization.CultureNotFoundException ex)
             {

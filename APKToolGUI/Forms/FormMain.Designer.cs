@@ -827,6 +827,7 @@
             resources.ApplyResources(this.apkIconPicBox, "apkIconPicBox");
             this.apkIconPicBox.Name = "apkIconPicBox";
             this.apkIconPicBox.TabStop = false;
+            this.apkIconPicBox.Click += new System.EventHandler(this.apkIconPicBox_Click);
             // 
             // label11
             // 

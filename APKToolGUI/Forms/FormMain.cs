@@ -1697,5 +1697,23 @@ namespace APKToolGUI
             }
         }
         #endregion
+
+        private void apkIconPicBox_Click(object sender, EventArgs e)
+        {
+            if (apkIconPicBox.Image != null)
+            {
+                using (SaveFileDialog saveFile = new SaveFileDialog())
+                {
+                    saveFile.Filter = "PNG Image|*.png";
+                    saveFile.Title = "Save an Image File";
+                    saveFile.FileName = appTxtBox.Text; // Set default filename to app name
+
+                    if (saveFile.ShowDialog() == DialogResult.OK && !String.IsNullOrEmpty(saveFile.FileName))
+                    {
+                        apkIconPicBox.Image.Save(saveFile.FileName, System.Drawing.Imaging.ImageFormat.Png);
+                    }
+                }
+            }
+        }
     }
 }
