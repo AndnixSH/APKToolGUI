@@ -1,3 +1,10 @@
+3.3.2.1
+- Updated APKEditor to 1.4.5
+- Updated Apktool to 2.12.1
+- Updated Aapt & Zipalign
+- Fixed *.zip and *.apkm not selectable for merging
+- Export image when clicking on icon box in APK Info
+
 3.3.2.0
 - Remove flickering fix due to tabs flickering in Russian language. I will look into WPF for modern UI instead
 - Updated tools (Apktool, APKEditor, AAPT, etc.) to latest versions
