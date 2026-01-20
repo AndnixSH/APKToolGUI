@@ -30,6 +30,8 @@ namespace APKToolGUI.ApkTool
                 manifestText = manifestText.Replace("android:manageSpace=\"true\"", "");
                 manifestText = manifestText.Replace("android:localeConfig=\"@xml/locales_config\"", "");
                 manifestText = manifestText.Replace("STAMP_TYPE_DISTRIBUTION_APK", "STAMP_TYPE_STANDALONE_APK");
+                manifestText = manifestText.Replace("android:requiredSplitTypes=\"(.*?)\"", "");
+                manifestText = manifestText.Replace("android:splitTypes=\"(.*?)\"", "");
 
                 File.WriteAllText(manifestPath, manifestText);
                 return true;
