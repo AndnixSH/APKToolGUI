@@ -10,13 +10,13 @@ It is a tool for reverse engineering 3rd party, closed, binary Android apps. It 
 # Download links
 https://github.com/AndnixSH/APKToolGUI/releases
 
-Any such report from your antivirus is a false positive and is due to how the application works. You must manually add APKToolGUI.exe to your antivirus's whitelist/exclusion list.
+Any alert from your antivirus regarding this application is a **false positive**, caused by how the application operates. To resolve this, manually add **APKToolGUI.exe** to your antivirus’s whitelist or exclusion list.
 
-If you don't believe this then try to compile the app by yourself or simply don't use it until you can confirm it is safe by working directly with your antiirus provider.
+If you remain unsure, you can compile the app yourself or refrain from using it until you confirm its safety with your antivirus provider.
 
 # Requirements
 - Windows 7 32-bit/64-bit and above
-- [Java](https://www.java.com/en/) or [JDK](https://www.oracle.com/java/technologies/downloads/) 8 or above. Using latest JDK is not really necessary, it tends to cause unexpected issues. Java 8 and 17 (long-term support release) is enough. Use 64-bit version if your system is 64-bit
+- [Java](https://www.java.com/en/) or [JDK](https://www.oracle.com/java/technologies/downloads/) 8 or above. Using latest JDK is not really necessary. Java 8 and 17 (long-term support release) is enough. Use 64-bit version if your system is 64-bit
 - [.NET Framework 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48) (Windows 8 and above already have it preinstalled)
 
 # Features
@@ -75,35 +75,36 @@ For Framework/system apps related issues, check on [XDA Forum](https://forum.xda
 Anything else, [create a new issue](https://github.com/AndnixSH/APKToolGUI/issues)
 
 # FAQ
-##### Q: Can it be ported to other OS like Linux?
-A: Notthing is impossible, but it's not easy as long as Microsoft not supporting WinForm for other platforms, making .NET Core useless, unlike Java FX that supports other platforms since decades. If you know, feel free to open an issue. Until then, use [WineHQ](https://www.winehq.org/) or similar to run exe
+##### Can it be ported to macOS or Linux?
+Microsoft has not made it easy to port, and .NET Core remains impractical for this purpose. While I could use Avalonia UI as an alternative, I currently don’t have the time to port the entire project. Pull requests are welcome!
 
-##### Q: How to update Apktool?
-A: Download [Apktool.jar](https://github.com/iBotPeaches/Apktool/releases) and replace it on Resources folder
+In the meantime, you can use [WineHQ](https://www.winehq.org/) or similar tools to run the .exe file.
 
-##### Q: How to update Baksmali/Smali?
-A: Download [Baksmali.jar/Smali.jar](https://bitbucket.org/JesusFreke/smali/downloads/) and replace it on Resources folder
+##### How to update Apktool?
+Download [Apktool.jar](https://github.com/iBotPeaches/Apktool/releases) and replace it on Resources folder
 
-##### Q: How to reset?
-A: Simply delete the config.xml file from the directory of the executeable
+##### How to update Baksmali/Smali?
+Download [Baksmali.jar/Smali.jar](https://bitbucket.org/JesusFreke/smali/downloads/) and replace it on Resources folder
 
-##### Q: Can you make an automatic APK injecting tool?
-A: No, I'm not interested.
+##### How to reset?
+Simply delete the config.xml file from the directory of the executeable
 
-##### Q: Can you implement to convert APK to AAB?
-A: No, apktool is about recompiling, not converting to other formats. AAB is only used for distributing an application to Play Store, so it is not directly installable. If you really want to convert APK to ABB, try APK2AAB tool https://github.com/sensei-z/APK2AAB
+##### Can you help me with modding APKs in general?
+No, I do not provide support for APK modding.
 
-##### Q: I don't like split APK. Where can I get single APK instead?
-A: Download from [Apkcombo's APK downloader](https://apkcombo.com/downloader/), or [Apkpure](https://apkpure.com/) (Choose APK instead XAPK)
+##### Can you make an automatic APK injecting tool?
+No, I'm not interested.
 
-##### Q: Can you help me with modding APK in general?
-A: Sorry, I don't offer support with it.
+##### Can you implement APK to AAB conversion?
+No, APKTool is designed for decompiling and recompiling APKs, not for converting between formats. AAB (Android App Bundle) is used exclusively for distributing apps on the Google Play Store and is not directly installable on devices.
 
-##### Q: Can you implement features to protect/pack/obfuscate APK?
-A: No, APK protection is beyond the scope of this tool
+If you need to convert an APK to AAB, you can try using a tool like [APK2AAB](https://github.com/sensei-z/APK2AAB)
 
-##### Q: Can you implement features to deobfuscate/unpack APK or bypass anti-cheat/security?
-A: No, they are also beyond the scope of this tool. I don't condone bypassing such protections
+##### Can you implement features to protect, pack, or obfuscate APKs?
+No, APK protection is beyond the scope of this tool.
+
+##### Can you implement features to deobfuscate, unpack APKs, or bypass anti-cheat/security?
+No, these features are also beyond the scope of this tool. I do not support or condone bypassing such protections.
 
 # Development
 This project is written in C#
