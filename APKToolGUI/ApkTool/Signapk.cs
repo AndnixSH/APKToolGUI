@@ -109,7 +109,10 @@ namespace APKToolGUI
             //--key : pk file | --cert : pem
             string key = String.Format("--key \"{0}\" --cert \"{1}\"", Settings.Default.Sign_PrivateKey, Settings.Default.Sign_PublicKey);
             if (Settings.Default.Sign_UseKeystoreFile)
-                key = String.Format("--ks \"{0}\" --ks-pass pass:{1}", Settings.Default.Sign_KeystoreFilePath, Settings.Default.Sign_KeystorePassword);
+            {
+                string keyPassword = String.IsNullOrEmpty(Settings.Default.Sign_KeyPassword) ? Settings.Default.Sign_KeystorePassword : Settings.Default.Sign_KeyPassword;
+                key = String.Format("--ks \"{0}\" --ks-pass pass:{1} --key-pass pass:{2}", Settings.Default.Sign_KeystoreFilePath, Settings.Default.Sign_KeystorePassword, keyPassword);
+            }
 
             string alias = String.Format("--ks-key-alias CERT");
             if (Settings.Default.Sign_SetAlias)

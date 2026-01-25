@@ -33,7 +33,7 @@ namespace Java
         public new bool Start(string args)
         {
             EnableRaisingEvents = true;
-            string customArgs = null;
+            string customArgs = "--enable-native-access=ALL-UNNAMED";
 
             if (Settings.Default.UseCustomJVMArgs)
                 customArgs = Settings.Default.CustomJVMArgs;
@@ -50,7 +50,7 @@ namespace Java
                 using (Process javaProcess = new Process())
                 {
                     javaProcess.StartInfo.FileName = JavaPath;
-                    javaProcess.StartInfo.Arguments = String.Format("-jar \"{0}\" {1}", JarPath, args);
+                    javaProcess.StartInfo.Arguments = String.Format("--enable-native-access=ALL-UNNAMED -jar \"{0}\" {1}", JarPath, args);
                     javaProcess.StartInfo.CreateNoWindow = true;
                     javaProcess.StartInfo.UseShellExecute = false;
                     javaProcess.StartInfo.RedirectStandardError = true;
