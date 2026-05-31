@@ -8,6 +8,10 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{AA2C8BC1-ED99-463A-9363-F6A87FB2CF38}</ProjectGuid>
+    <!-- WPF project type GUID first, then C#. Enables XAML markup compilation
+         (via Microsoft.WinFX.targets) alongside the existing WinForms UI during
+         the staged WinForms->WPF conversion. -->
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>APKToolGUI</RootNamespace>
@@ -81,9 +85,6 @@
       <HintPath>..\packages\Costura.Fody.6.0.0\lib\netstandard2.0\Costura.dll</HintPath>
     </Reference>
     <Reference Include="CustomMarshalers" />
-    <Reference Include="DarkNet, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DarkNet.2.3.0\lib\net452\DarkNet.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Bcl.HashCode, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.HashCode.6.0.0\lib\net462\Microsoft.Bcl.HashCode.dll</HintPath>
     </Reference>
@@ -314,44 +315,44 @@
     </Compile>
     <Compile Include="ApkTool\Adb.cs" />
     <Compile Include="ApkTool\Zipalign.cs" />
-    <Compile Include="Handlers\AdbControlEventHandlers.cs" />
-    <Compile Include="Handlers\ApkinfoControlEventHandlers.cs" />
-    <Compile Include="Handlers\BaksmaliControlEventHandlers.cs" />
-    <Compile Include="Handlers\BuildControlEventHandlers.cs" />
-    <Compile Include="Handlers\DecodeControlEventHandlers.cs" />
-    <Compile Include="Handlers\DragDropHandlers.cs" />
-    <Compile Include="Handlers\FrameworkControlEventHandlers.cs" />
-    <Compile Include="Handlers\MainWindowEventHandlers.cs" />
-    <Compile Include="Handlers\MenuItemHandlers.cs" />
-    <Compile Include="Handlers\SignControlEventHandlers.cs" />
-    <Compile Include="Handlers\SmaliControlEventHandlers.cs" />
-    <Compile Include="Handlers\ZipalignControlEventHandlers.cs" />
-    <Compile Include="Controls\DarkTheme.cs" />
+    <Compile Include="Controls\NativeDarkMode.cs" />
+    <Compile Include="Controls\WpfTheme.cs" />
+    <Compile Include="Controls\NumericUpDown.cs" />
+    <Compile Include="Controls\LogView.cs" />
     <Compile Include="Utils\AdminUtils.cs" />
     <Compile Include="Utils\BitmapUtils.cs" />
     <Compile Include="Utils\CMD.cs" />
     <Compile Include="Utils\CommonUtils.cs" />
     <Compile Include="Utils\DirectoryUtils.cs" />
-    <Compile Include="Utils\DragDropUtils.cs" />
     <Compile Include="Utils\ExplorerContextMenu.cs" />
-    <Compile Include="Forms\FormAboutBox.cs">
-      <SubType>Form</SubType>
+    <Page Include="Forms\AboutWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Forms\AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormAboutBox.Designer.cs">
-      <DependentUpon>FormAboutBox.cs</DependentUpon>
+    <Page Include="Forms\SettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Forms\SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormMain.cs">
-      <SubType>Form</SubType>
+    <Page Include="Forms\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Forms\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormMain.Designer.cs">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <Compile Include="Forms\MainWindow.Logic.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormSettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormSettings.Designer.cs">
-      <DependentUpon>FormSettings.cs</DependentUpon>
-    </Compile>
+    <Page Include="Themes\Controls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Compile Include="Java\JarProcess.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -372,52 +373,6 @@
     <Compile Include="Web\WebDownload.cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="Forms\FormAboutBox.de.resx">
-      <DependentUpon>FormAboutBox.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormAboutBox.resx">
-      <DependentUpon>FormAboutBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormAboutBox.ru.resx">
-      <DependentUpon>FormAboutBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormAboutBox.zh-CN.resx">
-      <DependentUpon>FormAboutBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormAboutBox.vi-VN.resx">
-      <DependentUpon>FormAboutBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormMain.de.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormMain.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormMain.ru.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormMain.zh-CN.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormMain.vi-VN.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormSettings.de.resx">
-      <DependentUpon>FormSettings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormSettings.resx">
-      <DependentUpon>FormSettings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormSettings.ru.resx">
-      <DependentUpon>FormSettings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormSettings.zh-CN.resx">
-      <DependentUpon>FormSettings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormSettings.vi-VN.resx">
-      <DependentUpon>FormSettings.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Languages\Language.de.resx" />
     <EmbeddedResource Include="Languages\Language.hu.resx" />
     <EmbeddedResource Include="Languages\Language.pt-BR.resx" />
@@ -460,7 +415,7 @@
     <None Include="Resources\Error.png" />
     <None Include="Resources\android-thin.ico" />
     <None Include="Resources\Done.png" />
-    <None Include="Resources\android.png" />
+    <Resource Include="Resources\android.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
@@ -486,6 +441,9 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- NOTE: WPF XAML markup compilation (Microsoft.WinFX.targets, for Page / Resource
+       items) is pulled in automatically because ProjectTypeGuids includes the WPF GUID. -->
+
   <PropertyGroup>
     <PreBuildEvent>if not exist "$(ProjectDir)\$(OutDir)\Resources" xcopy "$(SolutionDir)\Tools" "$(ProjectDir)\$(OutDir)\Resources" /Y /I /S</PreBuildEvent>
   </PropertyGroup>

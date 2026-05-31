@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -542,5 +542,260 @@
   </data>
   <data name="SetLanguageRestartApplication" xml:space="preserve">
     <value>Язык установлен. Хотите перезапустить программу?</value>
+  </data>
+  <data name="AboutVersion" xml:space="preserve">
+    <value>Версия</value>
+  </data>
+  <data name="AboutCopyright" xml:space="preserve">
+    <value>Авторские права</value>
+  </data>
+  <data name="AboutGithubRepo" xml:space="preserve">
+    <value>Сайт</value>
+  </data>
+  <data name="SettingsGeneral" xml:space="preserve">
+    <value>Общие</value>
+  </data>
+  <data name="SettingsLanguage" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="SettingsContextMenu" xml:space="preserve">
+    <value>Контекстное меню</value>
+  </data>
+  <data name="SettingsTheme" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="SettingsAdminRights" xml:space="preserve">
+    <value>Требуются права администратора</value>
+  </data>
+  <data name="SettingsClearLog" xml:space="preserve">
+    <value>Очищать журнал событий перед каждой операцией</value>
+  </data>
+  <data name="SettingsCustomJvmArgs" xml:space="preserve">
+    <value>Аргументы JVM</value>
+  </data>
+  <data name="SettingsCheckUpdate" xml:space="preserve">
+    <value>Проверять обновление при запуске (раз в сутки)</value>
+  </data>
+  <data name="SettingsCustomApktool" xml:space="preserve">
+    <value>Свой путь к Apktool</value>
+  </data>
+  <data name="SettingsInstall" xml:space="preserve">
+    <value>Установить</value>
+  </data>
+  <data name="SettingsUninstall" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="SettingsCancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="checkBox_DECODE_UseFramework.Text" xml:space="preserve">
+    <value>Использовать файлы фремворка из:</value>
+  </data>
+  <data name="checkBox_DECODE_Force.Text" xml:space="preserve">
+    <value>Перезаписывать файлы в каталоге назначения</value>
+  </data>
+  <data name="checkBox_DECODE_NoRes.Text" xml:space="preserve">
+    <value>Не декомпилировать ресурсы</value>
+  </data>
+  <data name="checkBox_DECODE_NoSrc.Text" xml:space="preserve">
+    <value>Не декомпилировать исходный код</value>
+  </data>
+  <data name="checkBox_BUILD_UseAapt.Text" xml:space="preserve">
+    <value>Использовать aapt.exe из</value>
+  </data>
+  <data name="checkBox_BUILD_ForceAll.Text" xml:space="preserve">
+    <value>Пропустить определение изменений и построить все файлы</value>
+  </data>
+  <data name="clearLogToolStripMenuItem.Text" xml:space="preserve">
+    <value>Очистить журнал</value>
+  </data>
+  <data name="menuItemSettings.Text" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="menuItemExit.Text" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="menuItemFile.Text" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="menuItemCheckUpdate.Text" xml:space="preserve">
+    <value>Проверить обновление</value>
+  </data>
+  <data name="menuItemAbout.Text" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="menuItemHelp.Text" xml:space="preserve">
+    <value>Справка</value>
+  </data>
+  <data name="button_BUILD_Build.Text" xml:space="preserve">
+    <value>Собрать</value>
+  </data>
+  <data name="button_DECODE_Decode.Text" xml:space="preserve">
+    <value>Декомпилировать</value>
+  </data>
+  <data name="tabPageZipAlign.Text" xml:space="preserve">
+    <value>Выравнивание</value>
+  </data>
+  <data name="tabPageSign.Text" xml:space="preserve">
+    <value>Подпись</value>
+  </data>
+  <data name="toolStripStatusLabelStateText.Text" xml:space="preserve">
+    <value>Загрузка...</value>
+  </data>
+  <data name="checkBox_BUILD_CopyOriginal.Text" xml:space="preserve">
+    <value>Копировать оригинальный AndroidManifest.xml и папку META-INF в построенный apk</value>
+  </data>
+  <data name="checkBox_BUILD_UseFramework.Text" xml:space="preserve">
+    <value>Использовать файлы фремворка из:</value>
+  </data>
+  <data name="checkBox_DECODE_KeepBrokenRes.Text" xml:space="preserve">
+    <value>Сохранить испорченные ресурсы</value>
+  </data>
+  <data name="tabPageBuild.Text" xml:space="preserve">
+    <value>Сборка</value>
+  </data>
+  <data name="tabPageDecode.Text" xml:space="preserve">
+    <value>Декомпиляция</value>
+  </data>
+  <data name="checkBox_DECODE_OutputDirectory.Text" xml:space="preserve">
+    <value>Декомпилировать в каталог:</value>
+  </data>
+  <data name="checkBox_BUILD_OutputAppPath.Text" xml:space="preserve">
+    <value>Сохранить файл как:</value>
+  </data>
+  <data name="tabPageInstallFramework.Text" xml:space="preserve">
+    <value>Установка фреймворков</value>
+  </data>
+  <data name="groupBox_BUILD_Options.Text" xml:space="preserve">
+    <value>Опции</value>
+  </data>
+  <data name="groupBox_DECODE_Options.Text" xml:space="preserve">
+    <value>Опции</value>
+  </data>
+  <data name="groupBox_IF_Options.Text" xml:space="preserve">
+    <value>Опции</value>
+  </data>
+  <data name="button_IF_InstallFramework.Text" xml:space="preserve">
+    <value>Установить</value>
+  </data>
+  <data name="button_ZIPALIGN_Align.Text" xml:space="preserve">
+    <value>Выровнять</value>
+  </data>
+  <data name="label_ZIPALIGN_OutputFile.Text" xml:space="preserve">
+    <value>Сохранить файл как:</value>
+  </data>
+  <data name="groupBox_ZIPALIGN_Options.Text" xml:space="preserve">
+    <value>Опции</value>
+  </data>
+  <data name="checkBox_ZIPALIGN_OverwriteOutputFile.Text" xml:space="preserve">
+    <value>Перезаписать выходной файл, если он существует</value>
+  </data>
+  <data name="button_SIGN_Sign.Text" xml:space="preserve">
+    <value>Подписать</value>
+  </data>
+  <data name="checkBox_IF_FramePath.Text" xml:space="preserve">
+    <value>Устанавливать фреймворк в каталог:</value>
+  </data>
+  <data name="checkBox_ZIPALIGN_Recompress.Text" xml:space="preserve">
+    <value>Перепаковать с использованием алгоритма Zopfli</value>
+  </data>
+  <data name="checkBox_ZIPALIGN_VerboseOutput.Text" xml:space="preserve">
+    <value>Подробный вывод</value>
+  </data>
+  <data name="label_ZIPALIGN_AlignmentBytes.Text" xml:space="preserve">
+    <value>Выравнивание (в байтах), например, '4' для 32-битного выравнивания</value>
+  </data>
+  <data name="checkBox_DECODE_MatchOriginal.Text" xml:space="preserve">
+    <value>Сохранять файлы близко к оригиналу, насколько это возможно. Предотвращает ребилд.</value>
+  </data>
+  <data name="checkBox_ZIPALIGN_CheckAlignment.Text" xml:space="preserve">
+    <value>Только проверить выравнивание (не модифицирует файл)</value>
+  </data>
+  <data name="groupBox_SIGN_Options.Text" xml:space="preserve">
+    <value>Опции</value>
+  </data>
+  <data name="label_SIGN_OutputFile.Text" xml:space="preserve">
+    <value>Сохранить файл как:</value>
+  </data>
+  <data name="label_SIGN_PrivateKey.Text" xml:space="preserve">
+    <value>Закрытый ключ</value>
+  </data>
+  <data name="label_SIGN_PublicKey.Text" xml:space="preserve">
+    <value>Открытый ключ</value>
+  </data>
+  <data name="tabPageMain.Text" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="tabPageApkInfo.Text" xml:space="preserve">
+    <value>Инфо APK</value>
+  </data>
+  <data name="checkBox4.Text" xml:space="preserve">
+    <value>Количество потоков:</value>
+  </data>
+  <data name="checkBox_BUILD_NetSecConf.Text" xml:space="preserve">
+    <value>Добавить файл конфигурации сетевой безопасности (Network Security Configuration)</value>
+  </data>
+  <data name="useAapt2ChkBox.Text" xml:space="preserve">
+    <value>Использовать aapt2 (для версий apktool &lt; 2.11.1)</value>
+  </data>
+  <data name="buildSetApiLvlChkBox.Text" xml:space="preserve">
+    <value>Установить уровень API (напр. 14 для ICS)</value>
+  </data>
+  <data name="createUnsignApkChkBox.Text" xml:space="preserve">
+    <value>Создать неподписанный APK с оригинальной подписью (Core Patch)</value>
+  </data>
+  <data name="signAfterBuildChkBox.Text" xml:space="preserve">
+    <value>Подписать после сборки / выравнивания</value>
+  </data>
+  <data name="zipalignAfterBuildChkBox.Text" xml:space="preserve">
+    <value>Выровнять после сборки</value>
+  </data>
+  <data name="checkBox_BUILD_NoCrunch.Text" xml:space="preserve">
+    <value>Отключить сжатие ресурсов</value>
+  </data>
+  <data name="tabPageBaksmali.Text" xml:space="preserve">
+    <value>Baksmali / Smali</value>
+  </data>
+  <data name="tabPageAdb.Text" xml:space="preserve">
+    <value>ADB</value>
+  </data>
+  <data name="mergeApkBtn.Text" xml:space="preserve">
+    <value>Слияние APK</value>
+  </data>
+  <data name="selSplitApkBtn.Text" xml:space="preserve">
+    <value>Выбрать Split APK</value>
+  </data>
+  <data name="baksmaliUseOutputChkBox.Text" xml:space="preserve">
+    <value>Свой каталог вывода:</value>
+  </data>
+  <data name="smaliUseOutputChkBox.Text" xml:space="preserve">
+    <value>Свой каталог вывода:</value>
+  </data>
+  <data name="killAdbBtn.Text" xml:space="preserve">
+    <value>Перезапустить ADB</value>
+  </data>
+  <data name="installApkBtn.Text" xml:space="preserve">
+    <value>Установить APK</value>
+  </data>
+  <data name="refreshDevicesBtn.Text" xml:space="preserve">
+    <value>Обновить список</value>
+  </data>
+  <data name="selApkAdbBtn.Text" xml:space="preserve">
+    <value>Выбрать APK</value>
+  </data>
+  <data name="overrideAbiCheckBox.Text" xml:space="preserve">
+    <value>Переопределить ABI:</value>
+  </data>
+  <data name="bakSmaliGroupBox.Text" xml:space="preserve">
+    <value>Baksmali (DEX -&gt; Smali)</value>
+  </data>
+  <data name="smaliGroupBox.Text" xml:space="preserve">
+    <value>Smali (Smali -&gt; DEX)</value>
+  </data>
+  <data name="decSmaliBtn.Text" xml:space="preserve">
+    <value>Дизассемблировать</value>
+  </data>
+  <data name="comSmaliBtn.Text" xml:space="preserve">
+    <value>Ассемблировать</value>
   </data>
 </root>

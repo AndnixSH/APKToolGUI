@@ -1,4 +1,4 @@
-﻿using APKToolGUI;
+using APKToolGUI;
 using APKToolGUI.Properties;
 using System;
 using System.Collections.Generic;
@@ -13,50 +13,36 @@ namespace APKToolGUI.Utils
     public static class Log
     {
         /// <summary>
-        /// log message with level VERBOSE (may be disabled)
+        /// Active log sink. Set by the main window (<c>MainWindow.ToLog</c>) at startup.
         /// </summary>
-        /// <param name="s">the string to log</param>
+        public static Action<ApktoolEventType, string> Output;
+
+        private static void Send(ApktoolEventType type, string s)
+        {
+            Output?.Invoke(type, s);
+        }
+
+        /// <summary>log message with level VERBOSE (may be disabled)</summary>
         public static void v(string s)
         {
             if (!Settings.Default.DebugMode) return;
-            FormMain.Instance.ToLog(ApktoolEventType.None, s);
+            Send(ApktoolEventType.None, s);
         }
 
-        /// <summary>
-        /// log message with level DEBUG (may be disabled)
-        /// </summary>
-        /// <param name="s">the string to log</param>
+        /// <summary>log message with level DEBUG (may be disabled)</summary>
         public static void d(string s)
         {
             if (!Settings.Default.DebugMode) return;
-            FormMain.Instance.ToLog(ApktoolEventType.Infomation, s);
+            Send(ApktoolEventType.Infomation, s);
         }
 
-        /// <summary>
-        /// log message with level INFO
-        /// </summary>
-        /// <param name="s">the string to log</param>
-        public static void i(string s)
-        {
-            FormMain.Instance.ToLog(ApktoolEventType.Infomation, s);
-        }
+        /// <summary>log message with level INFO</summary>
+        public static void i(string s) => Send(ApktoolEventType.Infomation, s);
 
-        /// <summary>
-        /// log message with level WARNING
-        /// </summary>
-        /// <param name="s">the string to log</param>
-        public static void w(string s)
-        {
-            FormMain.Instance.ToLog(ApktoolEventType.Warning, s);
-        }
+        /// <summary>log message with level WARNING</summary>
+        public static void w(string s) => Send(ApktoolEventType.Warning, s);
 
-        /// <summary>
-        /// log message with level ERROR
-        /// </summary>
-        /// <param name="s">the string to log</param>
-        public static void e(string s)
-        {
-            FormMain.Instance.ToLog(ApktoolEventType.Error, s);
-        }
+        /// <summary>log message with level ERROR</summary>
+        public static void e(string s) => Send(ApktoolEventType.Error, s);
     }
 }

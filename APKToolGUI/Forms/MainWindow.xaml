@@ -1,0 +1,726 @@
+<Window x:Class="APKToolGUI.Forms.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ctrl="clr-namespace:APKToolGUI.Controls"
+        Title="APK Tool GUI"
+        Width="641" Height="686"
+        MinWidth="560" MinHeight="560"
+        WindowStartupLocation="CenterScreen"
+        UseLayoutRounding="True" TextOptions.TextFormattingMode="Display"
+        FontFamily="Segoe UI" FontSize="12"
+        Background="{DynamicResource WindowBackground}"
+        Foreground="{DynamicResource PrimaryText}">
+
+    <!-- Main application window. Shared dark/light control styles are merged from
+         Themes/Controls.xaml; the actual colours are applied via WpfTheme.Apply in the code-behind. -->
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Themes/Controls.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <DockPanel LastChildFill="True">
+
+        <!-- ===== Menu ===== -->
+        <Menu DockPanel.Dock="Top">
+            <MenuItem x:Name="menuFile" Header="File">
+                <MenuItem x:Name="menuNewInstance" Header="New instance" Click="NewInstance_Click"/>
+                <MenuItem x:Name="menuSaveLog" Header="Save log to file" Click="SaveLog_Click"/>
+                <Separator/>
+                <MenuItem x:Name="menuOpenTemp" Header="Open temp folder" Click="OpenTempFolder_Click"/>
+                <MenuItem x:Name="menuClearTemp" Header="Clear temp folder" Click="ClearTempFolder_Click"/>
+                <Separator/>
+                <MenuItem x:Name="menuExit" Header="Exit" Click="Exit_Click"/>
+            </MenuItem>
+            <MenuItem x:Name="menuSettings" Header="Settings">
+                <MenuItem x:Name="menuUseApkEditor" Header="Use APKEditor for decompiling" IsCheckable="True"/>
+                <MenuItem x:Name="menuOpenSettings" Header="Open settings..." Click="OpenSettings_Click"/>
+            </MenuItem>
+            <MenuItem x:Name="menuHelp" Header="Help">
+                <MenuItem x:Name="menuCheckUpdate" Header="Check for update" Click="CheckUpdate_Click"/>
+                <MenuItem x:Name="menuReportIssue" Header="Report an issue" Click="ReportIssue_Click"/>
+                <MenuItem x:Name="menuApktoolIssues" Header="Apktool issue tracker" Click="ApktoolIssues_Click"/>
+                <MenuItem x:Name="menuBaksmaliIssues" Header="Baksmali issue tracker" Click="BaksmaliIssues_Click"/>
+                <MenuItem x:Name="menuAbout" Header="About" Click="About_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- ===== Status bar ===== -->
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image x:Name="statusIcon" Width="16" Height="16" Margin="2,0,6,0" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="statusText" VerticalAlignment="Center" Text="Ready"/>
+                </StackPanel>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <ProgressBar x:Name="progressBar" Width="170" Height="14" Visibility="Collapsed"/>
+            </StatusBarItem>
+        </StatusBar>
+
+        <!-- ===== Tabs over log (resizable split) ===== -->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" MinHeight="220"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="180" MinHeight="100"/>
+            </Grid.RowDefinitions>
+
+            <TabControl x:Name="tabControlMain" Grid.Row="0">
+                <TabItem x:Name="tabMain" Header="Main">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="3">
+                        <StackPanel>
+                            <!-- Decompile input -->
+                            <TextBlock x:Name="label1" Text="APK/XAPK/APKS/ZIP/APKM File:" Margin="0,0,0,3"/>
+                            <Grid Margin="0,0,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox x:Name="textBox_DECODE_InputAppPath" Grid.Column="0" Height="25" VerticalContentAlignment="Center"/>
+                                <Button x:Name="button_DECODE_BrowseInputAppPath" Grid.Column="1" Content="..." Width="34" Height="25" Margin="6,0,0,0"/>
+                                <Button x:Name="button_DECODE_Decode" Grid.Column="2" Content="Decompile" Width="118" Height="25" Margin="6,0,0,0"/>
+                            </Grid>
+
+                            <!-- Compile input -->
+                            <TextBlock x:Name="label2" Text="Decompiled APK folder:" Margin="0,0,0,3"/>
+                            <Grid Margin="0,0,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox x:Name="textBox_BUILD_InputProjectDir" Grid.Column="0" Height="25" VerticalContentAlignment="Center"/>
+                                <Button x:Name="button_BUILD_BrowseInputProjectDir" Grid.Column="1" Content="..." Width="34" Height="25" Margin="6,0,0,0"/>
+                                <Button x:Name="button_BUILD_Build" Grid.Column="2" Content="Compile" Width="118" Height="25" Margin="6,0,0,0"/>
+                            </Grid>
+
+                            <!-- Zipalign input -->
+                            <TextBlock x:Name="label3" Text="APK file to align:" Margin="0,0,0,3"/>
+                            <Grid Margin="0,0,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox x:Name="textBox_ZIPALIGN_InputFile" Grid.Column="0" Height="25" VerticalContentAlignment="Center"/>
+                                <Button x:Name="button_ZIPALIGN_BrowseInputFile" Grid.Column="1" Content="..." Width="34" Height="25" Margin="6,0,0,0"/>
+                                <Button x:Name="button_ZIPALIGN_Align" Grid.Column="2" Content="Align" Width="118" Height="25" Margin="6,0,0,0"/>
+                            </Grid>
+
+                            <!-- Sign input -->
+                            <TextBlock x:Name="label4" Text="APK File to sign:" Margin="0,0,0,3"/>
+                            <Grid Margin="0,0,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox x:Name="textBox_SIGN_InputFile" Grid.Column="0" Height="25" VerticalContentAlignment="Center"/>
+                                <Button x:Name="button_SIGN_BrowseInputFile" Grid.Column="1" Content="..." Width="34" Height="25" Margin="6,0,0,0"/>
+                                <Button x:Name="button_SIGN_Sign" Grid.Column="2" Content="Sign" Width="118" Height="25" Margin="6,0,0,0"/>
+                            </Grid>
+
+                            <!-- Merge split APK input -->
+                            <TextBlock x:Name="splitApkTxt" Text="Merge split APK into single APK:" Margin="0,0,0,3"/>
+                            <Grid Margin="0,0,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox x:Name="splitApkPathTxtBox" Grid.Column="0" Height="25" VerticalContentAlignment="Center"/>
+                                <Button x:Name="selSplitApkBtn" Grid.Column="1" Content="..." Width="34" Height="25" Margin="6,0,0,0"/>
+                                <Button x:Name="mergeApkBtn" Grid.Column="2" Content="Merge" Width="118" Height="25" Margin="6,0,0,0"/>
+                            </Grid>
+
+                            <!-- Shortcut buttons (3 x 3) -->
+                            <UniformGrid Columns="3" Rows="3">
+                                <UniformGrid.Resources>
+                                    <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                                        <Setter Property="Margin" Value="3"/>
+                                        <Setter Property="Height" Value="30"/>
+                                    </Style>
+                                </UniformGrid.Resources>
+                                <Button x:Name="decOutOpenDirBtn"        Content="Decompile output location"/>
+                                <Button x:Name="decApkOpenDirBtn"        Content="Decompiled APK location"/>
+                                <Button x:Name="alignApkOpenDirBtn"      Content="Zipalign APK location"/>
+                                <Button x:Name="compileOutputOpenDirBtn" Content="Compile output location"/>
+                                <Button x:Name="comApkOpenDir"           Content="Compiled APK location"/>
+                                <Button x:Name="signApkOpenDirBtn"       Content="Sign APK location"/>
+                                <Button x:Name="openAndroidMainfestBtn"  Content="AndroidManifest.xml"/>
+                                <Button x:Name="openApktoolYmlBtn"       Content="Apktool.yml"/>
+                                <Button x:Name="button_OpenMainActivity" Content="Main activity smali"/>
+                            </UniformGrid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem x:Name="tabApkInfo" Header="APK Info">
+                    <TabControl x:Name="tabControl1" Margin="3" BorderThickness="0" Background="Transparent">
+                        <TabItem x:Name="basicInfoTabPage" Header="Basic info">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="10">
+                                <StackPanel>
+                                    <!-- File + icon -->
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label x:Name="label17" Grid.Column="0" Content="File:" Padding="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                                <TextBox x:Name="fileTxtBox" Grid.Column="1" Height="24" IsReadOnly="True" VerticalContentAlignment="Center"/>
+                                                <Button x:Name="selApkFileInfoBtn" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,0,0,0"/>
+                                            </Grid>
+                                            <Grid Margin="0,3,0,0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Label x:Name="label7" Grid.Row="0" Grid.Column="0" Content="App name:" Padding="0" VerticalAlignment="Center" Margin="0,4,8,4"/>
+                                                <TextBox x:Name="appTxtBox" Grid.Row="0" Grid.Column="1" Height="24" IsReadOnly="True" VerticalContentAlignment="Center" Margin="0,4"/>
+                                                <Label x:Name="label9" Grid.Row="1" Grid.Column="0" Content="Package name:" Padding="0" VerticalAlignment="Center" Margin="0,4,8,4"/>
+                                                <TextBox x:Name="packNameTxtBox" Grid.Row="1" Grid.Column="1" Height="24" IsReadOnly="True" VerticalContentAlignment="Center" Margin="0,4"/>
+                                            </Grid>
+                                        </StackPanel>
+                                        <Border Grid.Column="1" Width="88" Height="88" Margin="12,0,0,0" VerticalAlignment="Top"
+                                                Background="{DynamicResource PanelBackground}" BorderBrush="{DynamicResource PanelBorder}" BorderThickness="1">
+                                            <Image x:Name="apkIconPicBox" Stretch="Uniform" Margin="2"/>
+                                        </Border>
+                                    </Grid>
+
+                                    <!-- Links -->
+                                    <Label x:Name="label19" Content="Links:" Padding="0" Margin="0,3,0,3"/>
+                                    <UniformGrid Columns="3" Rows="2">
+                                        <UniformGrid.Resources>
+                                            <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                                                <Setter Property="Margin" Value="3"/>
+                                                <Setter Property="Height" Value="28"/>
+                                            </Style>
+                                        </UniformGrid.Resources>
+                                        <Button x:Name="psLinkBtn"        Content="Play Store"/>
+                                        <Button x:Name="apkComboLinkBtn"  Content="ApkCombo"/>
+                                        <Button x:Name="apkPureLinkBtn"   Content="ApkPure"/>
+                                        <Button x:Name="apkGkLinkBtn"     Content="ApkGk"/>
+                                        <Button x:Name="apkSupportLinkBtn" Content="Apk.support"/>
+                                        <Button x:Name="apkMirrorLinkBtn" Content="Apk Mirror"/>
+                                    </UniformGrid>
+
+                                    <!-- Fields -->
+                                    <Grid Margin="0,3,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Label x:Name="label31" Grid.Row="0" Grid.Column="0" Content="Launch activity:" Padding="0" VerticalAlignment="Center" Margin="0,4,8,4"/>
+                                        <TextBox x:Name="launchActivityTxtBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Height="24" IsReadOnly="True" VerticalContentAlignment="Center" Margin="0,4"/>
+
+                                        <Label x:Name="label8" Grid.Row="1" Grid.Column="0" Content="Version:" Padding="0" VerticalAlignment="Center" Margin="0,4,8,4"/>
+                                        <TextBox x:Name="verTxtBox" Grid.Row="1" Grid.Column="1" Height="24" IsReadOnly="True" VerticalContentAlignment="Center" Margin="0,4,16,4"/>
+                                        <Label x:Name="label10" Grid.Row="1" Grid.Column="2" Content="Build:" Padding="0" VerticalAlignment="Center" Margin="0,4,8,4"/>
+                                        <TextBox x:Name="buildTxtBox" Grid.Row="1" Grid.Column="3" Height="24" IsReadOnly="True" VerticalContentAlignment="Center" Margin="0,4"/>
+
+                                        <Label x:Name="label11" Grid.Row="2" Grid.Column="0" Content="Min. SDK" Padding="0" VerticalAlignment="Center" Margin="0,4,8,4"/>
+                                        <TextBox x:Name="minSdkTxtBox" Grid.Row="2" Grid.Column="1" Height="24" IsReadOnly="True" VerticalContentAlignment="Center" Margin="0,4,16,4"/>
+                                        <Label x:Name="label12" Grid.Row="2" Grid.Column="2" Content="Target SDK:" Padding="0" VerticalAlignment="Center" Margin="0,4,8,4"/>
+                                        <TextBox x:Name="targetSdkTxtBox" Grid.Row="2" Grid.Column="3" Height="24" IsReadOnly="True" VerticalContentAlignment="Center" Margin="0,4"/>
+
+                                        <Label x:Name="label13" Grid.Row="3" Grid.Column="0" Content="Screen sizes: " Padding="0" VerticalAlignment="Center" Margin="0,4,8,4"/>
+                                        <TextBox x:Name="screenTxtBox" Grid.Row="3" Grid.Column="1" Height="24" IsReadOnly="True" VerticalContentAlignment="Center" Margin="0,4,16,4"/>
+                                        <Label x:Name="label30" Grid.Row="3" Grid.Column="2" Content="Architectures:" Padding="0" VerticalAlignment="Center" Margin="0,4,8,4"/>
+                                        <TextBox x:Name="archSdkTxtBox" Grid.Row="3" Grid.Column="3" Height="24" IsReadOnly="True" VerticalContentAlignment="Center" Margin="0,4"/>
+
+                                        <Label x:Name="label14" Grid.Row="4" Grid.Column="0" Content="Densities: " Padding="0" VerticalAlignment="Center" Margin="0,4,8,4"/>
+                                        <TextBox x:Name="densityTxtBox" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Height="24" IsReadOnly="True" VerticalContentAlignment="Center" Margin="0,4"/>
+                                    </Grid>
+
+                                    <Label x:Name="label18" Content="Locals: " Padding="0" Margin="0,10,0,2"/>
+                                    <RichTextBox x:Name="localsTxtBox" Height="64" IsReadOnly="True" VerticalScrollBarVisibility="Auto"/>
+
+                                    <Label x:Name="label15" Content="Permissions: " Padding="0" Margin="0,10,0,2"/>
+                                    <RichTextBox x:Name="permTxtBox" Height="120" IsReadOnly="True" VerticalScrollBarVisibility="Auto"/>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </TabItem>
+                        <TabItem x:Name="signatureTabPage" Header="Signature">
+                            <RichTextBox x:Name="sigTxtBox" Margin="3" IsReadOnly="True"
+                                         VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                                         FontFamily="Consolas"/>
+                        </TabItem>
+                        <TabItem x:Name="tabPage3" Header="Full info">
+                            <RichTextBox x:Name="fullInfoTextBox" Margin="3" IsReadOnly="True"
+                                         VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                                         FontFamily="Consolas"/>
+                        </TabItem>
+                    </TabControl>
+                </TabItem>
+                <TabItem x:Name="tabDecode" Header="Decode">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="10">
+                        <GroupBox x:Name="groupBox_DECODE_Options" Header="Options">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <CheckBox x:Name="decSetApiLvlChkBox" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0,4"
+                                          Content="Set API level of the file to generate, e.g. 14 for ICS."/>
+                                <ctrl:NumericUpDown x:Name="decApiLvlUpDown" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Width="70" Margin="0,4"
+                                                    Minimum="0" Maximum="35"/>
+
+                                <CheckBox x:Name="checkBox_DECODE_NoSrc"        Grid.Row="1"  Grid.ColumnSpan="3" Margin="0,4" Content="Do not decode sources."/>
+                                <CheckBox x:Name="checkBox_DECODE_NoRes"        Grid.Row="2"  Grid.ColumnSpan="3" Margin="0,4" Content="Do not decode resources."/>
+                                <CheckBox x:Name="checkBox_DECODE_Force"        Grid.Row="3"  Grid.ColumnSpan="3" Margin="0,4" Content="Force delete destination directory."/>
+                                <CheckBox x:Name="checkBox_DECODE_KeepBrokenRes" Grid.Row="4" Grid.ColumnSpan="3" Margin="0,4" Content="Keep broken resource."/>
+                                <CheckBox x:Name="checkBox_DECODE_MatchOriginal" Grid.Row="5" Grid.ColumnSpan="3" Margin="0,4" Content="Keeps files to closest to original as possible. Prevents rebuild."/>
+
+                                <CheckBox x:Name="checkBox_DECODE_UseFramework" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Margin="0,4"
+                                          Content="Uses framework files located in:"/>
+                                <TextBox  x:Name="textBox_DECODE_FrameDir" Grid.Row="6" Grid.Column="1" Width="236" Height="24" Margin="10,4,0,4" VerticalContentAlignment="Center"/>
+                                <Button   x:Name="button_DECODE_BrowseFrameDir" Grid.Row="6" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,4,0,4"/>
+
+                                <CheckBox x:Name="checkBox_DECODE_OutputDirectory" Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" Margin="0,4"
+                                          Content="Output directory:"/>
+                                <TextBox  x:Name="textBox_DECODE_OutputDirectory" Grid.Row="7" Grid.Column="1" Width="236" Height="24" Margin="10,4,0,4" VerticalContentAlignment="Center"/>
+                                <Button   x:Name="button_DECODE_BrowseOutputDirectory" Grid.Row="7" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,4,0,4"/>
+
+                                <CheckBox x:Name="checkBox_DECODE_OnlyMainClasses" Grid.Row="8"  Grid.ColumnSpan="3" Margin="0,4" Content="Only disassemble the main dex classes (classes[0-9]*.dex) in the root. (&lt;2.12.1)"/>
+                                <CheckBox x:Name="checkBox_DECODE_FixError"        Grid.Row="9"  Grid.ColumnSpan="3" Margin="0,4" Content="Fix ApkTool errors after decompile"/>
+                                <CheckBox x:Name="checkBox_DECODE_NoDebugInfo"     Grid.Row="10" Grid.ColumnSpan="3" Margin="0,4" Content="Don't write out debug info (.local, .param, .line, etc.)"/>
+                                <CheckBox x:Name="checkBox7"                       Grid.Row="11" Grid.ColumnSpan="3" Margin="0,4" Content="Don't parse APK info when selecting APK for decompiling"/>
+
+                                <CheckBox x:Name="checkBox3" Grid.Row="12" Grid.Column="0" VerticalAlignment="Center" Margin="0,4" Content="Set the number of threads to use."/>
+                                <ctrl:NumericUpDown x:Name="decJobsLvlUpDown" Grid.Row="12" Grid.Column="1" HorizontalAlignment="Right" Width="70" Margin="0,4" Minimum="1" Maximum="64"/>
+                            </Grid>
+                        </GroupBox>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem x:Name="tabBuild" Header="Build">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="10">
+                        <GroupBox x:Name="groupBox_BUILD_Options" Header="Options">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <CheckBox x:Name="buildSetApiLvlChkBox" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0,4"
+                                          Content="Set API level of the file to generate, e.g. 14 for ICS."/>
+                                <ctrl:NumericUpDown x:Name="buildApiLvlUpDown" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Width="70" Margin="0,4" Minimum="0" Maximum="35"/>
+
+                                <CheckBox x:Name="checkBox_BUILD_ForceAll" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,4" Content="Skip changes detection and build all files."/>
+
+                                <CheckBox x:Name="checkBox_BUILD_UseAapt" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,4" Content="Uses aapt.exe located in:"/>
+                                <TextBox  x:Name="textBox_BUILD_AaptPath" Grid.Row="2" Grid.Column="1" Width="236" Height="24" Margin="10,4,0,4" VerticalContentAlignment="Center"/>
+                                <Button   x:Name="button_BUILD_BrowseAaptPath" Grid.Row="2" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,4,0,4"/>
+
+                                <CheckBox x:Name="checkBox_BUILD_UseFramework" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="0,4" Content="Uses framework files located in:"/>
+                                <TextBox  x:Name="textBox_BUILD_FrameDir" Grid.Row="3" Grid.Column="1" Width="236" Height="24" Margin="10,4,0,4" VerticalContentAlignment="Center"/>
+                                <Button   x:Name="button_BUILD_BrowseFrameDir" Grid.Row="3" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,4,0,4"/>
+
+                                <CheckBox x:Name="checkBox_BUILD_OutputAppPath" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="0,4" Content="APK output directory:"/>
+                                <TextBox  x:Name="textBox_BUILD_OutputAppPath" Grid.Row="4" Grid.Column="1" Width="236" Height="24" Margin="10,4,0,4" VerticalContentAlignment="Center"/>
+                                <Button   x:Name="button_BUILD_BrowseOutputAppPath" Grid.Row="4" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,4,0,4"/>
+
+                                <CheckBox x:Name="checkBox_BUILD_NoCrunch" Grid.Row="5"  Grid.ColumnSpan="3" Margin="0,4" Content="Disable crunching of resource files during the build step."/>
+                                <CheckBox x:Name="checkBox_BUILD_NetSecConf" Grid.Row="6" Grid.ColumnSpan="3" Margin="0,4" Content="Add a generic Network Security Configuration file in the output APK"/>
+                                <CheckBox x:Name="zipalignAfterBuildChkBox" Grid.Row="7" Grid.ColumnSpan="3" Margin="0,4" Content="Zipalign after build"/>
+                                <CheckBox x:Name="signAfterBuildChkBox" Grid.Row="8" Grid.ColumnSpan="3" Margin="0,4" Content="Sign after build / zipalign"/>
+                                <CheckBox x:Name="createUnsignApkChkBox" Grid.Row="9" Grid.ColumnSpan="3" Margin="0,4" Content="Create unsigned APK with original signature after build"/>
+                                <CheckBox x:Name="useAapt2ChkBox" Grid.Row="10" Grid.ColumnSpan="3" Margin="0,4" Content="Use aapt2 (Upgrades apktool to use experimental aapt2 binary.) (&lt; 2.11.1)"/>
+                                <CheckBox x:Name="checkBox_BUILD_CopyOriginal" Grid.Row="11" Grid.ColumnSpan="3" Margin="0,4" Content="Copy original AndroidManifest.xml and META-INF folder"/>
+
+                                <CheckBox x:Name="checkBox4" Grid.Row="12" Grid.Column="0" VerticalAlignment="Center" Margin="0,4" Content="Set the number of threads to use."/>
+                                <ctrl:NumericUpDown x:Name="comJobsLvlUpDown" Grid.Row="12" Grid.Column="1" HorizontalAlignment="Right" Width="70" Margin="0,4" Minimum="1" Maximum="64"/>
+                            </Grid>
+                        </GroupBox>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem x:Name="tabSign" Header="Sign">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="10">
+                        <GroupBox x:Name="groupBox_SIGN_Options" Header="Options">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock x:Name="label22" Grid.Row="0" Grid.ColumnSpan="3" TextWrapping="Wrap" Margin="0,0,0,8"
+                                           Foreground="{DynamicResource SecondaryText}"
+                                           Text="It is strongly recommended that you use your own key, created via Android Studio or other tools"/>
+
+                                <Label x:Name="label_SIGN_PublicKey" Grid.Row="1" Grid.Column="0" Content="Public key:" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                <TextBox x:Name="textBox_SIGN_PublicKey" Grid.Row="1" Grid.Column="1" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+                                <Button x:Name="button_SIGN_BrowsePublicKey" Grid.Row="1" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,4,0,4"/>
+
+                                <Label x:Name="label_SIGN_PrivateKey" Grid.Row="2" Grid.Column="0" Content="Private key:" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                <TextBox x:Name="textBox_SIGN_PrivateKey" Grid.Row="2" Grid.Column="1" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+                                <Button x:Name="button_SIGN_BrowsePrivateKey" Grid.Row="2" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,4,0,4"/>
+
+                                <CheckBox x:Name="useAliasChkBox" Grid.Row="3" Grid.Column="0" Content="Alias:" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                <TextBox x:Name="aliasTxtBox" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+
+                                <CheckBox x:Name="useKeyStoreChkBox" Grid.Row="4" Grid.ColumnSpan="3" Content="Use keystore" Margin="0,6,0,4"/>
+
+                                <Label x:Name="label20" Grid.Row="5" Grid.Column="0" Content="keystore/jks file:" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                <TextBox x:Name="keyStoreFileTxtBox" Grid.Row="5" Grid.Column="1" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+                                <Button x:Name="selectKeyStoreFileBtn" Grid.Row="5" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,4,0,4"/>
+
+                                <Label x:Name="label21" Grid.Row="6" Grid.Column="0" Content="Password:" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                <PasswordBox x:Name="textBox3" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+
+                                <Label x:Name="label23" Grid.Row="7" Grid.Column="0" Content="Private key password:" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                <PasswordBox x:Name="textBox4" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+
+                                <CheckBox x:Name="useSigningOutputDir" Grid.Row="8" Grid.Column="0" Content="APK output directory:" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                <TextBox x:Name="textBox_SIGN_OutputFile" Grid.Row="8" Grid.Column="1" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+                                <Button x:Name="button_SIGN_BrowseOutputFile" Grid.Row="8" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,4,0,4"/>
+
+                                <Grid Grid.Row="9" Grid.ColumnSpan="3" Margin="0,6,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label x:Name="label24" Grid.Column="0" Content="Scheme v1:" Padding="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                    <ComboBox x:Name="schemev1ComboBox" Grid.Column="1" Margin="0,0,16,0">
+                                        <ComboBoxItem>Default</ComboBoxItem>
+                                        <ComboBoxItem>True</ComboBoxItem>
+                                        <ComboBoxItem>False</ComboBoxItem>
+                                    </ComboBox>
+                                    <Label x:Name="label25" Grid.Column="2" Content="Scheme v2:" Padding="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                    <ComboBox x:Name="schemev2ComboBox" Grid.Column="3">
+                                        <ComboBoxItem>Default</ComboBoxItem>
+                                        <ComboBoxItem>True</ComboBoxItem>
+                                        <ComboBoxItem>False</ComboBoxItem>
+                                    </ComboBox>
+                                </Grid>
+                                <Grid Grid.Row="10" Grid.ColumnSpan="3" Margin="0,6,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label x:Name="label26" Grid.Column="0" Content="Scheme v3:" Padding="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                    <ComboBox x:Name="schemev3ComboBox" Grid.Column="1" Margin="0,0,16,0">
+                                        <ComboBoxItem>Default</ComboBoxItem>
+                                        <ComboBoxItem>True</ComboBoxItem>
+                                        <ComboBoxItem>False</ComboBoxItem>
+                                    </ComboBox>
+                                    <Label x:Name="label27" Grid.Column="2" Content="Scheme v4:" Padding="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                    <ComboBox x:Name="schemev4ComboBox" Grid.Column="3">
+                                        <ComboBoxItem>Default</ComboBoxItem>
+                                        <ComboBoxItem>True</ComboBoxItem>
+                                        <ComboBoxItem>False</ComboBoxItem>
+                                    </ComboBox>
+                                </Grid>
+
+                                <CheckBox x:Name="autoDelIdsigChkBox" Grid.Row="11" Grid.ColumnSpan="3" Margin="0,8,0,4" Content="Auto delete idsig file"/>
+                                <CheckBox x:Name="checkBox1" Grid.Row="12" Grid.ColumnSpan="3" Margin="0,4" Content="Overwrite input file"/>
+                                <CheckBox x:Name="checkBox2" Grid.Row="13" Grid.ColumnSpan="3" Margin="0,4" Content="Install APK after signing (Make sure the device is selected in ADB tab first)"/>
+                            </Grid>
+                        </GroupBox>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem x:Name="tabZipalign" Header="Zip align">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="10">
+                        <GroupBox x:Name="groupBox_ZIPALIGN_Options" Header="Options">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Label x:Name="label_ZIPALIGN_AlignmentBytes" Grid.Row="0" Grid.Column="0" Padding="0" VerticalAlignment="Center" Margin="0,4"
+                                       Content="Alignment in bytes, e.g. '4' provides 32-bit alignment"/>
+                                <ctrl:NumericUpDown x:Name="numericUpDown_ZIPALIGN_AlignmentBytes" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Width="70" Margin="0,4" Minimum="1" Maximum="64"/>
+
+                                <CheckBox x:Name="checkBox_ZIPALIGN_CheckAlignment"     Grid.Row="1" Grid.ColumnSpan="3" Margin="0,4" Content="Check alignment only (does not modify file)"/>
+                                <CheckBox x:Name="checkBox_ZIPALIGN_VerboseOutput"      Grid.Row="2" Grid.ColumnSpan="3" Margin="0,4" Content="Verbose output"/>
+                                <CheckBox x:Name="checkBox_ZIPALIGN_Recompress"         Grid.Row="3" Grid.ColumnSpan="3" Margin="0,4" Content="Recompress using Zopfli"/>
+                                <CheckBox x:Name="checkBox_ZIPALIGN_OverwriteOutputFile" Grid.Row="4" Grid.ColumnSpan="3" Margin="0,4" Content="Overwrite existing output file"/>
+                                <CheckBox x:Name="signAfterZipalignChkBox"             Grid.Row="5" Grid.ColumnSpan="3" Margin="0,4" Content="Sign after zipalign"/>
+
+                                <CheckBox x:Name="zipalignOutputDirChkBox" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Margin="0,4" Content="APK output directory:"/>
+                                <TextBox  x:Name="textBox_ZIPALIGN_OutputFile" Grid.Row="6" Grid.Column="1" Width="236" Height="24" Margin="10,4,0,4" VerticalContentAlignment="Center"/>
+                                <Button   x:Name="button_ZIPALIGN_BrowseOutputFile" Grid.Row="6" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,4,0,4"/>
+                            </Grid>
+                        </GroupBox>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem x:Name="tabFramework" Header="Framework">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="10">
+                        <StackPanel>
+                            <GroupBox x:Name="groupBox_IF_Options" Header="Install Framework">
+                                <StackPanel>
+                                    <Grid Margin="0,4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <CheckBox x:Name="checkBox_IF_FramePath" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,0" Content="Stores framework files into:"/>
+                                        <TextBox  x:Name="textBox_IF_FrameDir" Grid.Column="1" Height="24" VerticalContentAlignment="Center"/>
+                                        <Button   x:Name="button_IF_BrowseFrameDir" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,0,0,0"/>
+                                    </Grid>
+                                    <Grid Margin="0,4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <CheckBox x:Name="checkBox_IF_Tag" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,0" Content="Tag frameworks using:"/>
+                                        <TextBox  x:Name="textBox_IF_Tag" Grid.Column="1" Height="24" VerticalContentAlignment="Center"/>
+                                    </Grid>
+                                    <Grid Margin="0,4,0,4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox x:Name="textBox_IF_InputFramePath" Grid.Column="0" Height="24" VerticalContentAlignment="Center"/>
+                                        <Button  x:Name="button_IF_BrowseInputFramePath" Grid.Column="1" Content="..." Width="34" Height="24" Margin="6,0,0,0"/>
+                                        <Button  x:Name="button_IF_InstallFramework" Grid.Column="2" Content="Install" Width="90" Height="24" Margin="6,0,0,0"/>
+                                    </Grid>
+                                </StackPanel>
+                            </GroupBox>
+
+                            <GroupBox x:Name="groupBox1" Header="Options">
+                                <StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <CheckBox x:Name="clearFwBeforeDecodeChkBox" Grid.Column="0" VerticalAlignment="Center" Margin="0,4" Content="Clear framework before decompiling"/>
+                                        <Button   x:Name="clearFwBtn" Grid.Column="1" Content="Clear framework" Height="26" Padding="10,0" Margin="6,4,0,4"/>
+                                    </Grid>
+                                    <Button x:Name="openFwFolderBtn" HorizontalAlignment="Left" Content="Open framework folder" Height="26" Padding="10,0" Margin="0,8,0,4"/>
+                                </StackPanel>
+                            </GroupBox>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem x:Name="tabBaksmali" Header="Baksmali">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="10">
+                        <StackPanel>
+                            <GroupBox x:Name="bakSmaliGroupBox" Header="Baksmali">
+                                <StackPanel>
+                                    <Grid Margin="0,4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <CheckBox x:Name="baksmaliUseOutputChkBox" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,0" Content="Folder output directory:"/>
+                                        <TextBox  x:Name="baksmaliBrowseOutputTxtBox" Grid.Column="1" Height="24" VerticalContentAlignment="Center"/>
+                                        <Button   x:Name="baksmaliBrowseOutputBtn" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,0,0,0"/>
+                                    </Grid>
+                                    <Label x:Name="label28" Content="Dex to decompile:" Padding="0" Margin="0,8,0,2"/>
+                                    <Grid Margin="0,2,0,4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox x:Name="baksmaliBrowseInputDexTxtBox" Grid.Column="0" Height="24" VerticalContentAlignment="Center"/>
+                                        <Button  x:Name="baksmaliBrowseInputDexBtn" Grid.Column="1" Content="..." Width="34" Height="24" Margin="6,0,0,0"/>
+                                        <Button  x:Name="decSmaliBtn" Grid.Column="2" Content="Decompile" Width="100" Height="24" Margin="6,0,0,0"/>
+                                    </Grid>
+                                </StackPanel>
+                            </GroupBox>
+
+                            <GroupBox x:Name="smaliGroupBox" Header="Smali">
+                                <StackPanel>
+                                    <Grid Margin="0,4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <CheckBox x:Name="smaliUseOutputChkBox" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,0" Content="Dex output directory:"/>
+                                        <TextBox  x:Name="smaliBrowseOutputTxtBox" Grid.Column="1" Height="24" VerticalContentAlignment="Center"/>
+                                        <Button   x:Name="smaliBrowseOutputBtn" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,0,0,0"/>
+                                    </Grid>
+                                    <Label x:Name="label29" Content="Smali folder to compile:" Padding="0" Margin="0,8,0,2"/>
+                                    <Grid Margin="0,2,0,4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox x:Name="smaliBrowseInputDirTxtBox" Grid.Column="0" Height="24" VerticalContentAlignment="Center"/>
+                                        <Button  x:Name="smaliBrowseInputDirBtn" Grid.Column="1" Content="..." Width="34" Height="24" Margin="6,0,0,0"/>
+                                        <Button  x:Name="comSmaliBtn" Grid.Column="2" Content="Compile" Width="100" Height="24" Margin="6,0,0,0"/>
+                                    </Grid>
+                                </StackPanel>
+                            </GroupBox>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem x:Name="tabAdb" Header="ADB">
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,4">
+                            <TextBlock x:Name="label33" Text="Selected device: " VerticalAlignment="Center"/>
+                            <TextBlock x:Name="selAdbDeviceLbl" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <CheckBox x:Name="setVendorChkBox" Grid.Row="1" Margin="0,6" Content="Set vendor to Play Store (com.android.vending)"/>
+
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,6">
+                            <CheckBox x:Name="overrideAbiCheckBox" VerticalAlignment="Center" Content="Override platform's default ABI: "/>
+                            <ComboBox x:Name="overrideAbiComboBox" Width="150" Margin="8,0,0,0">
+                                <ComboBoxItem>arm64-v8a</ComboBoxItem>
+                                <ComboBoxItem>armeabi-v7a</ComboBoxItem>
+                                <ComboBoxItem>x86</ComboBoxItem>
+                                <ComboBoxItem>x86_64</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <Grid Grid.Row="3" Margin="0,6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="label32" Grid.Column="0" Text="Selected APK: " VerticalAlignment="Center" Margin="0,0,8,0"/>
+                            <TextBox x:Name="apkPathAdbTxtBox" Grid.Column="1" Height="24" VerticalContentAlignment="Center"/>
+                            <Button x:Name="selApkAdbBtn" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,0,0,0"/>
+                        </Grid>
+
+                        <Grid Grid.Row="4" Margin="0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="killAdbBtn"       Grid.Column="0" Content="Kill adb process" Height="28" Padding="10,0"/>
+                            <Button x:Name="refreshDevicesBtn" Grid.Column="1" Content="Refresh" Height="28" Padding="14,0" Margin="8,0,0,0"/>
+                            <Button x:Name="installApkBtn"    Grid.Column="3" Content="Install APK" Height="28" Padding="12,0"/>
+                        </Grid>
+
+                        <ListBox x:Name="devicesListBox" Grid.Row="5" Margin="0,4,0,0"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+
+            <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch"
+                          VerticalAlignment="Center" Margin="0,3" ResizeBehavior="PreviousAndNext"/>
+
+            <!-- Virtualized, console-style log: replaces the slow FlowDocument RichTextBox.
+                 LogView implements IScrollInfo, so the host ScrollViewer (CanContentScroll=True)
+                 drives the themed scroll bars. -->
+            <Border Grid.Row="2" BorderBrush="{DynamicResource PanelBorder}" BorderThickness="1"
+                    Background="{DynamicResource LogBackground}">
+                <ScrollViewer CanContentScroll="True"
+                              VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <ctrl:LogView x:Name="logTxtBox"
+                                  FontFamily="Consolas" FontSize="12"
+                                  Foreground="{DynamicResource PrimaryText}"
+                                  Background="{DynamicResource LogBackground}">
+                        <ctrl:LogView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="menuLogCopy" Header="Copy" InputGestureText="Ctrl+C" Click="LogCopy_Click"/>
+                                <MenuItem x:Name="menuLogCopyAll" Header="Copy all" Click="LogCopyAll_Click"/>
+                                <Separator/>
+                                <MenuItem x:Name="menuLogClear" Header="Clear log" Click="LogClear_Click"/>
+                            </ContextMenu>
+                        </ctrl:LogView.ContextMenu>
+                    </ctrl:LogView>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+    </DockPanel>
+</Window>

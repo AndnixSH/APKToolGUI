@@ -1,0 +1,78 @@
+<Window x:Class="APKToolGUI.Forms.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="About"
+        Width="528" Height="320"
+        MinWidth="420" MinHeight="260"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterScreen"
+        UseLayoutRounding="True"
+        TextOptions.TextFormattingMode="Display"
+        FontFamily="Segoe UI" FontSize="12"
+        Background="{DynamicResource WindowBackground}"
+        Foreground="{DynamicResource PrimaryText}">
+
+    <!--
+        WPF replacement for the former WinForms FormAboutBox.
+        Shared dark/light control styles are merged from Themes/Controls.xaml; the
+        actual colours are filled in by WpfTheme.Apply(this, dark) in the code-behind.
+    -->
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Themes/Controls.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="12">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Column="0"
+               Width="219" Height="259"
+               VerticalAlignment="Top"
+               Stretch="Uniform"
+               Margin="0,0,12,0"
+               Source="pack://application:,,,/Resources/android.png"/>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="productNameText" Grid.Row="0"
+                       FontSize="16" FontWeight="SemiBold"
+                       TextWrapping="Wrap" Margin="0,4"/>
+            <TextBlock x:Name="versionText" Grid.Row="1" TextWrapping="Wrap" Margin="0,4"/>
+            <TextBlock x:Name="copyrightText" Grid.Row="2" TextWrapping="Wrap" Margin="0,4"/>
+            <TextBlock Grid.Row="3" Margin="0,4">
+                <Hyperlink x:Name="repoLink" Click="RepoLink_Click"
+                           Foreground="{DynamicResource LinkText}">
+                    <Run x:Name="repoLinkText"/>
+                </Hyperlink>
+            </TextBlock>
+
+            <TextBox x:Name="descriptionText" Grid.Row="4" Margin="0,6"
+                     IsReadOnly="True" TextWrapping="Wrap" IsTabStop="False"
+                     Padding="4"
+                     VerticalScrollBarVisibility="Auto"
+                     Background="{DynamicResource PanelBackground}"
+                     Foreground="{DynamicResource PrimaryText}"
+                     BorderBrush="{DynamicResource PanelBorder}"/>
+
+            <Button x:Name="okButton" Grid.Row="5"
+                    HorizontalAlignment="Right" MinWidth="84" Margin="0,4,0,0"
+                    IsDefault="True" IsCancel="True"
+                    Click="OkButton_Click"/>
+        </Grid>
+    </Grid>
+</Window>

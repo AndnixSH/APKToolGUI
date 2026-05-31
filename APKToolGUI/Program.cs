@@ -1,8 +1,8 @@
-﻿using APKToolGUI.Languages;
+﻿using APKToolGUI.Controls;
+using APKToolGUI.Languages;
 using APKToolGUI.Properties;
 using APKToolGUI.Utils;
 using Bluegrams.Application;
-using Dark.Net;
 using OSVersionExtension;
 using System;
 using System.Collections.Generic;
@@ -96,16 +96,13 @@ namespace APKToolGUI
                         TEMP_MAIN = TempDirectory();
                         Directory.CreateDirectory(TEMP_PATH);
 
-                        Theme theme = (Theme)Settings.Default.Theme;
-                        if (IsWin10OrAbove())
-                            DarkNet.Instance.SetCurrentProcessTheme(theme);
+                        // Set the process app mode before any window is created so that
+                        // Win32 popup/context menus render dark too. The WPF MainWindow
+                        // applies its own immersive dark title bar internally.
+                        NativeDarkMode.SetProcessTheme((Theme)Settings.Default.Theme);
 
-                        Form mainForm = new FormMain();
-
-                        if (IsWin10OrAbove())
-                            DarkNet.Instance.SetWindowThemeForms(mainForm, theme);
-
-                        Application.Run(mainForm);
+                        var app = new System.Windows.Application();
+                        app.Run(new Forms.MainWindow());
                     }
                 }
             }
@@ -126,7 +123,7 @@ namespace APKToolGUI
         public static bool IsDarkTheme()
         {
             if (IsWin10OrAbove())
-                return DarkNet.Instance.EffectiveCurrentProcessThemeIsDark;
+                return NativeDarkMode.EffectiveIsDark((Theme)Settings.Default.Theme);
             else if (Settings.Default.Theme == 2)
                 return true;
             return false;

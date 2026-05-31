@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -539,5 +539,458 @@
   </data>
   <data name="CantDetectApkeditorVersion" xml:space="preserve">
     <value>无法检测 APKEditor 版本</value>
+  </data>
+  <data name="AboutVersion" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="AboutCopyright" xml:space="preserve">
+    <value>版权</value>
+  </data>
+  <data name="AboutGithubRepo" xml:space="preserve">
+    <value>Github 仓库</value>
+  </data>
+  <data name="SettingsGeneral" xml:space="preserve">
+    <value>常规</value>
+  </data>
+  <data name="SettingsLanguage" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="SettingsContextMenu" xml:space="preserve">
+    <value>右键菜单</value>
+  </data>
+  <data name="SettingsTheme" xml:space="preserve">
+    <value>主题</value>
+  </data>
+  <data name="SettingsTempNote" xml:space="preserve">
+    <value>操作过程的文件移动到缓存目录中需要时间，请耐心等待</value>
+  </data>
+  <data name="SettingsAdminRights" xml:space="preserve">
+    <value>需要管理员权限</value>
+  </data>
+  <data name="SettingsClearLog" xml:space="preserve">
+    <value>操作前清除日志</value>
+  </data>
+  <data name="SettingsPlaySound" xml:space="preserve">
+    <value>完成提示音</value>
+  </data>
+  <data name="SettingsCustomTemp" xml:space="preserve">
+    <value>自定义缓存位置</value>
+  </data>
+  <data name="SettingsCustomJava" xml:space="preserve">
+    <value>自定义 Java 位置</value>
+  </data>
+  <data name="SettingsUtf8" xml:space="preserve">
+    <value>UTF-8 文件名支持，中文乱码开启</value>
+  </data>
+  <data name="SettingsCustomJvmArgs" xml:space="preserve">
+    <value>自定义 JVM 命令</value>
+  </data>
+  <data name="SettingsCheckUpdate" xml:space="preserve">
+    <value>启动时检查更新</value>
+  </data>
+  <data name="SettingsCustomApktool" xml:space="preserve">
+    <value>自定义 apktool 位置</value>
+  </data>
+  <data name="SettingsIgnoreOutputCM" xml:space="preserve">
+    <value>忽略右键菜单的自定义输出目录</value>
+  </data>
+  <data name="SettingsInstall" xml:space="preserve">
+    <value>安装</value>
+  </data>
+  <data name="SettingsUninstall" xml:space="preserve">
+    <value>卸载</value>
+  </data>
+  <data name="SettingsCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="ThemeAuto" xml:space="preserve">
+    <value>自动</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>浅色</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>深色</value>
+  </data>
+  <data name="splitApkTxt.Text" xml:space="preserve">
+    <value>将拆分的 APK 合并为单个 APK:</value>
+  </data>
+  <data name="mergeApkBtn.Text" xml:space="preserve">
+    <value>合并</value>
+  </data>
+  <data name="comApkOpenDir.Text" xml:space="preserve">
+    <value>编译的 APK 目录</value>
+  </data>
+  <data name="decOutOpenDirBtn.Text" xml:space="preserve">
+    <value>反编译输出目录</value>
+  </data>
+  <data name="signApkOpenDirBtn.Text" xml:space="preserve">
+    <value>签名的 APK 目录</value>
+  </data>
+  <data name="alignApkOpenDirBtn.Text" xml:space="preserve">
+    <value>Zip 对齐的 APK 目录</value>
+  </data>
+  <data name="decApkOpenDirBtn.Text" xml:space="preserve">
+    <value>反编译的 APK 目录</value>
+  </data>
+  <data name="compileOutputOpenDirBtn.Text" xml:space="preserve">
+    <value>编译输出目录</value>
+  </data>
+  <data name="button_OpenMainActivity.Text" xml:space="preserve">
+    <value>启动项 smail</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>APK 签名:</value>
+  </data>
+  <data name="button_SIGN_Sign.Text" xml:space="preserve">
+    <value>签名</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>APK 文件对齐优化:</value>
+  </data>
+  <data name="button_ZIPALIGN_Align.Text" xml:space="preserve">
+    <value>对齐优化</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>反编译 APK 目录:</value>
+  </data>
+  <data name="button_BUILD_Build.Text" xml:space="preserve">
+    <value>编译</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>APK/XAPK/APKS/ZIP/APKM 文件:</value>
+  </data>
+  <data name="button_DECODE_Decode.Text" xml:space="preserve">
+    <value>反编译</value>
+  </data>
+  <data name="tabPageMain.Text" xml:space="preserve">
+    <value>首页</value>
+  </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>启动 activity:</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>架构:</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>文件:</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>本地化:</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>权限:</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>密度:</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>商店链接:</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>应用名:</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>应用包名:</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>版本:</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>最小兼容 SDK:</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>代号:</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>屏幕尺寸</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>目标 SDK:</value>
+  </data>
+  <data name="basicInfoTabPage.Text" xml:space="preserve">
+    <value>基本信息</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>完整信息</value>
+  </data>
+  <data name="tabPageApkInfo.Text" xml:space="preserve">
+    <value>APK 信息</value>
+  </data>
+  <data name="checkBox7.Text" xml:space="preserve">
+    <value>在选择 APK 进行反编译时，不要解析 APK 信息</value>
+  </data>
+  <data name="decSetApiLvlChkBox.Text" xml:space="preserve">
+    <value>设置要生成的文件的 API 级别，例如 ICS 的 14。</value>
+  </data>
+  <data name="checkBox_DECODE_FixError.Text" xml:space="preserve">
+    <value>修复反编译后的 ApkTool 错误</value>
+  </data>
+  <data name="checkBox_DECODE_OnlyMainClasses.Text" xml:space="preserve">
+    <value>只反汇编根目录中的主索引类(classes[0-9]*.dex)。</value>
+  </data>
+  <data name="checkBox_DECODE_UseFramework.Text" xml:space="preserve">
+    <value>使用的 framework 文件位置:</value>
+  </data>
+  <data name="checkBox_DECODE_MatchOriginal.Text" xml:space="preserve">
+    <value>尽可能保持文件最接近原始，防止重建</value>
+  </data>
+  <data name="checkBox_DECODE_OutputDirectory.Text" xml:space="preserve">
+    <value>输出目录:</value>
+  </data>
+  <data name="checkBox_DECODE_KeepBrokenRes.Text" xml:space="preserve">
+    <value>保留损坏资源</value>
+  </data>
+  <data name="checkBox_DECODE_NoSrc.Text" xml:space="preserve">
+    <value>不反编译源码</value>
+  </data>
+  <data name="checkBox_DECODE_Force.Text" xml:space="preserve">
+    <value>强制删除目标目录</value>
+  </data>
+  <data name="checkBox_DECODE_NoRes.Text" xml:space="preserve">
+    <value>不反编译 resouces</value>
+  </data>
+  <data name="checkBox_DECODE_NoDebugInfo.Text" xml:space="preserve">
+    <value>不要输出调试信息(.Local, .param, .line等)</value>
+  </data>
+  <data name="groupBox_DECODE_Options.Text" xml:space="preserve">
+    <value>选项</value>
+  </data>
+  <data name="tabPageDecode.Text" xml:space="preserve">
+    <value>反编译</value>
+  </data>
+  <data name="checkBox_BUILD_NetSecConf.Text" xml:space="preserve">
+    <value>在输出 APK 中添加通用的网络安全配置文件</value>
+  </data>
+  <data name="useAapt2ChkBox.Text" xml:space="preserve">
+    <value>使用 aapt2(升级 apktool 使用实验性 aapt2 二进制)</value>
+  </data>
+  <data name="buildSetApiLvlChkBox.Text" xml:space="preserve">
+    <value>设置要生成的文件的 API 级别，例如 ICS 的 14。</value>
+  </data>
+  <data name="createUnsignApkChkBox.Text" xml:space="preserve">
+    <value>构建后创建具有原始签名的未签名 APK</value>
+  </data>
+  <data name="signAfterBuildChkBox.Text" xml:space="preserve">
+    <value>在 构建/zip对齐 后进行签名</value>
+  </data>
+  <data name="zipalignAfterBuildChkBox.Text" xml:space="preserve">
+    <value>在构建后进行 zip对齐</value>
+  </data>
+  <data name="checkBox_BUILD_NoCrunch.Text" xml:space="preserve">
+    <value>在构建步骤中禁用对 resource 文件的处理</value>
+  </data>
+  <data name="checkBox_BUILD_ForceAll.Text" xml:space="preserve">
+    <value>跳过变更检测并构建所有文件</value>
+  </data>
+  <data name="checkBox_BUILD_OutputAppPath.Text" xml:space="preserve">
+    <value>APK 输出目录</value>
+  </data>
+  <data name="checkBox_BUILD_CopyOriginal.Text" xml:space="preserve">
+    <value>复制原来的 AndroidManifest.xml 和 META-INF 文件夹</value>
+  </data>
+  <data name="checkBox_BUILD_UseAapt.Text" xml:space="preserve">
+    <value>使用的 aapt.exe 文件位置:</value>
+  </data>
+  <data name="checkBox_BUILD_UseFramework.Text" xml:space="preserve">
+    <value>使用的 framework 文件位置:</value>
+  </data>
+  <data name="groupBox_BUILD_Options.Text" xml:space="preserve">
+    <value>选项</value>
+  </data>
+  <data name="tabPageBuild.Text" xml:space="preserve">
+    <value>构建</value>
+  </data>
+  <data name="checkBox2.Text" xml:space="preserve">
+    <value>签名后安装 APK(确保首先在 ADB 选项中选择设备)</value>
+  </data>
+  <data name="checkBox1.Text" xml:space="preserve">
+    <value>覆盖输入文件</value>
+  </data>
+  <data name="autoDelIdsigChkBox.Text" xml:space="preserve">
+    <value>自动删除 idsig 文件</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>签名方案 v4:</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>签名方案 v3:</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>签名方案 v2:</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>签名方案 v1:</value>
+  </data>
+  <data name="useAliasChkBox.Text" xml:space="preserve">
+    <value>别名</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>强烈建议您使用自己的密钥，通过 Android Studio 或其他工具创建</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>密码:</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>keystore/jks 文件:</value>
+  </data>
+  <data name="useKeyStoreChkBox.Text" xml:space="preserve">
+    <value>使用 keystore</value>
+  </data>
+  <data name="useSigningOutputDir.Text" xml:space="preserve">
+    <value>APK 输出目录:</value>
+  </data>
+  <data name="label_SIGN_PrivateKey.Text" xml:space="preserve">
+    <value>私钥:</value>
+  </data>
+  <data name="label_SIGN_PublicKey.Text" xml:space="preserve">
+    <value>公钥:</value>
+  </data>
+  <data name="groupBox_SIGN_Options.Text" xml:space="preserve">
+    <value>选项</value>
+  </data>
+  <data name="tabPageSign.Text" xml:space="preserve">
+    <value>签名</value>
+  </data>
+  <data name="zipalignOutputDirChkBox.Text" xml:space="preserve">
+    <value>APK 输出目录:</value>
+  </data>
+  <data name="signAfterZipalignChkBox.Text" xml:space="preserve">
+    <value>zip对齐后进行签名</value>
+  </data>
+  <data name="checkBox_ZIPALIGN_Recompress.Text" xml:space="preserve">
+    <value>使用 Zopfli 重新压缩</value>
+  </data>
+  <data name="label_ZIPALIGN_AlignmentBytes.Text" xml:space="preserve">
+    <value>以 bytes 为单位的对齐，例如: '4' 提供 32-bit 对齐</value>
+  </data>
+  <data name="checkBox_ZIPALIGN_CheckAlignment.Text" xml:space="preserve">
+    <value>只检查对齐(不修改文件)</value>
+  </data>
+  <data name="checkBox_ZIPALIGN_VerboseOutput.Text" xml:space="preserve">
+    <value>详细输出</value>
+  </data>
+  <data name="checkBox_ZIPALIGN_OverwriteOutputFile.Text" xml:space="preserve">
+    <value>覆盖现有的输出文件</value>
+  </data>
+  <data name="groupBox_ZIPALIGN_Options.Text" xml:space="preserve">
+    <value>选项</value>
+  </data>
+  <data name="tabPageZipAlign.Text" xml:space="preserve">
+    <value>Zip对齐</value>
+  </data>
+  <data name="openFwFolderBtn.Text" xml:space="preserve">
+    <value>打开 framework 目录</value>
+  </data>
+  <data name="clearFwBtn.Text" xml:space="preserve">
+    <value>清空 framework 缓存</value>
+  </data>
+  <data name="clearFwBeforeDecodeChkBox.Text" xml:space="preserve">
+    <value>反编译前清空 Framework 缓存</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>选项</value>
+  </data>
+  <data name="checkBox_IF_Tag.Text" xml:space="preserve">
+    <value>标签 frameworks 使用:</value>
+  </data>
+  <data name="checkBox_IF_FramePath.Text" xml:space="preserve">
+    <value>将 framework 文件存储到:</value>
+  </data>
+  <data name="button_IF_InstallFramework.Text" xml:space="preserve">
+    <value>安装</value>
+  </data>
+  <data name="groupBox_IF_Options.Text" xml:space="preserve">
+    <value>选项</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Smali 编译目录:</value>
+  </data>
+  <data name="smaliUseOutputChkBox.Text" xml:space="preserve">
+    <value>Dex 输出目录:</value>
+  </data>
+  <data name="comSmaliBtn.Text" xml:space="preserve">
+    <value>编译</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Dex 反编译:</value>
+  </data>
+  <data name="baksmaliUseOutputChkBox.Text" xml:space="preserve">
+    <value>输出目录:</value>
+  </data>
+  <data name="decSmaliBtn.Text" xml:space="preserve">
+    <value>反编译</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>选择设备</value>
+  </data>
+  <data name="killAdbBtn.Text" xml:space="preserve">
+    <value>结束 ADB 进程</value>
+  </data>
+  <data name="installApkBtn.Text" xml:space="preserve">
+    <value>安装 APK</value>
+  </data>
+  <data name="refreshDevicesBtn.Text" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="overrideAbiCheckBox.Text" xml:space="preserve">
+    <value>覆盖平台的默认 ABI:</value>
+  </data>
+  <data name="setVendorChkBox.Text" xml:space="preserve">
+    <value>设置 vendor 为 Play Store (com.android.vending)</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>选择 APK: </value>
+  </data>
+  <data name="toolStripStatusLabelStateText.Text" xml:space="preserve">
+    <value>加载中...</value>
+  </data>
+  <data name="clearLogToolStripMenuItem.Text" xml:space="preserve">
+    <value>清除日志</value>
+  </data>
+  <data name="newInsToolStripMenuItem.Text" xml:space="preserve">
+    <value>新进程</value>
+  </data>
+  <data name="saveLogToFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>保存日志</value>
+  </data>
+  <data name="openTempFolderToolStripMenuItem.Text" xml:space="preserve">
+    <value>打开缓存目录</value>
+  </data>
+  <data name="clearTempFolderToolStripMenuItem.Text" xml:space="preserve">
+    <value>清空缓存目录</value>
+  </data>
+  <data name="exitToolStripMenuItem.Text" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="useAPKEditorForDecompilingItem.Text" xml:space="preserve">
+    <value>使用 APKEditor 进行反编译</value>
+  </data>
+  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="checkForUpdateToolStripMenuItem.Text" xml:space="preserve">
+    <value>检查更新</value>
+  </data>
+  <data name="reportAnIsuueToolStripMenuItem.Text" xml:space="preserve">
+    <value>反馈问题</value>
+  </data>
+  <data name="apktoolIssuesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Apktool 问题反馈</value>
+  </data>
+  <data name="baksmaliIssuesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Baksmail 问题反馈</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="checkBox_DECODE_UseApkEditorMerge.Text" xml:space="preserve">
+    <value>使用 APKEditor.jar 合并、分离 APK(速度更快)</value>
   </data>
 </root>

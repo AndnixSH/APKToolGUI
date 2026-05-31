@@ -543,4 +543,457 @@
   <data name="SetLanguageRestartApplication" xml:space="preserve">
     <value />
   </data>
+  <data name="AboutVersion" xml:space="preserve">
+    <value>Phiên bản</value>
+  </data>
+  <data name="AboutCopyright" xml:space="preserve">
+    <value>Bản quyền</value>
+  </data>
+  <data name="AboutGithubRepo" xml:space="preserve">
+    <value>Kho Github</value>
+  </data>
+  <data name="SettingsGeneral" xml:space="preserve">
+    <value>Chung</value>
+  </data>
+  <data name="SettingsLanguage" xml:space="preserve">
+    <value>Ngôn ngữ</value>
+  </data>
+  <data name="SettingsContextMenu" xml:space="preserve">
+    <value>Menu chuột phải</value>
+  </data>
+  <data name="SettingsTheme" xml:space="preserve">
+    <value>Giao diện</value>
+  </data>
+  <data name="SettingsTempNote" xml:space="preserve">
+    <value>Việc di chuyển các tệp trong quá trình xử lý vào thư mục tạm có thể mất thời gian, vui lòng kiên nhẫn chờ đợi</value>
+  </data>
+  <data name="SettingsAdminRights" xml:space="preserve">
+    <value>Yêu cầu quyền quản trị</value>
+  </data>
+  <data name="SettingsClearLog" xml:space="preserve">
+    <value>Xóa nhật ký trước khi thực hiện</value>
+  </data>
+  <data name="SettingsPlaySound" xml:space="preserve">
+    <value>Âm báo hoàn thành</value>
+  </data>
+  <data name="SettingsCustomTemp" xml:space="preserve">
+    <value>Vị trí bộ đệm tùy chỉnh</value>
+  </data>
+  <data name="SettingsCustomJava" xml:space="preserve">
+    <value>Vị trí Java tùy chỉnh</value>
+  </data>
+  <data name="SettingsUtf8" xml:space="preserve">
+    <value>Hỗ trợ tên tệp UTF-8 (bật khi tên tệp bị lỗi hiển thị)</value>
+  </data>
+  <data name="SettingsCustomJvmArgs" xml:space="preserve">
+    <value>Tùy chỉnh lệnh JVM</value>
+  </data>
+  <data name="SettingsCheckUpdate" xml:space="preserve">
+    <value>Kiểm tra cập nhật khi khởi động</value>
+  </data>
+  <data name="SettingsCustomApktool" xml:space="preserve">
+    <value>Vị trí apktool tùy chỉnh</value>
+  </data>
+  <data name="SettingsIgnoreOutputCM" xml:space="preserve">
+    <value>Bỏ qua thư mục đầu ra tùy chỉnh của menu chuột phải</value>
+  </data>
+  <data name="SettingsInstall" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="SettingsUninstall" xml:space="preserve">
+    <value>Gỡ cài đặt</value>
+  </data>
+  <data name="SettingsCancel" xml:space="preserve">
+    <value>Hủy</value>
+  </data>
+  <data name="ThemeAuto" xml:space="preserve">
+    <value>Tự động</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Sáng</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Tối</value>
+  </data>
+  <data name="splitApkTxt.Text" xml:space="preserve">
+    <value>Hợp nhất các tệp APK bị chia nhỏ thành một tệp APK duy nhất:</value>
+  </data>
+  <data name="mergeApkBtn.Text" xml:space="preserve">
+    <value>Hợp nhất</value>
+  </data>
+  <data name="comApkOpenDir.Text" xml:space="preserve">
+    <value>Thư mục APK đã biên dịch</value>
+  </data>
+  <data name="decOutOpenDirBtn.Text" xml:space="preserve">
+    <value>Thư mục đầu ra dịch ngược</value>
+  </data>
+  <data name="signApkOpenDirBtn.Text" xml:space="preserve">
+    <value>Thư mục APK đã ký</value>
+  </data>
+  <data name="alignApkOpenDirBtn.Text" xml:space="preserve">
+    <value>Thư mục APK đã Zipalign</value>
+  </data>
+  <data name="decApkOpenDirBtn.Text" xml:space="preserve">
+    <value>Thư mục APK đã dịch ngược</value>
+  </data>
+  <data name="compileOutputOpenDirBtn.Text" xml:space="preserve">
+    <value>Thư mục đầu ra biên dịch</value>
+  </data>
+  <data name="button_OpenMainActivity.Text" xml:space="preserve">
+    <value>Smali của Activity khởi động</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Ký APK:</value>
+  </data>
+  <data name="button_SIGN_Sign.Text" xml:space="preserve">
+    <value>Ký</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Zipalign tệp APK:</value>
+  </data>
+  <data name="button_ZIPALIGN_Align.Text" xml:space="preserve">
+    <value>Zipalign</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Thư mục APK đã dịch ngược:</value>
+  </data>
+  <data name="button_BUILD_Build.Text" xml:space="preserve">
+    <value>Biên dịch</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Tệp APK/XAPK/APKS/ZIP/APKM:</value>
+  </data>
+  <data name="button_DECODE_Decode.Text" xml:space="preserve">
+    <value>Dịch ngược</value>
+  </data>
+  <data name="tabPageMain.Text" xml:space="preserve">
+    <value>Trang chính</value>
+  </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>Activity khởi động:</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>Kiến trúc:</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Tệp:</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Bản địa hóa:</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Quyền:</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Mật độ (DPI):</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Liên kết cửa hàng:</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Tên ứng dụng:</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Tên gói ứng dụng:</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Phiên bản:</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>SDK tương thích tối thiểu:</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Tên mã:</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Kích thước màn hình</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>SDK mục tiêu:</value>
+  </data>
+  <data name="basicInfoTabPage.Text" xml:space="preserve">
+    <value>Thông tin cơ bản</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>Thông tin đầy đủ</value>
+  </data>
+  <data name="tabPageApkInfo.Text" xml:space="preserve">
+    <value>Thông tin APK</value>
+  </data>
+  <data name="checkBox7.Text" xml:space="preserve">
+    <value>Không phân tích thông tin APK khi chọn APK để dịch ngược</value>
+  </data>
+  <data name="decSetApiLvlChkBox.Text" xml:space="preserve">
+    <value>Đặt cấp độ API cho các tệp sẽ được tạo, ví dụ: 14 cho ICS.</value>
+  </data>
+  <data name="checkBox_DECODE_FixError.Text" xml:space="preserve">
+    <value>Sửa lỗi ApkTool sau khi dịch ngược</value>
+  </data>
+  <data name="checkBox_DECODE_OnlyMainClasses.Text" xml:space="preserve">
+    <value>Chỉ dịch ngược các tệp dex chính trong thư mục gốc (classes[0-9]*.dex).</value>
+  </data>
+  <data name="checkBox_DECODE_UseFramework.Text" xml:space="preserve">
+    <value>Sử dụng vị trí tệp framework:</value>
+  </data>
+  <data name="checkBox_DECODE_MatchOriginal.Text" xml:space="preserve">
+    <value>Giữ các tệp gần với bản gốc nhất có thể, ngăn việc xây dựng lại</value>
+  </data>
+  <data name="checkBox_DECODE_OutputDirectory.Text" xml:space="preserve">
+    <value>Thư mục đầu ra:</value>
+  </data>
+  <data name="checkBox_DECODE_KeepBrokenRes.Text" xml:space="preserve">
+    <value>Giữ lại tài nguyên bị hỏng</value>
+  </data>
+  <data name="checkBox_DECODE_NoSrc.Text" xml:space="preserve">
+    <value>Không dịch ngược mã nguồn</value>
+  </data>
+  <data name="checkBox_DECODE_Force.Text" xml:space="preserve">
+    <value>Buộc xóa thư mục đích</value>
+  </data>
+  <data name="checkBox_DECODE_NoRes.Text" xml:space="preserve">
+    <value>Không dịch ngược tài nguyên (resources)</value>
+  </data>
+  <data name="checkBox_DECODE_NoDebugInfo.Text" xml:space="preserve">
+    <value>Không xuất thông tin gỡ lỗi (.local, .param, .line, v.v.)</value>
+  </data>
+  <data name="groupBox_DECODE_Options.Text" xml:space="preserve">
+    <value>Tùy chọn</value>
+  </data>
+  <data name="tabPageDecode.Text" xml:space="preserve">
+    <value>Dịch ngược</value>
+  </data>
+  <data name="checkBox_BUILD_NetSecConf.Text" xml:space="preserve">
+    <value>Thêm cấu hình bảo mật mạng chung vào APK đầu ra</value>
+  </data>
+  <data name="useAapt2ChkBox.Text" xml:space="preserve">
+    <value>Sử dụng aapt2 (Nâng cấp apktool để sử dụng tệp nhị phân aapt2 thử nghiệm)</value>
+  </data>
+  <data name="buildSetApiLvlChkBox.Text" xml:space="preserve">
+    <value>Đặt cấp độ API cho các tệp sẽ được tạo, ví dụ: 14 cho ICS.</value>
+  </data>
+  <data name="createUnsignApkChkBox.Text" xml:space="preserve">
+    <value>Tạo APK chưa ký với chữ ký gốc sau khi biên dịch</value>
+  </data>
+  <data name="signAfterBuildChkBox.Text" xml:space="preserve">
+    <value>Ký sau khi Biên dịch/Zipalign</value>
+  </data>
+  <data name="zipalignAfterBuildChkBox.Text" xml:space="preserve">
+    <value>Zipalign sau khi biên dịch</value>
+  </data>
+  <data name="checkBox_BUILD_NoCrunch.Text" xml:space="preserve">
+    <value>Vô hiệu hóa việc xử lý các tệp tài nguyên trong bước biên dịch</value>
+  </data>
+  <data name="checkBox_BUILD_ForceAll.Text" xml:space="preserve">
+    <value>Bỏ qua kiểm tra thay đổi và biên dịch tất cả các tệp</value>
+  </data>
+  <data name="checkBox_BUILD_OutputAppPath.Text" xml:space="preserve">
+    <value>Thư mục đầu ra APK</value>
+  </data>
+  <data name="checkBox_BUILD_CopyOriginal.Text" xml:space="preserve">
+    <value>Sao chép thư mục AndroidManifest.xml và META-INF gốc</value>
+  </data>
+  <data name="checkBox_BUILD_UseAapt.Text" xml:space="preserve">
+    <value>Sử dụng vị trí tệp aapt.exe:</value>
+  </data>
+  <data name="checkBox_BUILD_UseFramework.Text" xml:space="preserve">
+    <value>Sử dụng vị trí tệp framework:</value>
+  </data>
+  <data name="groupBox_BUILD_Options.Text" xml:space="preserve">
+    <value>Tùy chọn</value>
+  </data>
+  <data name="tabPageBuild.Text" xml:space="preserve">
+    <value>Biên dịch</value>
+  </data>
+  <data name="checkBox2.Text" xml:space="preserve">
+    <value>Cài đặt APK sau khi ký (đảm bảo đã chọn thiết bị trong tùy chọn ADB trước)</value>
+  </data>
+  <data name="checkBox1.Text" xml:space="preserve">
+    <value>Ghi đè tệp đầu vào</value>
+  </data>
+  <data name="autoDelIdsigChkBox.Text" xml:space="preserve">
+    <value>Tự động xóa tệp idsig</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Lược đồ ký v4:</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Lược đồ ký v3:</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Lược đồ ký v2:</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Lược đồ ký v1:</value>
+  </data>
+  <data name="useAliasChkBox.Text" xml:space="preserve">
+    <value>Tên bí danh (Alias)</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Rất khuyến khích bạn sử dụng khóa của riêng mình, được tạo bằng Android Studio hoặc các công cụ khác</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Mật khẩu:</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Tệp keystore/jks:</value>
+  </data>
+  <data name="useKeyStoreChkBox.Text" xml:space="preserve">
+    <value>Sử dụng keystore</value>
+  </data>
+  <data name="useSigningOutputDir.Text" xml:space="preserve">
+    <value>Thư mục đầu ra APK:</value>
+  </data>
+  <data name="label_SIGN_PrivateKey.Text" xml:space="preserve">
+    <value>Khóa riêng:</value>
+  </data>
+  <data name="label_SIGN_PublicKey.Text" xml:space="preserve">
+    <value>Khóa công khai:</value>
+  </data>
+  <data name="groupBox_SIGN_Options.Text" xml:space="preserve">
+    <value>Tùy chọn</value>
+  </data>
+  <data name="tabPageSign.Text" xml:space="preserve">
+    <value>Ký</value>
+  </data>
+  <data name="zipalignOutputDirChkBox.Text" xml:space="preserve">
+    <value>Thư mục đầu ra APK:</value>
+  </data>
+  <data name="signAfterZipalignChkBox.Text" xml:space="preserve">
+    <value>Ký sau khi zipalign</value>
+  </data>
+  <data name="checkBox_ZIPALIGN_Recompress.Text" xml:space="preserve">
+    <value>Nén lại bằng Zopfli</value>
+  </data>
+  <data name="label_ZIPALIGN_AlignmentBytes.Text" xml:space="preserve">
+    <value>Căn chỉnh theo byte, ví dụ: '4' cung cấp căn chỉnh 32-bit</value>
+  </data>
+  <data name="checkBox_ZIPALIGN_CheckAlignment.Text" xml:space="preserve">
+    <value>Chỉ kiểm tra căn chỉnh (không sửa đổi tệp)</value>
+  </data>
+  <data name="checkBox_ZIPALIGN_VerboseOutput.Text" xml:space="preserve">
+    <value>Đầu ra chi tiết</value>
+  </data>
+  <data name="checkBox_ZIPALIGN_OverwriteOutputFile.Text" xml:space="preserve">
+    <value>Ghi đè tệp đầu ra hiện có</value>
+  </data>
+  <data name="groupBox_ZIPALIGN_Options.Text" xml:space="preserve">
+    <value>Tùy chọn</value>
+  </data>
+  <data name="tabPageZipAlign.Text" xml:space="preserve">
+    <value>Zipalign</value>
+  </data>
+  <data name="openFwFolderBtn.Text" xml:space="preserve">
+    <value>Mở thư mục framework</value>
+  </data>
+  <data name="clearFwBtn.Text" xml:space="preserve">
+    <value>Xóa bộ nhớ đệm framework</value>
+  </data>
+  <data name="clearFwBeforeDecodeChkBox.Text" xml:space="preserve">
+    <value>Xóa bộ nhớ đệm Framework trước khi dịch ngược</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Tùy chọn</value>
+  </data>
+  <data name="checkBox_IF_Tag.Text" xml:space="preserve">
+    <value>Gắn thẻ frameworks bằng:</value>
+  </data>
+  <data name="checkBox_IF_FramePath.Text" xml:space="preserve">
+    <value>Lưu trữ tệp framework vào:</value>
+  </data>
+  <data name="button_IF_InstallFramework.Text" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="groupBox_IF_Options.Text" xml:space="preserve">
+    <value>Tùy chọn</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Thư mục biên dịch Smali:</value>
+  </data>
+  <data name="smaliUseOutputChkBox.Text" xml:space="preserve">
+    <value>Thư mục đầu ra Dex:</value>
+  </data>
+  <data name="comSmaliBtn.Text" xml:space="preserve">
+    <value>Biên dịch</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Dịch ngược Dex:</value>
+  </data>
+  <data name="baksmaliUseOutputChkBox.Text" xml:space="preserve">
+    <value>Thư mục đầu ra:</value>
+  </data>
+  <data name="decSmaliBtn.Text" xml:space="preserve">
+    <value>Dịch ngược</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>Chọn thiết bị</value>
+  </data>
+  <data name="killAdbBtn.Text" xml:space="preserve">
+    <value>Dừng tiến trình ADB</value>
+  </data>
+  <data name="installApkBtn.Text" xml:space="preserve">
+    <value>Cài đặt APK</value>
+  </data>
+  <data name="refreshDevicesBtn.Text" xml:space="preserve">
+    <value>Làm mới</value>
+  </data>
+  <data name="overrideAbiCheckBox.Text" xml:space="preserve">
+    <value>Ghi đè ABI mặc định của nền tảng:</value>
+  </data>
+  <data name="setVendorChkBox.Text" xml:space="preserve">
+    <value>Đặt nhà cung cấp là Play Store (com.android.vending)</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>Chọn APK: </value>
+  </data>
+  <data name="toolStripStatusLabelStateText.Text" xml:space="preserve">
+    <value>Đang tải...</value>
+  </data>
+  <data name="clearLogToolStripMenuItem.Text" xml:space="preserve">
+    <value>Xóa nhật ký</value>
+  </data>
+  <data name="newInsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Tiến trình mới</value>
+  </data>
+  <data name="saveLogToFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Lưu nhật ký</value>
+  </data>
+  <data name="openTempFolderToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mở thư mục tạm</value>
+  </data>
+  <data name="clearTempFolderToolStripMenuItem.Text" xml:space="preserve">
+    <value>Xóa thư mục tạm</value>
+  </data>
+  <data name="exitToolStripMenuItem.Text" xml:space="preserve">
+    <value>Thoát</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Tệp</value>
+  </data>
+  <data name="useAPKEditorForDecompilingItem.Text" xml:space="preserve">
+    <value>Sử dụng APKEditor để dịch ngược</value>
+  </data>
+  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="checkForUpdateToolStripMenuItem.Text" xml:space="preserve">
+    <value>Kiểm tra cập nhật</value>
+  </data>
+  <data name="reportAnIsuueToolStripMenuItem.Text" xml:space="preserve">
+    <value>Báo cáo sự cố</value>
+  </data>
+  <data name="apktoolIssuesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Sự cố Apktool</value>
+  </data>
+  <data name="baksmaliIssuesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Sự cố Baksmali</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>Giới thiệu</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trợ giúp</value>
+  </data>
+  <data name="checkBox_DECODE_UseApkEditorMerge.Text" xml:space="preserve">
+    <value>Sử dụng APKEditor.jar để hợp nhất/tách APK (nhanh hơn)</value>
+  </data>
 </root>
