@@ -31,5 +31,27 @@ namespace APKToolGUI.Utils
                 return null;
             }
         }
+
+        // Decodes raw image bytes (e.g. an APK launcher icon resolved in memory) into a Bitmap.
+        // Returns a standalone copy so the backing MemoryStream can be disposed immediately and
+        // the result remains usable for saving. Returns null on null/empty input or a format
+        // GDI+ can't decode (e.g. WebP).
+        public static Bitmap LoadBitmap(byte[] data)
+        {
+            if (data == null || data.Length == 0)
+                return null;
+            try
+            {
+                using (var memoryStream = new MemoryStream(data))
+                using (var temp = new Bitmap(memoryStream))
+                {
+                    return new Bitmap(temp);
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

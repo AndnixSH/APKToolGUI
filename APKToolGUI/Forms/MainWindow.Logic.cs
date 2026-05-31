@@ -969,8 +969,9 @@ namespace APKToolGUI.Forms
                     DirectoryUtils.Delete(splitPath);
                     List<string> archList = new List<string>();
                     string actualFile = file;
+                    bool isBundle = file.ContainsAny(".xapk", ".zip", ".apks", ".apkm");
 
-                    if (file.ContainsAny(".xapk", ".zip", ".apks", ".apkm"))
+                    if (isBundle)
                     {
                         Directory.CreateDirectory(splitPath);
                         using (ZipFile zipDest = ZipFile.Read(file))
@@ -986,6 +987,14 @@ namespace APKToolGUI.Forms
                                     actualFile = extractPath;
                                     mainApkFound = true;
                                 }
+                                // Density splits carry the launcher-icon resources, not base.apk;
+                                // extract them so the icon resolver can fall back to them.
+                                else if (entry.FileName.EndsWith(".apk") && entry.FileName.Contains("dpi"))
+                                {
+                                    string extractPath = Path.Combine(splitPath, entry.FileName);
+                                    Directory.CreateDirectory(Path.GetDirectoryName(extractPath));
+                                    entry.Extract(splitPath, ExtractExistingFileAction.OverwriteSilently);
+                                }
                                 if (entry.FileName.Contains("lib/armeabi-v7a") && !archList.Contains("armeabi-v7a")) archList.Add("armeabi-v7a");
                                 if (entry.FileName.Contains("lib/arm64-v8a") && !archList.Contains("arm64-v8a")) archList.Add("arm64-v8a");
                                 if (entry.FileName.Contains("lib/x86") && !archList.Contains("x86")) archList.Add("x86");
@@ -996,9 +1005,14 @@ namespace APKToolGUI.Forms
 
                     var aaptParser = new AaptParser();
                     var parsed = aaptParser.Parse(actualFile);
+
+                    // Resolve the launcher icon to bytes while the extracted splits still exist on
+                    // disk. The icon itself is never written out — it stays in memory.
+                    byte[] iconBytes = aaptParser.GetIconBytes(actualFile, isBundle ? splitPath : null);
+
                     DirectoryUtils.Delete(splitPath);
 
-                    return new ApkParseResult { Success = parsed, Aapt = aaptParser, Architecture = string.Join(", ", archList), ActualFilePath = actualFile };
+                    return new ApkParseResult { Success = parsed, Aapt = aaptParser, Architecture = string.Join(", ", archList), ActualFilePath = actualFile, IconBytes = iconBytes };
                 }
                 catch (Exception ex)
                 {
@@ -1031,7 +1045,7 @@ namespace APKToolGUI.Forms
             SetRich(fullInfoTextBox, result.Aapt.FullInfo);
             SetRich(sigTxtBox, Lang.Loading);
 
-            previousApkIcon = BitmapUtils.LoadBitmap(result.Aapt.GetIcon(result.ActualFilePath));
+            previousApkIcon = BitmapUtils.LoadBitmap(result.IconBytes);
             apkIconPicBox.Source = ToBitmapSource(previousApkIcon);
         }
 
@@ -1041,6 +1055,7 @@ namespace APKToolGUI.Forms
             public AaptParser Aapt { get; set; }
             public string Architecture { get; set; }
             public string ActualFilePath { get; set; }
+            public byte[] IconBytes { get; set; }
         }
 
         #endregion

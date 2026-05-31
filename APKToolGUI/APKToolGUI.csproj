@@ -320,6 +320,7 @@
     <Compile Include="Controls\NumericUpDown.cs" />
     <Compile Include="Controls\LogView.cs" />
     <Compile Include="Utils\AdminUtils.cs" />
+    <Compile Include="Utils\ApkIconExtractor.cs" />
     <Compile Include="Utils\BitmapUtils.cs" />
     <Compile Include="Utils\CMD.cs" />
     <Compile Include="Utils\CommonUtils.cs" />

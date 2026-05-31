@@ -1,4 +1,5 @@
 ﻿using APKToolGUI.Web;
+using Ionic.Zip;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -195,86 +196,136 @@ namespace APKToolGUI.Utils
                 return apkinfo;
         }
 
-        public string GetIcon(string apkPath)
+        // mipmap/drawable density folders to probe when the manifest points at an adaptive XML icon.
+        private static readonly string[] IconPngFolders =
         {
-            string[] png = { "mipmap-xxxhdpi-v4", "mipmap-xxhdpi-v4", "mipmap-xhdpi-v4", "mipmap-hdpi-v4", "mipmap-mdpi-v4", "mipmap-xhdpi", "mipmap-hdpi", "drawable-xxxhdpi-v4", "drawable-xxhdpi-v4", "drawable-xhdpi-v4", "drawable-hdpi-v4", "drawable-mdpi-v4" };
-            string icon = "";
+            "mipmap-xxxhdpi-v4", "mipmap-xxhdpi-v4", "mipmap-xhdpi-v4", "mipmap-hdpi-v4", "mipmap-mdpi-v4",
+            "mipmap-xhdpi", "mipmap-hdpi",
+            "drawable-xxxhdpi-v4", "drawable-xxhdpi-v4", "drawable-xhdpi-v4", "drawable-hdpi-v4", "drawable-mdpi-v4"
+        };
 
-            if (!string.IsNullOrEmpty(AppIcon65534))
-                icon = AppIcon65534;
-            else if (!string.IsNullOrEmpty(AppIcon640))
-                icon = AppIcon640;
-            else if (!string.IsNullOrEmpty(AppIcon480))
-                icon = AppIcon480;
-            else if (!string.IsNullOrEmpty(AppIcon320))
-                icon = AppIcon320;
-            else if (!string.IsNullOrEmpty(AppIcon240))
-                icon = AppIcon240;
-            else if (!string.IsNullOrEmpty(AppIcon160))
-                icon = AppIcon160;
-            else if (!string.IsNullOrEmpty(AppIcon120))
-                icon = AppIcon120;
+        // Resolves the launcher icon to raw image bytes in memory — nothing is written to disk.
+        // Resolution order:
+        //   1) Direct raster lookup inside the (base) APK using the aapt-reported icon path.
+        //   2) resources.arsc parse — handles optimized/obfuscated resource names and adaptive
+        //      icons (falls back to the foreground-layer raster).
+        //   3) Split-APK fallback — density resources (incl. the launcher icon) usually live in
+        //      the config.*dpi.apk splits, not base.apk. When a split folder is supplied, scan it.
+        // Returns the PNG/WebP bytes, or null when no icon could be found.
+        public byte[] GetIconBytes(string apkPath, string splitSearchFolder = null)
+        {
+            try
+            {
+                // Pick the largest-density icon aapt reported (precedence: 65534 → 120).
+                string icon = PickPreferredIcon();
 
-            icon = icon.Replace(".xml", ".png");
+                // Adaptive icons are declared as XML; the real raster lives next to it as a PNG.
+                if (Path.GetExtension(icon).Equals(".xml", StringComparison.OrdinalIgnoreCase))
+                    icon = icon.Replace(".xml", ".png");
 
-            Debug.WriteLine("Icon: " + icon);
+                Debug.WriteLine("Icon: " + icon);
 
-            string cacheDir = Path.Combine(Program.TEMP_PATH, PackageName);
-            string iconLocation = Path.Combine(cacheDir, Path.GetFileName(icon));
-            Directory.CreateDirectory(cacheDir);
+                string[] candidates = BuildIconCandidates(icon);
+
+                // 1) Direct raster lookup inside the (base) APK.
+                byte[] iconBytes = ReadIconFromApk(apkPath, candidates);
+
+                // 2) resources.arsc fallback.
+                if (iconBytes == null)
+                {
+                    Debug.WriteLine("Falling back to resources.arsc extraction method");
+                    iconBytes = ApkIconExtractor.ExtractIcon(apkPath);
+                }
+
+                // 3) Split-APK fallback: density resources (incl. the launcher icon) usually live
+                //    in config.*dpi.apk splits, not base.apk. Scan the extracted splits.
+                if (iconBytes == null && !String.IsNullOrEmpty(splitSearchFolder) && Directory.Exists(splitSearchFolder))
+                {
+                    foreach (string split in Directory.GetFiles(splitSearchFolder, "*.apk", SearchOption.AllDirectories))
+                    {
+                        if (String.Equals(split, apkPath, StringComparison.OrdinalIgnoreCase))
+                            continue; // base.apk already tried above
+
+                        iconBytes = ReadIconFromApk(split, candidates) ?? ApkIconExtractor.ExtractIcon(split);
+                        if (iconBytes != null)
+                        {
+                            Debug.WriteLine("Icon resolved from split: " + Path.GetFileName(split));
+                            break;
+                        }
+                    }
+                }
+
+                if (iconBytes == null)
+                    Debug.WriteLine("Icon not found in " + Path.GetFileName(apkPath));
+
+                return iconBytes;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("GetIconBytes failed: " + ex.Message);
+                return null;
+            }
+        }
+
+        // Highest-density icon wins; fall back through the precedence chain.
+        private string PickPreferredIcon()
+        {
+            foreach (var candidate in new[] { AppIcon65534, AppIcon640, AppIcon480, AppIcon320, AppIcon240, AppIcon160, AppIcon120 })
+            {
+                if (!String.IsNullOrEmpty(candidate))
+                    return candidate;
+            }
+            return "";
+        }
+
+        // Expand the chosen icon path into the set of ZIP entries to probe, resolving
+        // adaptive (v26) icons to their density-specific PNG forms.
+        private static string[] BuildIconCandidates(string icon)
+        {
+            if (String.IsNullOrEmpty(icon))
+                return new string[0];
 
             if (icon.Contains("anydpi-v26"))
+                return IconPngFolders
+                    .Select(p => icon.Replace("mipmap-anydpi-v26", p).Replace("drawable-anydpi-v26", p))
+                    .ToArray();
+
+            if (icon.Contains("v26"))
+                return new[] { icon.Replace("v26", "v4"), icon.Replace("-v26", "") };
+
+            return new[] { icon };
+        }
+
+        // Reads the first matching candidate entry from an APK/ZIP into a byte[], or null if none.
+        private static byte[] ReadIconFromApk(string apkFile, string[] candidates)
+        {
+            if (String.IsNullOrEmpty(apkFile) || candidates == null || candidates.Length == 0 || !File.Exists(apkFile))
+                return null;
+
+            try
             {
-                foreach (string Png in png)
+                using (ZipFile zip = ZipFile.Read(apkFile))
                 {
-                    string icon2 = icon.Replace("mipmap-anydpi-v26", Png).Replace("drawable-anydpi-v26", Png);
-                    ZipUtils.ExtractFile(apkPath, icon2, cacheDir);
-                    if (File.Exists(iconLocation))
+                    foreach (var candidate in candidates)
                     {
-                        break;
+                        if (String.IsNullOrEmpty(candidate)) continue;
+                        var entry = zip[candidate.Replace('\\', '/')];
+                        if (entry == null) continue;
+
+                        Debug.WriteLine("Icon stream: " + candidate + " from " + Path.GetFileName(apkFile));
+                        using (var ms = new MemoryStream())
+                        {
+                            entry.Extract(ms);
+                            return ms.ToArray();
+                        }
                     }
                 }
             }
-            else if (icon.Contains("v26"))
+            catch (Exception ex)
             {
-                string icon2 = icon.Replace("v26", "v4");
-                ZipUtils.ExtractFile(apkPath, icon2, cacheDir);
-                icon2 = icon.Replace("-v26", "");
-                ZipUtils.ExtractFile(apkPath, icon2, cacheDir);
+                Debug.WriteLine("Icon read failed from " + apkFile + ": " + ex.Message);
             }
-            else
-            {
-                ZipUtils.ExtractFile(apkPath, icon, cacheDir);
-            }
-
-            if (!File.Exists(iconLocation))
-            {
-                try
-                {
-                    WebDownload w = new WebDownload();
-                    string ps = w.DownloadString("https://play.google.com/store/apps/details?id=" + PackageName);
-                    //File.WriteAllText("R:\\t.txt", ps);
-                    string icondl = Path.Combine(cacheDir, "icon.png");
-                    Directory.CreateDirectory(cacheDir);
-                    w.DownloadFile(StringExt.RegexExtract(@"(?<=\""image\"":\"")(.*?)(?=\"",\"")", ps), icondl);
-                    iconLocation = icondl;
-                }
-                catch (System.Net.WebException ex)
-                {
-                    Debug.WriteLine($"[AaptParser] Failed to download icon from web: {ex.Message}");
-                    // Icon download failure is not critical, use default value
-                }
-                catch (IOException ex)
-                {
-                    Debug.WriteLine($"[AaptParser] Failed to save icon file: {ex.Message}");
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine($"[AaptParser] Unexpected error getting icon: {ex.Message}");
-                }
-            }
-
-            return iconLocation;
+            return null;
         }
 
         //https://apilevels.com/
