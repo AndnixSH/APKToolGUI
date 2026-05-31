@@ -47,21 +47,9 @@ If you remain unsure, you can compile the app yourself or refrain from using it 
 - German
 
 ### Translation
-If you like to help translate with your native language, I recommend using Visual Studio 2022. You don't need any programming knowledge, you just edit the GUI and the `.resx` files
-
-Create new `.resx` file under `Languages` folder, and `Forms/FormXXX.cs/`. To create a new `.resx` under `Forms/FormXXX.cs/`, open the form and select the form to show the properties. In the properties, scroll down until you see Language, and select any language you would like to translate.
-
-<details>
-
-<summary>Video tutorial</summary>
-
-https://user-images.githubusercontent.com/40742924/227244601-6f796141-ac2d-4c60-b5cd-7f6872604cd7.mp4
-  
-</details>
+If you would like to help with translations in your native language, I recommend using Visual Studio. No programming knowledge is required; you just need to use it to edit or create a new `.resx` file in the `Languages` folder.
 
 If you can't use Visual Studio, you can use translator tools like [resxtranslator](https://github.com/HakanL/resxtranslator) or [RESX Translator automat](https://www.utilstudio.com/en/resx-translator/), but make sure the `.resx` file is added to [APKToolGUI.csproj](https://github.com/AndnixSH/APKToolGUI/blob/master/APKToolGUI/APKToolGUI.csproj), otherwise Visual Studio would not be able to detect it
-
-3rd party tools can't be translated.
 
 Make pull request when you are done
 
