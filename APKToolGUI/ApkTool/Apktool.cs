@@ -39,93 +39,93 @@ namespace APKToolGUI
         static class DecompileKeys
         {
             //Do not decode sources.
-            public const string NoSource = " -s";
+            public const string NoSource = "-s";
 
             //Do not decode resources.
-            public const string NoResource = " -r";
+            public const string NoResource = "-r";
 
             //don't write out debug info (.local, .param, .line, etc.)
             //The -b flag has been removed from APKtool 3.0.1 and later versions,
             //but the --no-debug-info flag is supported in all versions.
-            public const string NoDebugInfo = " --no-debug-info";
+            public const string NoDebugInfo = "--no-debug-info";
 
             //Skip changes detection and build all files.
-            public const string Force = " -f";
+            public const string Force = "-f";
 
             //Uses framework files located in <dir>.
-            public const string FrameworkPath = " -p";
+            public const string FrameworkPath = "-p";
 
             //Use if there was an error and some resources were dropped
-            public const string KeepBrokenResource = " -k";
+            public const string KeepBrokenResource = "--keep-broken-res";
 
             //Keeps files to closest to original as possible. Prevents rebuild.
-            public const string MatchOriginal = " -m";
+            public const string MatchOriginal = "--match-original";
 
             //The name of folder that gets written. Default is apk.out
-            public const string OutputDir = " -o";
+            public const string OutputDir = "-o";
 
             //Only disassemble the main dex classes (classes[0-9]*.dex) in the root.
-            public const string OnlyMainClasses = " --only-main-classes";
+            public const string OnlyMainClasses = "--only-main-classes";
 
             //The numeric api-level of the file to generate, e.g. 14 for ICS.
-            public const string ApiLevel = " -api";
+            public const string ApiLevel = "-api";
 
             // Sets the number of threads to use.
-            public const string Jobs = " -j";
+            public const string Jobs = "-j";
         }
 
         static class BuildKeys
         {
             //Skip changes detection and build all files.
-            public const string ForceAll = " -f";
+            public const string ForceAll = "-f";
 
             //opies original AndroidManifest.xml and META-INF. See project page for more info.
-            public const string CopyOriginal = " -c";
+            public const string CopyOriginal = "--copy-original";
 
             //Loads aapt from specified location.
-            public const string Aapt = " -a";
+            public const string Aapt = "-a";
 
             //Uses framework files located in <dir>.
-            public const string FrameworkPath = " -p";
+            public const string FrameworkPath = "-p";
 
             // The name of apk that gets written. Default is dist/name.apk
-            public const string OutputAppPath = " -o";
+            public const string OutputAppPath = "-o";
 
             // Disable crunching of resource files during the build step.
-            public const string NoCrunch = " -nc";
+            public const string NoCrunch = "--no-crunch";
 
             //The numeric api-level of the file to generate, e.g. 14 for ICS.
-            public const string ApiLevel = " -api";
+            public const string ApiLevel = "-api";
 
             //Upgrades apktool to use experimental aapt2 binary.
-            public const string UseAapt2 = " --use-aapt2";
+            public const string UseAapt2 = "--use-aapt2";
 
             //Add a generic Network Security Configuration file in the output APK
-            public const string NetSecConf = " --net-sec-conf";
+            public const string NetSecConf = "--net-sec-conf";
 
             // Sets the number of threads to use.
-            public const string Jobs = " -j";
+            public const string Jobs = "-j";
         }
 
         static class InstallFrameworkKeys
         {
             //Stores framework files into <dir>.
-            public const string FrameDir = " -p";
+            public const string FrameDir = "-p";
 
             //Tag frameworks using <tag>.
-            public const string Tag = " -t";
+            public const string Tag = "-t";
         }
 
         static class EmptyFrameworkKeys
         {
             //Stores framework files into <dir>.
-            public const string FrameDir = " -p";
+            public const string FrameDir = "-p";
 
             //Force delete destination directory.
-            public const string ForceDelete = " -f";
+            public const string ForceDelete = "-f";
 
             //Include all framework files regardless of tag. (3.0.1+)
-            public const string All = " -a";
+            public const string All = "-a";
         }
 
         ApktoolDataReceivedEventHandler onApktoolOutputDataRecieved;
@@ -200,7 +200,7 @@ namespace APKToolGUI
                 jobs = String.Format("{0} {1}", DecompileKeys.Jobs, Settings.Default.Decode_Jobs);
             keyOutputDir = String.Format("{0} \"{1}\"", DecompileKeys.OutputDir, outputDir);
 
-            string args = String.Format($"d{keyNoSrc}{keyNoRes}{keyForce}{onlyMainClasses}{noDebugInfo}{keyMatchOriginal}{keyFramePath}{keyKeepBrokenRes}{apiLevel}{jobs}{keyOutputDir} \"{inputPath}\"");
+            string args = String.Format($"d {keyNoSrc} {keyNoRes} {keyForce} {onlyMainClasses} {noDebugInfo} {keyMatchOriginal} {keyFramePath} {keyKeepBrokenRes} {apiLevel} {jobs} {keyOutputDir} \"{inputPath}\"");
 
             Log.d("Apktool CMD: " + JarPath + " " + args);
 
@@ -237,7 +237,7 @@ namespace APKToolGUI
                 netSecConf = BuildKeys.NetSecConf;
             keyOutputAppPath = String.Format("{0} \"{1}\"", BuildKeys.OutputAppPath, outputFile);
 
-            string args = String.Format($"b{keyForceAll}{keyAapt}{keyCopyOriginal}{noCrunch}{keyFramePath}{apiLevel}{jobs}{useAapt2}{netSecConf}{keyOutputAppPath} \"{inputFolder}\"");
+            string args = String.Format($"b {keyForceAll} {keyAapt} {keyCopyOriginal} {noCrunch} {keyFramePath} {apiLevel} {jobs} {useAapt2} {netSecConf} {keyOutputAppPath} \"{inputFolder}\"");
 
             Log.d("Apktool CMD: " + JarPath + " " + args);
 
@@ -258,7 +258,7 @@ namespace APKToolGUI
             if (Settings.Default.InstallFramework_UseTag)
                 keyTag = String.Format("{0} \"{1}\"", InstallFrameworkKeys.Tag, Settings.Default.InstallFramework_Tag);
 
-            string args = String.Format($"if{keyFrameDir}{keyTag} \"{inputPath}\"");
+            string args = String.Format($"if {keyFrameDir} {keyTag} \"{inputPath}\"");
 
             Log.d("Apktool CMD: " + JarPath + " " + args);
 
