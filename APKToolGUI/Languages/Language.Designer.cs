@@ -1337,5 +1337,91 @@ namespace APKToolGUI.Languages {
                 return ResourceManager.GetString("ZIPArchives", resourceCulture);
             }
         }
+
+        internal static string CopyAll {
+            get {
+                return ResourceManager.GetString("CopyAll", resourceCulture);
+            }
+        }
+
+        internal static string Loading {
+            get {
+                return ResourceManager.GetString("Loading", resourceCulture);
+            }
+        }
+
+        internal static string Ready {
+            get {
+                return ResourceManager.GetString("Ready", resourceCulture);
+            }
+        }
+
+        internal static string SaveImageTitle {
+            get {
+                return ResourceManager.GetString("SaveImageTitle", resourceCulture);
+            }
+        }
+
+        internal static string PngImage {
+            get {
+                return ResourceManager.GetString("PngImage", resourceCulture);
+            }
+        }
+
+        internal static string FilterAndroidPackage {
+            get { return ResourceManager.GetString("FilterAndroidPackage", resourceCulture); }
+        }
+
+        internal static string FilterSplitApk {
+            get { return ResourceManager.GetString("FilterSplitApk", resourceCulture); }
+        }
+
+        internal static string FilterApkJarZip {
+            get { return ResourceManager.GetString("FilterApkJarZip", resourceCulture); }
+        }
+
+        internal static string FilterKeystore {
+            get { return ResourceManager.GetString("FilterKeystore", resourceCulture); }
+        }
+
+        internal static string FilterPublicKey {
+            get { return ResourceManager.GetString("FilterPublicKey", resourceCulture); }
+        }
+
+        internal static string FilterPrivateKey {
+            get { return ResourceManager.GetString("FilterPrivateKey", resourceCulture); }
+        }
+
+        internal static string FilterApk {
+            get { return ResourceManager.GetString("FilterApk", resourceCulture); }
+        }
+
+        internal static string FilterDex {
+            get { return ResourceManager.GetString("FilterDex", resourceCulture); }
+        }
+
+        internal static string FilterJavaExe {
+            get { return ResourceManager.GetString("FilterJavaExe", resourceCulture); }
+        }
+
+        internal static string FilterApktool {
+            get { return ResourceManager.GetString("FilterApktool", resourceCulture); }
+        }
+
+        internal static string SchemeDefault {
+            get { return ResourceManager.GetString("SchemeDefault", resourceCulture); }
+        }
+
+        internal static string SchemeTrue {
+            get { return ResourceManager.GetString("SchemeTrue", resourceCulture); }
+        }
+
+        internal static string SchemeFalse {
+            get { return ResourceManager.GetString("SchemeFalse", resourceCulture); }
+        }
+
+        internal static string AaptDump {
+            get { return ResourceManager.GetString("AaptDump", resourceCulture); }
+        }
     }
 }

@@ -1029,7 +1029,7 @@ namespace APKToolGUI.Forms
             SetRich(permTxtBox, result.Aapt.Permissions);
             SetRich(localsTxtBox, result.Aapt.Locales);
             SetRich(fullInfoTextBox, result.Aapt.FullInfo);
-            SetRich(sigTxtBox, "Loading...");
+            SetRich(sigTxtBox, Lang.Loading);
 
             previousApkIcon = BitmapUtils.LoadBitmap(result.Aapt.GetIcon(result.ActualFilePath));
             apkIconPicBox.Source = ToBitmapSource(previousApkIcon);
@@ -1051,7 +1051,7 @@ namespace APKToolGUI.Forms
         {
             using (var ofd = new WinForms.OpenFileDialog())
             {
-                ofd.Filter = "Android Package (*.apk;*.xapk;*.zip;*.apkm;*.apks)|*.apk;*.xapk;*.zip;*.apkm;*.apks";
+                ofd.Filter = string.Format(Lang.FilterAndroidPackage, "*.apk;*.xapk;*.zip;*.apkm;*.apks");
                 if (ofd.ShowDialog() == WinForms.DialogResult.OK)
                 {
                     textBox_DECODE_InputAppPath.Text = ofd.FileName;
@@ -1153,7 +1153,7 @@ namespace APKToolGUI.Forms
         {
             using (var ofd = new WinForms.OpenFileDialog())
             {
-                ofd.Filter = "*.pem|*.pem";
+                ofd.Filter = string.Format(Lang.FilterPublicKey, "*.pem");
                 if (File.Exists(textBox_SIGN_PublicKey.Text))
                 {
                     ofd.InitialDirectory = Path.GetDirectoryName(textBox_SIGN_PublicKey.Text);
@@ -1167,7 +1167,7 @@ namespace APKToolGUI.Forms
         {
             using (var ofd = new WinForms.OpenFileDialog())
             {
-                ofd.Filter = "*.pk8|*.pk8";
+                ofd.Filter = string.Format(Lang.FilterPrivateKey, "*.pk8");
                 if (File.Exists(textBox_SIGN_PrivateKey.Text))
                 {
                     ofd.InitialDirectory = Path.GetDirectoryName(textBox_SIGN_PrivateKey.Text);
@@ -1187,7 +1187,7 @@ namespace APKToolGUI.Forms
         {
             using (var ofd = new WinForms.OpenFileDialog())
             {
-                ofd.Filter = "(*.apk;*.jar;*.zip)|*.apk;*.jar;*.zip";
+                ofd.Filter = string.Format(Lang.FilterApkJarZip, "*.apk;*.jar;*.zip");
                 if (ofd.ShowDialog() == WinForms.DialogResult.OK)
                 {
                     textBox_SIGN_InputFile.Text = ofd.FileName;
@@ -1216,7 +1216,7 @@ namespace APKToolGUI.Forms
         {
             using (var ofd = new WinForms.OpenFileDialog())
             {
-                ofd.Filter = "Keystore|*.keystore;*.jks";
+                ofd.Filter = string.Format(Lang.FilterKeystore, "*.keystore;*.jks");
                 if (ofd.ShowDialog() == WinForms.DialogResult.OK) keyStoreFileTxtBox.Text = ofd.FileName;
             }
         }
@@ -1293,7 +1293,7 @@ namespace APKToolGUI.Forms
                     ofd.InitialDirectory = Path.GetDirectoryName(textBox_IF_InputFramePath.Text);
                     ofd.FileName = Path.GetFileNameWithoutExtension(textBox_IF_InputFramePath.Text);
                 }
-                ofd.Filter = "apk|*.apk";
+                ofd.Filter = string.Format(Lang.FilterApk, "*.apk");
                 if (ofd.ShowDialog() == WinForms.DialogResult.OK) textBox_IF_InputFramePath.Text = ofd.FileName;
             }
         }
@@ -1343,7 +1343,7 @@ namespace APKToolGUI.Forms
         {
             using (var ofd = new WinForms.OpenFileDialog())
             {
-                ofd.Filter = "dex|*.dex";
+                ofd.Filter = string.Format(Lang.FilterDex, "*.dex");
                 if (ofd.ShowDialog() == WinForms.DialogResult.OK) baksmaliBrowseInputDexTxtBox.Text = ofd.FileName;
             }
         }
@@ -1431,8 +1431,8 @@ namespace APKToolGUI.Forms
             if (previousApkIcon == null) return;
             using (var sfd = new WinForms.SaveFileDialog())
             {
-                sfd.Filter = "PNG Image|*.png";
-                sfd.Title = "Save an Image File";
+                sfd.Filter = Lang.PngImage + "|*.png";
+                sfd.Title = Lang.SaveImageTitle;
                 sfd.FileName = appTxtBox.Text;
                 if (sfd.ShowDialog() == WinForms.DialogResult.OK && !String.IsNullOrEmpty(sfd.FileName))
                     previousApkIcon.Save(sfd.FileName, System.Drawing.Imaging.ImageFormat.Png);
@@ -1447,7 +1447,7 @@ namespace APKToolGUI.Forms
         {
             using (var ofd = new WinForms.OpenFileDialog())
             {
-                ofd.Filter = "Split APK Package (*.xapk;*.zip;*.apkm;*.apks)|*.xapk;*.zip;*.apkm;*.apks";
+                ofd.Filter = string.Format(Lang.FilterSplitApk, "*.xapk;*.zip;*.apkm;*.apks");
                 if (ofd.ShowDialog() == WinForms.DialogResult.OK) splitApkPathTxtBox.Text = ofd.FileName;
             }
         }
@@ -1732,6 +1732,8 @@ namespace APKToolGUI.Forms
             LocKey(menuAbout, "aboutToolStripMenuItem.Text");
             LocKey(menuLogCopy, "copyToolStripMenuItem.Text");
             LocKey(menuLogClear, "clearLogToolStripMenuItem.Text");
+            menuLogCopyAll.Header = Lang.CopyAll;
+            statusText.Text = Lang.Ready;
 
             // Tabs (x:Names differ from the WinForms TabPage names)
             LocKey(tabMain, "tabPageMain.Text");
@@ -1743,7 +1745,7 @@ namespace APKToolGUI.Forms
             LocKey(tabFramework, "tabPageInstallFramework.Text");
             LocKey(tabBaksmali, "tabPageBaksmali.Text");
             LocKey(tabAdb, "tabPageAdb.Text");
-            Loc(basicInfoTabPage); Loc(tabPage3);
+            Loc(basicInfoTabPage); LocKey(tabPage3, "AaptDump");
 
             // Main tab
             Loc(label1); Loc(label2); Loc(label3); Loc(label4); Loc(splitApkTxt);
@@ -1798,6 +1800,18 @@ namespace APKToolGUI.Forms
             // Signature now has its own subtab; reuse the old "Signature:" label string (trimmed) for its header.
             string sig = Lang.ResourceManager.GetString("label5.Text");
             if (sig != null) signatureTabPage.Header = sig.TrimEnd(' ', ':', '：');
+
+            // Sign scheme combo items (Default / True / False)
+            LocSchemeCombo(schemev1ComboBox); LocSchemeCombo(schemev2ComboBox);
+            LocSchemeCombo(schemev3ComboBox); LocSchemeCombo(schemev4ComboBox);
+        }
+
+        private static void LocSchemeCombo(ComboBox c)
+        {
+            if (c.Items.Count < 3) return;
+            ((ComboBoxItem)c.Items[0]).Content = Lang.SchemeDefault;
+            ((ComboBoxItem)c.Items[1]).Content = Lang.SchemeTrue;
+            ((ComboBoxItem)c.Items[2]).Content = Lang.SchemeFalse;
         }
 
         #endregion

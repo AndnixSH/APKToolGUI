@@ -1146,4 +1146,61 @@
   <data name="menuStrip1.Text" xml:space="preserve">
     <value>menuStrip1</value>
   </data>
+  <data name="CopyAll" xml:space="preserve">
+    <value>Copy all</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="Ready" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="SaveImageTitle" xml:space="preserve">
+    <value>Save an Image File</value>
+  </data>
+  <data name="PngImage" xml:space="preserve">
+    <value>PNG Image</value>
+  </data>
+  <data name="FilterAndroidPackage" xml:space="preserve">
+    <value>Android Package ({0})|{0}</value>
+  </data>
+  <data name="FilterSplitApk" xml:space="preserve">
+    <value>Split APK Package ({0})|{0}</value>
+  </data>
+  <data name="FilterApkJarZip" xml:space="preserve">
+    <value>APK / JAR / ZIP ({0})|{0}</value>
+  </data>
+  <data name="FilterKeystore" xml:space="preserve">
+    <value>Keystore ({0})|{0}</value>
+  </data>
+  <data name="FilterPublicKey" xml:space="preserve">
+    <value>Public key ({0})|{0}</value>
+  </data>
+  <data name="FilterPrivateKey" xml:space="preserve">
+    <value>Private key ({0})|{0}</value>
+  </data>
+  <data name="FilterApk" xml:space="preserve">
+    <value>APK ({0})|{0}</value>
+  </data>
+  <data name="FilterDex" xml:space="preserve">
+    <value>Dex ({0})|{0}</value>
+  </data>
+  <data name="FilterJavaExe" xml:space="preserve">
+    <value>Java ({0})|{0}</value>
+  </data>
+  <data name="FilterApktool" xml:space="preserve">
+    <value>Apktool ({0})|{0}</value>
+  </data>
+  <data name="SchemeDefault" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="SchemeTrue" xml:space="preserve">
+    <value>True</value>
+  </data>
+  <data name="SchemeFalse" xml:space="preserve">
+    <value>False</value>
+  </data>
+  <data name="AaptDump" xml:space="preserve">
+    <value>AAPT dump</value>
+  </data>
 </root>

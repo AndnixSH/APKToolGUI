@@ -233,7 +233,7 @@ namespace APKToolGUI.Forms
         {
             using (var ofd = new WinForms.OpenFileDialog())
             {
-                ofd.Filter = "java.exe|java.exe";
+                ofd.Filter = string.Format(Lang.FilterJavaExe, "java.exe");
                 if (ofd.ShowDialog() == WinForms.DialogResult.OK)
                     txtJavaExe.Text = Program.GetPortablePath(ofd.FileName);
             }
@@ -261,7 +261,7 @@ namespace APKToolGUI.Forms
         {
             using (var ofd = new WinForms.OpenFileDialog())
             {
-                ofd.Filter = "Apktool (*.jar)|*.jar";
+                ofd.Filter = string.Format(Lang.FilterApktool, "*.jar");
                 if (ofd.ShowDialog() == WinForms.DialogResult.OK)
                     txtApktoolPath.Text = ofd.FileName;
             }

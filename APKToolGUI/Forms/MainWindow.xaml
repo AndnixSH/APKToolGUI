@@ -264,13 +264,13 @@
                                 </StackPanel>
                             </ScrollViewer>
                         </TabItem>
-                        <TabItem x:Name="signatureTabPage" Header="Signature">
-                            <RichTextBox x:Name="sigTxtBox" Margin="3" IsReadOnly="True"
+                        <TabItem x:Name="tabPage3" Header="AAPT dump">
+                            <RichTextBox x:Name="fullInfoTextBox" Margin="3" IsReadOnly="True"
                                          VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
                                          FontFamily="Consolas"/>
                         </TabItem>
-                        <TabItem x:Name="tabPage3" Header="Full info">
-                            <RichTextBox x:Name="fullInfoTextBox" Margin="3" IsReadOnly="True"
+                        <TabItem x:Name="signatureTabPage" Header="Signature">
+                            <RichTextBox x:Name="sigTxtBox" Margin="3" IsReadOnly="True"
                                          VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
                                          FontFamily="Consolas"/>
                         </TabItem>
