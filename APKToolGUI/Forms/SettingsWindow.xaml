@@ -23,7 +23,7 @@
         </ResourceDictionary>
     </Window.Resources>
 
-    <DockPanel Margin="14" LastChildFill="True">
+    <DockPanel Margin="5" LastChildFill="True">
 
         <!-- ===== OK / Cancel (pinned bottom) ===== -->
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal"
