@@ -726,9 +726,6 @@
   <data name="label12.Text" xml:space="preserve">
     <value>Ziel-SDK:</value>
   </data>
-  <data name="tabPage3.Text" xml:space="preserve">
-    <value>Vollständige Infos</value>
-  </data>
   <data name="groupBox_DECODE_Options.Text" xml:space="preserve">
     <value>Optionen</value>
   </data>

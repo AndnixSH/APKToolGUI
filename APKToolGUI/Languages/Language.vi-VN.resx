@@ -714,9 +714,6 @@
   <data name="basicInfoTabPage.Text" xml:space="preserve">
     <value>Thông tin cơ bản</value>
   </data>
-  <data name="tabPage3.Text" xml:space="preserve">
-    <value>Thông tin đầy đủ</value>
-  </data>
   <data name="tabPageApkInfo.Text" xml:space="preserve">
     <value>Thông tin APK</value>
   </data>

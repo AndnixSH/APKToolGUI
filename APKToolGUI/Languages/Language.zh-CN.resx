@@ -711,9 +711,6 @@
   <data name="basicInfoTabPage.Text" xml:space="preserve">
     <value>基本信息</value>
   </data>
-  <data name="tabPage3.Text" xml:space="preserve">
-    <value>完整信息</value>
-  </data>
   <data name="tabPageApkInfo.Text" xml:space="preserve">
     <value>APK 信息</value>
   </data>

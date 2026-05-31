@@ -774,9 +774,6 @@
   <data name="fullInfoTextBox.Text" xml:space="preserve">
     <value></value>
   </data>
-  <data name="tabPage3.Text" xml:space="preserve">
-    <value>Full info</value>
-  </data>
   <data name="tabPageApkInfo.Text" xml:space="preserve">
     <value>APK Info</value>
   </data>
