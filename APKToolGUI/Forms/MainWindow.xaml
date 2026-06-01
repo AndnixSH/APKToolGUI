@@ -704,7 +704,7 @@
                  drives the themed scroll bars. -->
             <Border Grid.Row="2" BorderBrush="{DynamicResource PanelBorder}" BorderThickness="1"
                     Background="{DynamicResource LogBackground}">
-                <ScrollViewer CanContentScroll="True"
+                <ScrollViewer CanContentScroll="True" Focusable="False"
                               VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                     <ctrl:LogView x:Name="logTxtBox"
                                   FontFamily="Consolas" FontSize="12"

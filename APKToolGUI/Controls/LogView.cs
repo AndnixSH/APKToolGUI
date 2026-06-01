@@ -803,7 +803,7 @@ namespace APKToolGUI.Controls
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
-            Focus();
+            Keyboard.Focus(this);
             _mouseDownPoint = e.GetPosition(this);
             _selAnchor = _selCaret = PointToPos(_mouseDownPoint);
             _hasSelection = false;
@@ -843,8 +843,9 @@ namespace APKToolGUI.Controls
         {
             base.OnKeyDown(e);
             bool ctrl = (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
-            // Ctrl+C / Ctrl+A are handled by the ApplicationCommands bindings set up in the constructor.
-            if (e.Key == Key.PageDown) { PageDown(); e.Handled = true; }
+            if (ctrl && e.Key == Key.C) { CopySelection(); e.Handled = true; }
+            else if (ctrl && e.Key == Key.A) { SelectAll(); e.Handled = true; }
+            else if (e.Key == Key.PageDown) { PageDown(); e.Handled = true; }
             else if (e.Key == Key.PageUp) { PageUp(); e.Handled = true; }
             else if (e.Key == Key.Home && ctrl) { ScrollToHome(); e.Handled = true; }
             else if (e.Key == Key.End && ctrl) { ScrollToEnd(); e.Handled = true; }
