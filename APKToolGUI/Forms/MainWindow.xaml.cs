@@ -203,6 +203,8 @@ namespace APKToolGUI.Forms
             BindText(apkPathAdbTxtBox, "Adb_SelectedApkPath");
 
             BindText(splitApkPathTxtBox, "SplitApk_InputFile");
+
+            BindChecked(keyGenAutoFillChkBox, "KeyGen_AutoFillSign");
         }
 
         private static void BindChecked(CheckBox c, string prop)
@@ -255,7 +257,9 @@ namespace APKToolGUI.Forms
             schemev1ComboBox.SelectionChanged += SchemeComboBox_Changed;
             schemev2ComboBox.SelectionChanged += SchemeComboBox_Changed;
             schemev3ComboBox.SelectionChanged += SchemeComboBox_Changed;
-            schemev4ComboBox.SelectionChanged += SchemeComboBox_Changed;
+            useKeyStoreChkBox.Click += (s, e) => ApplySignControlStates();
+            useAliasChkBox.Click += (s, e) => ApplySignControlStates();
+            ApplySignControlStates();
 
             // Masked password fields: PasswordBox.Password isn't bindable, so load + sync manually.
             textBox3.Password = Settings.Default.Sign_KeystorePassword ?? "";
@@ -324,6 +328,7 @@ namespace APKToolGUI.Forms
 
             WireDragDrop();
             ApplyZipalignCheckSwitch();
+            InitializeKeyGenerator();
         }
 
         #endregion

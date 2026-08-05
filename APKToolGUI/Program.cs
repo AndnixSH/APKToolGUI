@@ -1,4 +1,4 @@
-﻿using APKToolGUI.Controls;
+using APKToolGUI.Controls;
 using APKToolGUI.Languages;
 using APKToolGUI.Properties;
 using APKToolGUI.Utils;
@@ -271,5 +271,6 @@ namespace APKToolGUI
         public static string LIBWINP_PATH { get { return Path.Combine(RES_PATH, "libwinpthread-1.dll"); } }
         public static string FRAMEWORK_DIR { get { return Path.Combine(LOCAL_APPDATA_PATH, "apktool", "framework"); } }
         public static string STANDALONE_FRAMEWORK_DIR { get { return Path.Combine(LOCAL_APPDATA_PATH, ASSEMBLY_NAME, "framework"); } }
+        public static string SAVED_KEYS_PATH { get { return Path.Combine(RES_PATH, "saved_keys.json"); } }
     }
 }

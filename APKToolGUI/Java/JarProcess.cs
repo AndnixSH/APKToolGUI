@@ -1,4 +1,4 @@
-﻿using APKToolGUI.Properties;
+using APKToolGUI.Properties;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -33,12 +33,18 @@ namespace Java
         public new bool Start(string args)
         {
             EnableRaisingEvents = true;
-            string customArgs = "";
+            string customArgs = Settings.Default.CustomJVMArgs;
+            if (string.IsNullOrWhiteSpace(customArgs))
+            {
+                customArgs = "-Dfile.encoding=UTF8 -Djdk.util.zip.disableZip64ExtraFieldValidation=true -Djdk.nio.zipfs.allowDotZipEntry=true";
+            }
 
-            if (Settings.Default.UseCustomJVMArgs)
-                customArgs = Settings.Default.CustomJVMArgs;
+            if (!customArgs.Contains("--enable-native-access"))
+            {
+                customArgs += " --enable-native-access=ALL-UNNAMED";
+            }
 
-            string jvmArgs = string.IsNullOrWhiteSpace(customArgs) ? string.Empty : customArgs.Trim() + " ";
+            string jvmArgs = customArgs.Trim() + " ";
             StartInfo.Arguments = String.Format("{0}-jar \"{1}\" {2}", jvmArgs, JarPath, args);
             Debug.WriteLine(StartInfo.Arguments);
             return base.Start();
