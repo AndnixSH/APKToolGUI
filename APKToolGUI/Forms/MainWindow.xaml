@@ -391,109 +391,266 @@
                     </ScrollViewer>
                 </TabItem>
                 <TabItem x:Name="tabSign" Header="Sign">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="10">
-                        <GroupBox x:Name="groupBox_SIGN_Options" Header="Options">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
+                    <TabControl x:Name="tabControlSign" Margin="3" BorderThickness="0" Background="Transparent">
+                        <TabItem x:Name="subTabSignApk" Header="Sign APK">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="10">
+                                <GroupBox x:Name="groupBox_SIGN_Options" Header="Options">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
 
-                                <TextBlock x:Name="label22" Grid.Row="0" Grid.ColumnSpan="3" TextWrapping="Wrap" Margin="0,0,0,8"
-                                           Foreground="{DynamicResource SecondaryText}"
-                                           Text="It is strongly recommended that you use your own key, created via Android Studio or other tools"/>
+                                        <TextBlock x:Name="label22" Grid.Row="0" Grid.ColumnSpan="3" TextWrapping="Wrap" Margin="0,0,0,8"
+                                                   Foreground="{DynamicResource SecondaryText}"
+                                                   Text="It is strongly recommended that you use your own key, created via Android Studio or other tools"/>
 
-                                <Label x:Name="label_SIGN_PublicKey" Grid.Row="1" Grid.Column="0" Content="Public key:" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
-                                <TextBox x:Name="textBox_SIGN_PublicKey" Grid.Row="1" Grid.Column="1" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
-                                <Button x:Name="button_SIGN_BrowsePublicKey" Grid.Row="1" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,4,0,4"/>
+                                        <Label x:Name="label_SIGN_PublicKey" Grid.Row="1" Grid.Column="0" Content="Public key:" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                        <TextBox x:Name="textBox_SIGN_PublicKey" Grid.Row="1" Grid.Column="1" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+                                        <Button x:Name="button_SIGN_BrowsePublicKey" Grid.Row="1" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,4,0,4"/>
 
-                                <Label x:Name="label_SIGN_PrivateKey" Grid.Row="2" Grid.Column="0" Content="Private key:" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
-                                <TextBox x:Name="textBox_SIGN_PrivateKey" Grid.Row="2" Grid.Column="1" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
-                                <Button x:Name="button_SIGN_BrowsePrivateKey" Grid.Row="2" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,4,0,4"/>
+                                        <Label x:Name="label_SIGN_PrivateKey" Grid.Row="2" Grid.Column="0" Content="Private key:" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                        <TextBox x:Name="textBox_SIGN_PrivateKey" Grid.Row="2" Grid.Column="1" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+                                        <Button x:Name="button_SIGN_BrowsePrivateKey" Grid.Row="2" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,4,0,4"/>
 
-                                <CheckBox x:Name="useAliasChkBox" Grid.Row="3" Grid.Column="0" Content="Alias:" VerticalAlignment="Center" Margin="0,4,10,4"/>
-                                <TextBox x:Name="aliasTxtBox" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+                                        <CheckBox x:Name="useAliasChkBox" Grid.Row="3" Grid.Column="0" Content="Alias:" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                        <TextBox x:Name="aliasTxtBox" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
 
-                                <CheckBox x:Name="useKeyStoreChkBox" Grid.Row="4" Grid.ColumnSpan="3" Content="Use keystore" Margin="0,6,0,4"/>
+                                        <CheckBox x:Name="useKeyStoreChkBox" Grid.Row="4" Grid.ColumnSpan="3" Content="Use keystore" Margin="0,6,0,4"/>
 
-                                <Label x:Name="label20" Grid.Row="5" Grid.Column="0" Content="keystore/jks file:" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
-                                <TextBox x:Name="keyStoreFileTxtBox" Grid.Row="5" Grid.Column="1" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
-                                <Button x:Name="selectKeyStoreFileBtn" Grid.Row="5" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,4,0,4"/>
+                                        <Label x:Name="label20" Grid.Row="5" Grid.Column="0" Content="keystore/jks file:" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                        <TextBox x:Name="keyStoreFileTxtBox" Grid.Row="5" Grid.Column="1" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+                                        <Button x:Name="selectKeyStoreFileBtn" Grid.Row="5" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,4,0,4"/>
 
-                                <Label x:Name="label21" Grid.Row="6" Grid.Column="0" Content="Password:" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
-                                <PasswordBox x:Name="textBox3" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+                                        <Label x:Name="label21" Grid.Row="6" Grid.Column="0" Content="Password:" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                        <PasswordBox x:Name="textBox3" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
 
-                                <Label x:Name="label23" Grid.Row="7" Grid.Column="0" Content="Private key password:" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
-                                <PasswordBox x:Name="textBox4" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+                                        <Label x:Name="label23" Grid.Row="7" Grid.Column="0" Content="Private key password:" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                        <PasswordBox x:Name="textBox4" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
 
-                                <CheckBox x:Name="useSigningOutputDir" Grid.Row="8" Grid.Column="0" Content="APK output directory:" VerticalAlignment="Center" Margin="0,4,10,4"/>
-                                <TextBox x:Name="textBox_SIGN_OutputFile" Grid.Row="8" Grid.Column="1" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
-                                <Button x:Name="button_SIGN_BrowseOutputFile" Grid.Row="8" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,4,0,4"/>
+                                        <CheckBox x:Name="useSigningOutputDir" Grid.Row="8" Grid.Column="0" Content="APK output directory:" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                        <TextBox x:Name="textBox_SIGN_OutputFile" Grid.Row="8" Grid.Column="1" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+                                        <Button x:Name="button_SIGN_BrowseOutputFile" Grid.Row="8" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,4,0,4"/>
 
-                                <Grid Grid.Row="9" Grid.ColumnSpan="3" Margin="0,6,0,0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Label x:Name="label24" Grid.Column="0" Content="Scheme v1:" Padding="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                    <ComboBox x:Name="schemev1ComboBox" Grid.Column="1" Margin="0,0,16,0">
-                                        <ComboBoxItem>Default</ComboBoxItem>
-                                        <ComboBoxItem>True</ComboBoxItem>
-                                        <ComboBoxItem>False</ComboBoxItem>
-                                    </ComboBox>
-                                    <Label x:Name="label25" Grid.Column="2" Content="Scheme v2:" Padding="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                    <ComboBox x:Name="schemev2ComboBox" Grid.Column="3">
-                                        <ComboBoxItem>Default</ComboBoxItem>
-                                        <ComboBoxItem>True</ComboBoxItem>
-                                        <ComboBoxItem>False</ComboBoxItem>
-                                    </ComboBox>
-                                </Grid>
-                                <Grid Grid.Row="10" Grid.ColumnSpan="3" Margin="0,6,0,0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Label x:Name="label26" Grid.Column="0" Content="Scheme v3:" Padding="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                    <ComboBox x:Name="schemev3ComboBox" Grid.Column="1" Margin="0,0,16,0">
-                                        <ComboBoxItem>Default</ComboBoxItem>
-                                        <ComboBoxItem>True</ComboBoxItem>
-                                        <ComboBoxItem>False</ComboBoxItem>
-                                    </ComboBox>
-                                    <Label x:Name="label27" Grid.Column="2" Content="Scheme v4:" Padding="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                    <ComboBox x:Name="schemev4ComboBox" Grid.Column="3">
-                                        <ComboBoxItem>Default</ComboBoxItem>
-                                        <ComboBoxItem>True</ComboBoxItem>
-                                        <ComboBoxItem>False</ComboBoxItem>
-                                    </ComboBox>
-                                </Grid>
+                                        <Grid Grid.Row="9" Grid.ColumnSpan="3" Margin="0,6,0,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label x:Name="label24" Grid.Column="0" Content="Scheme v1:" Padding="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                            <ComboBox x:Name="schemev1ComboBox" Grid.Column="1" Margin="0,0,16,0">
+                                                <ComboBoxItem>Default</ComboBoxItem>
+                                                <ComboBoxItem>True</ComboBoxItem>
+                                                <ComboBoxItem>False</ComboBoxItem>
+                                            </ComboBox>
+                                            <Label x:Name="label25" Grid.Column="2" Content="Scheme v2:" Padding="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                            <ComboBox x:Name="schemev2ComboBox" Grid.Column="3">
+                                                <ComboBoxItem>Default</ComboBoxItem>
+                                                <ComboBoxItem>True</ComboBoxItem>
+                                                <ComboBoxItem>False</ComboBoxItem>
+                                            </ComboBox>
+                                        </Grid>
+                                        <Grid Grid.Row="10" Grid.ColumnSpan="3" Margin="0,6,0,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label x:Name="label26" Grid.Column="0" Content="Scheme v3:" Padding="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                            <ComboBox x:Name="schemev3ComboBox" Grid.Column="1" Margin="0,0,16,0">
+                                                <ComboBoxItem>Default</ComboBoxItem>
+                                                <ComboBoxItem>True</ComboBoxItem>
+                                                <ComboBoxItem>False</ComboBoxItem>
+                                            </ComboBox>
+                                            <Label x:Name="label27" Grid.Column="2" Content="Scheme v4:" Padding="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                            <ComboBox x:Name="schemev4ComboBox" Grid.Column="3">
+                                                <ComboBoxItem>Default</ComboBoxItem>
+                                                <ComboBoxItem>True</ComboBoxItem>
+                                                <ComboBoxItem>False</ComboBoxItem>
+                                            </ComboBox>
+                                        </Grid>
 
-                                <CheckBox x:Name="autoDelIdsigChkBox" Grid.Row="11" Grid.ColumnSpan="3" Margin="0,8,0,4" Content="Auto delete idsig file"/>
-                                <CheckBox x:Name="checkBox1" Grid.Row="12" Grid.ColumnSpan="3" Margin="0,4" Content="Overwrite input file"/>
-                                <CheckBox x:Name="checkBox2" Grid.Row="13" Grid.ColumnSpan="3" Margin="0,4" Content="Install APK after signing (Make sure the device is selected in ADB tab first)"/>
-                            </Grid>
-                        </GroupBox>
-                    </ScrollViewer>
+                                        <CheckBox x:Name="autoDelIdsigChkBox" Grid.Row="11" Grid.ColumnSpan="3" Margin="0,8,0,4" Content="Auto delete idsig file"/>
+                                        <CheckBox x:Name="checkBox1" Grid.Row="12" Grid.ColumnSpan="3" Margin="0,4" Content="Overwrite input file"/>
+                                        <CheckBox x:Name="checkBox2" Grid.Row="13" Grid.ColumnSpan="3" Margin="0,4" Content="Install APK after signing (Make sure the device is selected in ADB tab first)"/>
+                                    </Grid>
+                                </GroupBox>
+                            </ScrollViewer>
+                        </TabItem>
+
+                        <!-- Sub-Tab 2: Create Key -->
+                        <TabItem x:Name="subTabCreateKey" Header="Create Key">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="10">
+                                <StackPanel>
+                                    <GroupBox Header="Saved Key Profiles" Margin="0,0,0,8">
+                                        <Grid Margin="0,4">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <ComboBox x:Name="keyGenProfileComboBox" Grid.Column="0" Height="25" VerticalContentAlignment="Center"/>
+                                            <Button x:Name="keyGenLoadProfileBtn" Grid.Column="1" Content="Load to Sign tab" Height="25" Padding="10,0" Margin="6,0,0,0"/>
+                                            <Button x:Name="keyGenDeleteProfileBtn" Grid.Column="2" Content="Delete" Height="25" Padding="10,0" Margin="6,0,0,0"/>
+                                        </Grid>
+                                    </GroupBox>
+
+                                    <GroupBox Header="Output &amp; Identity" Margin="0,0,0,8">
+                                        <Grid Margin="0,4">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Label Content="Key Format:" Grid.Row="0" Grid.Column="0" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                            <ComboBox x:Name="keyGenTypeComboBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Height="24" Margin="0,4" VerticalContentAlignment="Center">
+                                                <ComboBoxItem IsSelected="True">Keystore (.jks)</ComboBoxItem>
+                                                <ComboBoxItem>Key Pair (.pk8 + .pem)</ComboBoxItem>
+                                            </ComboBox>
+
+                                            <Label Content="Profile name:" Grid.Row="1" Grid.Column="0" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                            <TextBox x:Name="keyGenProfileNameTxtBox" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+
+                                            <Label x:Name="keyGenOutputLabel" Content="Output file/path:" Grid.Row="2" Grid.Column="0" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                            <TextBox x:Name="keyGenOutputPathTxtBox" Grid.Row="2" Grid.Column="1" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+                                            <Button x:Name="keyGenBrowseOutputBtn" Grid.Row="2" Grid.Column="2" Content="..." Width="34" Height="24" Margin="6,4,0,4"/>
+
+                                            <Label x:Name="keyGenAliasLabel" Content="Alias name:" Grid.Row="3" Grid.Column="0" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                            <TextBox x:Name="keyGenAliasTxtBox" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Height="24" Margin="0,4" VerticalContentAlignment="Center" Text="key0"/>
+
+                                            <Label Content="Validity (Years):" Grid.Row="4" Grid.Column="0" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                            <ctrl:NumericUpDown x:Name="keyGenValidityUpDown" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Width="80" Margin="0,4" Minimum="1" Maximum="99" Value="25"/>
+                                        </Grid>
+                                    </GroupBox>
+
+                                    <GroupBox Header="Passwords" Margin="0,0,0,8">
+                                        <Grid Margin="0,4">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Label Content="Keystore Password:" Grid.Row="0" Grid.Column="0" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                            <PasswordBox x:Name="keyGenStorePassBox" Grid.Row="0" Grid.Column="1" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+
+                                            <Label Content="Key Password:" Grid.Row="1" Grid.Column="0" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                            <PasswordBox x:Name="keyGenKeyPassBox" Grid.Row="1" Grid.Column="1" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+
+                                            <CheckBox x:Name="keyGenSamePassChkBox" Grid.Row="2" Grid.ColumnSpan="2" Content="Same as Keystore Password" Margin="0,6,0,4" IsChecked="True"/>
+                                        </Grid>
+                                    </GroupBox>
+
+                                    <GroupBox Header="Key Specification" Margin="0,0,0,8">
+                                        <Grid Margin="0,4">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Content="Algorithm:" Grid.Column="0" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                            <ComboBox x:Name="keyGenAlgorithmComboBox" Grid.Column="1" Height="24" Margin="0,4,16,4">
+                                                <ComboBoxItem IsSelected="True">RSA</ComboBoxItem>
+                                                <ComboBoxItem>EC</ComboBoxItem>
+                                                <ComboBoxItem>DSA</ComboBoxItem>
+                                            </ComboBox>
+
+                                            <Label Content="Key size:" Grid.Column="2" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                            <ComboBox x:Name="keyGenKeySizeComboBox" Grid.Column="3" Height="24" Margin="0,4">
+                                                <ComboBoxItem>1024</ComboBoxItem>
+                                                <ComboBoxItem IsSelected="True">2048</ComboBoxItem>
+                                                <ComboBoxItem>4096</ComboBoxItem>
+                                            </ComboBox>
+                                        </Grid>
+                                    </GroupBox>
+
+                                    <GroupBox Header="Certificate Information (Distinguished Name)" Margin="0,0,0,8">
+                                        <Grid Margin="0,4">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Label Content="First &amp; Last Name (CN):" Grid.Row="0" Grid.Column="0" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                            <TextBox x:Name="keyGenCNTxtBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+
+                                            <Label Content="Organizational Unit (OU):" Grid.Row="1" Grid.Column="0" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                            <TextBox x:Name="keyGenOUTxtBox" Grid.Row="1" Grid.Column="1" Height="24" Margin="0,4,16,4" VerticalContentAlignment="Center"/>
+
+                                            <Label Content="Organization (O):" Grid.Row="1" Grid.Column="2" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                            <TextBox x:Name="keyGenOTxtBox" Grid.Row="1" Grid.Column="3" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+
+                                            <Label Content="City / Locality (L):" Grid.Row="2" Grid.Column="0" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                            <TextBox x:Name="keyGenLTxtBox" Grid.Row="2" Grid.Column="1" Height="24" Margin="0,4,16,4" VerticalContentAlignment="Center"/>
+
+                                            <Label Content="State / Province (ST):" Grid.Row="2" Grid.Column="2" Padding="0" VerticalAlignment="Center" Margin="0,4,10,4"/>
+                                            <TextBox x:Name="keyGenSTTxtBox" Grid.Row="2" Grid.Column="3" Height="24" Margin="0,4" VerticalContentAlignment="Center"/>
+                                        </Grid>
+                                    </GroupBox>
+
+                                    <Grid Margin="0,4,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                                            <Label Content="Country Code (C):" Padding="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                            <TextBox x:Name="keyGenCTxtBox" Width="50" Height="24" VerticalContentAlignment="Center" Text="IN" MaxLength="2"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <CheckBox x:Name="keyGenAutoFillChkBox" Content="Auto-fill Sign tab after creation" VerticalAlignment="Center" Margin="0,0,12,0" IsChecked="True"/>
+                                            <Button x:Name="keyGenCopyCmdBtn" Content="📋 Copy Command" Height="28" Padding="10,0" Margin="0,0,6,0"/>
+                                            <Button x:Name="keyGenSaveProfileBtn" Content="💾 Save Profile Only" Height="28" Padding="10,0" Margin="0,0,6,0"/>
+                                            <Button x:Name="keyGenGenerateBtn" Content="✨ Generate Key" Height="28" Padding="14,0"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </TabItem>
+                    </TabControl>
                 </TabItem>
                 <TabItem x:Name="tabZipalign" Header="Zip align">
                     <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="10">

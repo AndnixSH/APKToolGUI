@@ -1830,5 +1830,603 @@ namespace APKToolGUI.Forms
         }
 
         #endregion
+
+        #region Key Generator
+
+        internal void InitializeKeyGenerator()
+        {
+            keyGenBrowseOutputBtn.Click += KeyGenBrowseOutputBtn_Click;
+            keyGenSamePassChkBox.Checked += KeyGenSamePassChkBox_Changed;
+            keyGenSamePassChkBox.Unchecked += KeyGenSamePassChkBox_Changed;
+            keyGenAlgorithmComboBox.SelectionChanged += KeyGenAlgorithmComboBox_SelectionChanged;
+            keyGenTypeComboBox.SelectionChanged += KeyGenTypeComboBox_SelectionChanged;
+            keyGenOutputPathTxtBox.TextChanged += KeyGenOutputPathTxtBox_TextChanged;
+
+            keyGenGenerateBtn.Click += KeyGenGenerateBtn_Click;
+            keyGenSaveProfileBtn.Click += KeyGenSaveProfileBtn_Click;
+            keyGenCopyCmdBtn.Click += KeyGenCopyCmdBtn_Click;
+            keyGenLoadProfileBtn.Click += KeyGenLoadProfileBtn_Click;
+            keyGenDeleteProfileBtn.Click += KeyGenDeleteProfileBtn_Click;
+            keyGenProfileComboBox.SelectionChanged += KeyGenProfileComboBox_SelectionChanged;
+
+            RefreshKeyProfilesComboBox();
+            UpdateKeySizeOptions();
+            UpdateKeyFormatState();
+        }
+
+        private bool _isUpdatingKeyFormat = false;
+
+        private void KeyGenOutputPathTxtBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (_isUpdatingKeyFormat) return;
+            if (keyGenOutputPathTxtBox == null || keyGenTypeComboBox == null) return;
+            string path = keyGenOutputPathTxtBox.Text.Trim();
+
+            _isUpdatingKeyFormat = true;
+            try
+            {
+                if (path.EndsWith(".pk8", StringComparison.OrdinalIgnoreCase) || path.EndsWith(".pem", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (keyGenTypeComboBox.SelectedIndex != 1)
+                    {
+                        keyGenTypeComboBox.SelectedIndex = 1;
+                    }
+                }
+                else if (path.EndsWith(".jks", StringComparison.OrdinalIgnoreCase) || path.EndsWith(".keystore", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (keyGenTypeComboBox.SelectedIndex != 0)
+                    {
+                        keyGenTypeComboBox.SelectedIndex = 0;
+                    }
+                }
+            }
+            finally
+            {
+                _isUpdatingKeyFormat = false;
+            }
+        }
+
+        private void KeyGenTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (_isUpdatingKeyFormat) return;
+            _isUpdatingKeyFormat = true;
+            try
+            {
+                UpdateKeyFormatState();
+                SyncOutputPathExtension();
+            }
+            finally
+            {
+                _isUpdatingKeyFormat = false;
+            }
+        }
+
+        private void SyncOutputPathExtension()
+        {
+            if (keyGenOutputPathTxtBox == null || keyGenTypeComboBox == null) return;
+            string path = keyGenOutputPathTxtBox.Text.Trim();
+            if (string.IsNullOrEmpty(path)) return;
+
+            bool isPk8Pem = (keyGenTypeComboBox.SelectedIndex == 1);
+            string dir = Path.GetDirectoryName(path);
+            string fname = Path.GetFileNameWithoutExtension(path);
+            if (string.IsNullOrEmpty(fname)) return;
+
+            if (isPk8Pem)
+            {
+                if (path.EndsWith(".jks", StringComparison.OrdinalIgnoreCase) || path.EndsWith(".keystore", StringComparison.OrdinalIgnoreCase))
+                {
+                    string newPath = string.IsNullOrEmpty(dir) ? fname + ".pk8" : Path.Combine(dir, fname + ".pk8");
+                    keyGenOutputPathTxtBox.Text = newPath;
+                }
+            }
+            else // JKS Keystore
+            {
+                if (path.EndsWith(".pk8", StringComparison.OrdinalIgnoreCase) || path.EndsWith(".pem", StringComparison.OrdinalIgnoreCase))
+                {
+                    string newPath = string.IsNullOrEmpty(dir) ? fname + ".jks" : Path.Combine(dir, fname + ".jks");
+                    keyGenOutputPathTxtBox.Text = newPath;
+                }
+            }
+        }
+
+        private void UpdateKeyFormatState()
+        {
+            bool isPk8Pem = (keyGenTypeComboBox.SelectedIndex == 1);
+            if (keyGenOutputLabel != null)
+                keyGenOutputLabel.Content = isPk8Pem ? "Output file/base path:" : "Output (.jks file):";
+
+            if (keyGenAliasTxtBox != null) keyGenAliasTxtBox.IsEnabled = !isPk8Pem;
+            if (keyGenAliasLabel != null) keyGenAliasLabel.IsEnabled = !isPk8Pem;
+            if (keyGenStorePassBox != null) keyGenStorePassBox.IsEnabled = !isPk8Pem;
+            if (keyGenKeyPassBox != null) keyGenKeyPassBox.IsEnabled = !isPk8Pem && (keyGenSamePassChkBox?.IsChecked != true);
+            if (keyGenSamePassChkBox != null) keyGenSamePassChkBox.IsEnabled = !isPk8Pem;
+        }
+
+        public void RefreshKeyProfilesComboBox()
+        {
+            try
+            {
+                var profiles = KeyProfileManager.LoadAll();
+                keyGenProfileComboBox.Items.Clear();
+                foreach (var p in profiles)
+                {
+                    keyGenProfileComboBox.Items.Add(p);
+                }
+
+                if (keyGenProfileComboBox.Items.Count > 0)
+                {
+                    string lastProfile = Settings.Default.KeyGen_LastProfile;
+                    int selectIdx = 0;
+                    if (!string.IsNullOrEmpty(lastProfile))
+                    {
+                        for (int i = 0; i < keyGenProfileComboBox.Items.Count; i++)
+                        {
+                            if (((KeyProfile)keyGenProfileComboBox.Items[i]).ProfileName == lastProfile)
+                            {
+                                selectIdx = i;
+                                break;
+                            }
+                        }
+                    }
+                    keyGenProfileComboBox.SelectedIndex = selectIdx;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[KeyGenerator] Error refreshing profiles: {ex.Message}");
+            }
+        }
+
+        private void KeyGenProfileComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (keyGenProfileComboBox.SelectedItem is KeyProfile profile)
+            {
+                LoadKeyProfileToForm(profile);
+                Settings.Default.KeyGen_LastProfile = profile.ProfileName;
+            }
+        }
+
+        private void LoadKeyProfileToForm(KeyProfile p)
+        {
+            if (p == null) return;
+            keyGenTypeComboBox.SelectedIndex = string.Equals(p.KeyType, "PK8_PEM", StringComparison.OrdinalIgnoreCase) ? 1 : 0;
+            keyGenProfileNameTxtBox.Text = p.ProfileName;
+            keyGenOutputPathTxtBox.Text = p.OutputPath;
+            keyGenAliasTxtBox.Text = p.Alias;
+            keyGenValidityUpDown.Value = Math.Max(1, p.ValidityYears);
+
+            keyGenStorePassBox.Password = p.StorePass;
+            keyGenKeyPassBox.Password = p.KeyPass;
+            keyGenSamePassChkBox.IsChecked = string.Equals(p.StorePass, p.KeyPass, StringComparison.Ordinal);
+
+            // Select Algorithm
+            for (int i = 0; i < keyGenAlgorithmComboBox.Items.Count; i++)
+            {
+                var item = keyGenAlgorithmComboBox.Items[i] as ComboBoxItem;
+                if (item != null && string.Equals(item.Content.ToString(), p.Algorithm, StringComparison.OrdinalIgnoreCase))
+                {
+                    keyGenAlgorithmComboBox.SelectedIndex = i;
+                    break;
+                }
+            }
+
+            UpdateKeySizeOptions();
+
+            // Select KeySize
+            for (int i = 0; i < keyGenKeySizeComboBox.Items.Count; i++)
+            {
+                var item = keyGenKeySizeComboBox.Items[i] as ComboBoxItem;
+                if (item != null && item.Content.ToString() == p.KeySize.ToString())
+                {
+                    keyGenKeySizeComboBox.SelectedIndex = i;
+                    break;
+                }
+            }
+
+            keyGenCNTxtBox.Text = p.CN;
+            keyGenOUTxtBox.Text = p.OU;
+            keyGenOTxtBox.Text = p.O;
+            keyGenLTxtBox.Text = p.L;
+            keyGenSTTxtBox.Text = p.ST;
+            keyGenCTxtBox.Text = p.C;
+
+            UpdateKeyFormatState();
+        }
+
+        private KeyProfile BuildProfileFromForm()
+        {
+            string profileName = keyGenProfileNameTxtBox.Text.Trim();
+            string outPath = keyGenOutputPathTxtBox.Text.Trim();
+            if (string.IsNullOrEmpty(profileName))
+            {
+                profileName = !string.IsNullOrEmpty(outPath) ? Path.GetFileNameWithoutExtension(outPath) : "MyKey";
+            }
+
+            string keyType = (keyGenTypeComboBox.SelectedIndex == 1) ? "PK8_PEM" : "JKS";
+            if (!string.IsNullOrEmpty(outPath) &&
+                (outPath.EndsWith(".pk8", StringComparison.OrdinalIgnoreCase) || outPath.EndsWith(".pem", StringComparison.OrdinalIgnoreCase)))
+            {
+                keyType = "PK8_PEM";
+            }
+
+            string storePass = keyGenStorePassBox.Password;
+            string keyPass = (keyGenSamePassChkBox.IsChecked == true) ? storePass : keyGenKeyPassBox.Password;
+
+            string algo = "RSA";
+            if (keyGenAlgorithmComboBox.SelectedItem is ComboBoxItem algoItem)
+                algo = algoItem.Content.ToString();
+
+            int keySize = 2048;
+            if (keyGenKeySizeComboBox.SelectedItem is ComboBoxItem sizeItem)
+                int.TryParse(sizeItem.Content.ToString(), out keySize);
+
+            int validity = (int)keyGenValidityUpDown.Value;
+
+            return new KeyProfile
+            {
+                ProfileName = profileName,
+                KeyType = keyType,
+                OutputPath = outPath,
+                Alias = keyGenAliasTxtBox.Text.Trim(),
+                StorePass = storePass,
+                KeyPass = keyPass,
+                Algorithm = algo,
+                KeySize = keySize,
+                ValidityYears = validity,
+                CN = keyGenCNTxtBox.Text.Trim(),
+                OU = keyGenOUTxtBox.Text.Trim(),
+                O = keyGenOTxtBox.Text.Trim(),
+                L = keyGenLTxtBox.Text.Trim(),
+                ST = keyGenSTTxtBox.Text.Trim(),
+                C = keyGenCTxtBox.Text.Trim().ToUpper()
+            };
+        }
+
+        private void KeyGenBrowseOutputBtn_Click(object sender, RoutedEventArgs e)
+        {
+            bool isPk8Pem = (keyGenTypeComboBox.SelectedIndex == 1);
+            var sfd = new WinForms.SaveFileDialog
+            {
+                Filter = isPk8Pem
+                    ? "PK8 Private Key (*.pk8)|*.pk8|X509 Certificate (*.pem)|*.pem|All files (*.*)|*.*"
+                    : "Keystore files (*.jks;*.keystore)|*.jks;*.keystore|All files (*.*)|*.*",
+                DefaultExt = isPk8Pem ? "pk8" : "jks",
+                Title = isPk8Pem ? "Select output path for PK8 / PEM key pair" : "Select output keystore path"
+            };
+
+            if (!string.IsNullOrEmpty(keyGenOutputPathTxtBox.Text))
+            {
+                try
+                {
+                    sfd.InitialDirectory = Path.GetDirectoryName(keyGenOutputPathTxtBox.Text);
+                    sfd.FileName = Path.GetFileName(keyGenOutputPathTxtBox.Text);
+                }
+                catch { }
+            }
+            else
+            {
+                sfd.InitialDirectory = Program.RES_PATH;
+            }
+
+            if (sfd.ShowDialog() == WinForms.DialogResult.OK)
+            {
+                keyGenOutputPathTxtBox.Text = sfd.FileName;
+                if (sfd.FileName.EndsWith(".pk8", StringComparison.OrdinalIgnoreCase) || sfd.FileName.EndsWith(".pem", StringComparison.OrdinalIgnoreCase))
+                {
+                    keyGenTypeComboBox.SelectedIndex = 1;
+                }
+                else if (sfd.FileName.EndsWith(".jks", StringComparison.OrdinalIgnoreCase) || sfd.FileName.EndsWith(".keystore", StringComparison.OrdinalIgnoreCase))
+                {
+                    keyGenTypeComboBox.SelectedIndex = 0;
+                }
+
+                if (string.IsNullOrWhiteSpace(keyGenProfileNameTxtBox.Text))
+                {
+                    keyGenProfileNameTxtBox.Text = Path.GetFileNameWithoutExtension(sfd.FileName);
+                }
+            }
+        }
+
+        private void KeyGenSamePassChkBox_Changed(object sender, RoutedEventArgs e)
+        {
+            keyGenKeyPassBox.IsEnabled = (keyGenSamePassChkBox.IsChecked != true) && (keyGenTypeComboBox.SelectedIndex == 0);
+            if (keyGenSamePassChkBox.IsChecked == true)
+            {
+                keyGenKeyPassBox.Password = keyGenStorePassBox.Password;
+            }
+        }
+
+        private void KeyGenAlgorithmComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateKeySizeOptions();
+        }
+
+        private void UpdateKeySizeOptions()
+        {
+            if (keyGenKeySizeComboBox == null) return;
+
+            string algo = "RSA";
+            if (keyGenAlgorithmComboBox?.SelectedItem is ComboBoxItem algoItem)
+                algo = algoItem.Content.ToString();
+
+            keyGenKeySizeComboBox.Items.Clear();
+
+            if (algo == "EC")
+            {
+                keyGenKeySizeComboBox.Items.Add(new ComboBoxItem { Content = "256", IsSelected = true });
+                keyGenKeySizeComboBox.Items.Add(new ComboBoxItem { Content = "384" });
+                keyGenKeySizeComboBox.Items.Add(new ComboBoxItem { Content = "521" });
+            }
+            else if (algo == "DSA")
+            {
+                keyGenKeySizeComboBox.Items.Add(new ComboBoxItem { Content = "1024" });
+                keyGenKeySizeComboBox.Items.Add(new ComboBoxItem { Content = "2048", IsSelected = true });
+            }
+            else // RSA
+            {
+                keyGenKeySizeComboBox.Items.Add(new ComboBoxItem { Content = "1024" });
+                keyGenKeySizeComboBox.Items.Add(new ComboBoxItem { Content = "2048", IsSelected = true });
+                keyGenKeySizeComboBox.Items.Add(new ComboBoxItem { Content = "4096" });
+            }
+        }
+
+        private async void KeyGenGenerateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var profile = BuildProfileFromForm();
+
+            if (string.IsNullOrWhiteSpace(profile.OutputPath))
+            {
+                WinForms.MessageBox.Show("Please select an output file path for the key.", "Missing Output Path", WinForms.MessageBoxButtons.OK, WinForms.MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            if (profile.KeyType == "PK8_PEM")
+            {
+                string basePath = profile.OutputPath;
+                string dir = Path.GetDirectoryName(basePath);
+                string fname = Path.GetFileNameWithoutExtension(basePath);
+                if (string.IsNullOrEmpty(fname)) fname = "key";
+                if (string.IsNullOrEmpty(dir)) dir = Environment.CurrentDirectory;
+
+                string pk8Path = Path.Combine(dir, fname + ".pk8");
+                string pemPath = Path.Combine(dir, fname + ".x509.pem");
+
+                keyGenGenerateBtn.IsEnabled = false;
+                ToStatus("Generating PK8/PEM key pair...", Res.waiting);
+                ToLog(ApktoolEventType.None, $"[KeyGenerator] Generating PK8/PEM key pair: {pk8Path} & {pemPath}");
+
+                var (success, msg) = await Task.Run(() => Pk8PemGenerator.GeneratePk8Pem(profile, pk8Path, pemPath));
+
+                keyGenGenerateBtn.IsEnabled = true;
+
+                if (success)
+                {
+                    profile.OutputPath = pk8Path;
+                    ToStatus(Lang.Ready, Res.done);
+                    ToLog(ApktoolEventType.None, "PK8 (.pk8) and PEM (.x509.pem) key pair created successfully!\n" + msg);
+
+                    KeyProfileManager.Upsert(profile);
+                    RefreshKeyProfilesComboBox();
+
+                    if (keyGenAutoFillChkBox.IsChecked == true)
+                    {
+                        ApplyProfileToSignTab(profile);
+                    }
+
+                    WinForms.MessageBox.Show("PK8 (.pk8) and PEM (.x509.pem) key pair created successfully!", "Key Pair Created", WinForms.MessageBoxButtons.OK, WinForms.MessageBoxIcon.Information);
+                }
+                else
+                {
+                    ToStatus("Key generation failed", Res.error);
+                    ToLog(ApktoolEventType.Error, "❌ Failed to generate key pair: " + msg);
+                    WinForms.MessageBox.Show("Key pair generation failed. Check log for details.", "Error", WinForms.MessageBoxButtons.OK, WinForms.MessageBoxIcon.Error);
+                }
+                return;
+            }
+
+            // JKS Keystore generation via KeyToolWrapper
+            if (string.IsNullOrWhiteSpace(profile.StorePass) || profile.StorePass.Length < 6)
+            {
+                WinForms.MessageBox.Show("Keystore password must be at least 6 characters long.", "Invalid Password", WinForms.MessageBoxButtons.OK, WinForms.MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            string keytoolPath = KeyToolWrapper.FindKeyTool();
+            if (string.IsNullOrEmpty(keytoolPath) || !File.Exists(keytoolPath))
+            {
+                PromptForCustomKeyToolPath();
+                keytoolPath = KeyToolWrapper.FindKeyTool();
+                if (string.IsNullOrEmpty(keytoolPath) || !File.Exists(keytoolPath))
+                {
+                    ToLog(ApktoolEventType.Error, "Key generation aborted: keytool.exe not found.");
+                    return;
+                }
+            }
+
+            keyGenGenerateBtn.IsEnabled = false;
+            ToStatus("Generating signing key...", Res.waiting);
+            ToLog(ApktoolEventType.None, $"[KeyGenerator] Generating keystore: {profile.OutputPath} (Algorithm: {profile.Algorithm}, Size: {profile.KeySize})");
+
+            var (exitCode, output) = await KeyToolWrapper.GenerateKeyAsync(profile, keytoolPath);
+
+            keyGenGenerateBtn.IsEnabled = true;
+
+            if (exitCode == 0)
+            {
+                ToStatus(Lang.Ready, Res.done);
+                ToLog(ApktoolEventType.None, "✨ Keystore generated successfully!\n" + output);
+
+                // Save profile locally
+                KeyProfileManager.Upsert(profile);
+                RefreshKeyProfilesComboBox();
+
+                if (keyGenAutoFillChkBox.IsChecked == true)
+                {
+                    ApplyProfileToSignTab(profile);
+                }
+
+                WinForms.MessageBox.Show("Signing key created and profile saved successfully!", "Key Generation Complete", WinForms.MessageBoxButtons.OK, WinForms.MessageBoxIcon.Information);
+            }
+            else
+            {
+                ToStatus("Key generation failed", Res.error);
+                ToLog(ApktoolEventType.Error, "❌ Failed to generate keystore:\n" + output);
+                WinForms.MessageBox.Show("Key generation failed. Check log for details.", "Error", WinForms.MessageBoxButtons.OK, WinForms.MessageBoxIcon.Error);
+            }
+        }
+
+        private void KeyGenSaveProfileBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var profile = BuildProfileFromForm();
+            if (string.IsNullOrWhiteSpace(profile.OutputPath))
+            {
+                WinForms.MessageBox.Show("Please specify output file path.", "Missing Information", WinForms.MessageBoxButtons.OK, WinForms.MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            KeyProfileManager.Upsert(profile);
+            RefreshKeyProfilesComboBox();
+            ToLog(ApktoolEventType.None, $"[KeyGenerator] Profile '{profile.ProfileName}' saved successfully.");
+        }
+
+        private void KeyGenCopyCmdBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var profile = BuildProfileFromForm();
+            if (profile.KeyType == "PK8_PEM")
+            {
+                ToLog(ApktoolEventType.None, "[KeyGenerator] PK8/PEM key pair is generated directly via C# RSA/Certificate engine.");
+                ToStatus("PK8/PEM is generated natively in C#", Res.done);
+                return;
+            }
+
+            string keytoolPath = KeyToolWrapper.FindKeyTool() ?? "keytool";
+            string cmd = $"\"{keytoolPath}\" " + KeyToolWrapper.BuildCommandArgs(profile);
+
+            try
+            {
+                Clipboard.SetText(cmd);
+                ToLog(ApktoolEventType.None, "[KeyGenerator] keytool command copied to clipboard.");
+                ToStatus("Command copied to clipboard!", Res.done);
+            }
+            catch (Exception ex)
+            {
+                ToLog(ApktoolEventType.Error, "Failed to copy to clipboard: " + ex.Message);
+            }
+        }
+
+        private void KeyGenLoadProfileBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (keyGenProfileComboBox.SelectedItem is KeyProfile profile)
+            {
+                ApplyProfileToSignTab(profile);
+            }
+            else
+            {
+                WinForms.MessageBox.Show("Please select a profile to load.", "No Profile Selected", WinForms.MessageBoxButtons.OK, WinForms.MessageBoxIcon.Information);
+            }
+        }
+
+        private void KeyGenDeleteProfileBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (keyGenProfileComboBox.SelectedItem is KeyProfile profile)
+            {
+                if (WinForms.MessageBox.Show($"Are you sure you want to delete profile '{profile.ProfileName}'?", "Confirm Delete", WinForms.MessageBoxButtons.YesNo, WinForms.MessageBoxIcon.Question) == WinForms.DialogResult.Yes)
+                {
+                    KeyProfileManager.Delete(profile.ProfileName);
+                    RefreshKeyProfilesComboBox();
+                    ToLog(ApktoolEventType.None, $"[KeyGenerator] Deleted profile '{profile.ProfileName}'.");
+                }
+            }
+        }
+
+        public void ApplyProfileToSignTab(KeyProfile profile)
+        {
+            if (profile == null) return;
+
+            if (string.Equals(profile.KeyType, "PK8_PEM", StringComparison.OrdinalIgnoreCase)
+                || profile.OutputPath.EndsWith(".pk8", StringComparison.OrdinalIgnoreCase)
+                || profile.OutputPath.EndsWith(".pem", StringComparison.OrdinalIgnoreCase))
+            {
+                string dir = Path.GetDirectoryName(profile.OutputPath);
+                string fname = Path.GetFileNameWithoutExtension(profile.OutputPath);
+                if (string.IsNullOrEmpty(dir)) dir = Environment.CurrentDirectory;
+
+                string pk8Path = Path.Combine(dir, fname + ".pk8");
+                string pemPath = Path.Combine(dir, fname + ".x509.pem");
+
+                textBox_SIGN_PublicKey.Text = File.Exists(pemPath) ? pemPath : profile.OutputPath;
+                textBox_SIGN_PrivateKey.Text = File.Exists(pk8Path) ? pk8Path : profile.OutputPath;
+                useKeyStoreChkBox.IsChecked = false;
+
+                ToLog(ApktoolEventType.None, $"[KeyGenerator] Auto-filled Public/Private key fields with PK8/PEM pair '{profile.ProfileName}'.");
+            }
+            else
+            {
+                keyStoreFileTxtBox.Text = profile.OutputPath;
+                aliasTxtBox.Text = profile.Alias;
+                useAliasChkBox.IsChecked = !string.IsNullOrWhiteSpace(profile.Alias);
+                useKeyStoreChkBox.IsChecked = true;
+
+                textBox3.Password = profile.StorePass;
+                textBox4.Password = string.IsNullOrWhiteSpace(profile.KeyPass) ? profile.StorePass : profile.KeyPass;
+
+                ToLog(ApktoolEventType.None, $"[KeyGenerator] Auto-filled Sign tab with keystore profile '{profile.ProfileName}'.");
+            }
+
+            // Switch to Sign APK subtab
+            tabControlSign.SelectedItem = subTabSignApk;
+            tabControlMain.SelectedItem = tabSign;
+            ApplySignControlStates();
+        }
+
+        public void ApplySignControlStates()
+        {
+            bool useKs = (useKeyStoreChkBox.IsChecked == true);
+            bool useAlias = (useAliasChkBox.IsChecked == true);
+
+            // Keystore controls
+            if (keyStoreFileTxtBox != null) keyStoreFileTxtBox.IsEnabled = useKs;
+            if (selectKeyStoreFileBtn != null) selectKeyStoreFileBtn.IsEnabled = useKs;
+            if (textBox3 != null) textBox3.IsEnabled = useKs;
+            if (textBox4 != null) textBox4.IsEnabled = useKs;
+            if (useAliasChkBox != null) useAliasChkBox.IsEnabled = useKs;
+            if (aliasTxtBox != null) aliasTxtBox.IsEnabled = useKs && useAlias;
+
+            // Raw Public/Private key controls
+            if (textBox_SIGN_PublicKey != null) textBox_SIGN_PublicKey.IsEnabled = !useKs;
+            if (button_SIGN_BrowsePublicKey != null) button_SIGN_BrowsePublicKey.IsEnabled = !useKs;
+            if (textBox_SIGN_PrivateKey != null) textBox_SIGN_PrivateKey.IsEnabled = !useKs;
+            if (button_SIGN_BrowsePrivateKey != null) button_SIGN_BrowsePrivateKey.IsEnabled = !useKs;
+        }
+
+        private void PromptForCustomKeyToolPath()
+        {
+            var res = WinForms.MessageBox.Show(
+                "keytool.exe binary could not be found automatically.\n" +
+                "Please make sure Java JDK is installed.\n\n" +
+                "Would you like to browse and locate keytool.exe manually?",
+                "keytool.exe Not Found",
+                WinForms.MessageBoxButtons.YesNo,
+                WinForms.MessageBoxIcon.Warning);
+
+            if (res == WinForms.DialogResult.Yes)
+            {
+                var ofd = new WinForms.OpenFileDialog
+                {
+                    Filter = "keytool.exe (keytool.exe)|keytool.exe|Executable files (*.exe)|*.exe",
+                    Title = "Locate keytool.exe"
+                };
+
+                if (ofd.ShowDialog() == WinForms.DialogResult.OK)
+                {
+                    Settings.Default.KeyTool_CustomPath = ofd.FileName;
+                    ToLog(ApktoolEventType.None, "[KeyGenerator] Custom keytool path set: " + ofd.FileName);
+                }
+            }
+        }
+
+        #endregion
     }
 }
+
