@@ -454,13 +454,13 @@
     <value>Błąd</value>
   </data>
   <data name="Decode" xml:space="preserve">
-    <value>Ddekoduj</value>
+    <value>Dekoduj</value>
   </data>
   <data name="InstallFramework" xml:space="preserve">
     <value>Zainstaluj framework</value>
   </data>
   <data name="Sign" xml:space="preserve">
-    <value>Podpisz</value>
+    <value>Podpis</value>
   </data>
   <data name="SystemLanguage" xml:space="preserve">
     <value>Język systemu</value>
