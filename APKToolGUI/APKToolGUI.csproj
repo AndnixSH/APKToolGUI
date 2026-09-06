@@ -376,6 +376,7 @@
     </Compile>
     <EmbeddedResource Include="Languages\Language.de.resx" />
     <EmbeddedResource Include="Languages\Language.hu.resx" />
+    <EmbeddedResource Include="Languages\Language.pl-PL.resx" />
     <EmbeddedResource Include="Languages\Language.pt-BR.resx" />
     <EmbeddedResource Include="Languages\Language.ru.resx" />
     <EmbeddedResource Include="Languages\Language.tr.resx" />
