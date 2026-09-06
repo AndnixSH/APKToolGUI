@@ -1,0 +1,1185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AaptDump" xml:space="preserve">
+    <value>Zrzut AAPT</value>
+  </data>
+  <data name="Aborted" xml:space="preserve">
+    <value>Przerwane</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>O aplikacji</value>
+  </data>
+  <data name="AboutCopyright" xml:space="preserve">
+    <value>Prawa autorskie</value>
+  </data>
+  <data name="AboutGithubRepo" xml:space="preserve">
+    <value>Repozytorium Github </value>
+  </data>
+  <data name="AboutOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>O aplikacji</value>
+  </data>
+  <data name="AboutVersion" xml:space="preserve">
+    <value>Wersja</value>
+  </data>
+  <data name="alignApkOpenDirBtn.Text" xml:space="preserve">
+    <value>Lokalizacja APK Zipalign</value>
+  </data>
+  <data name="Aligning" xml:space="preserve">
+    <value>Wyrównywanie</value>
+  </data>
+  <data name="AllDone" xml:space="preserve">
+    <value>Wszystko zrobione!</value>
+  </data>
+  <data name="AndroidManifestNotExist" xml:space="preserve">
+    <value>Plik AndroidManifest.xml nie istnieje</value>
+  </data>
+  <data name="apkComboLinkBtn.Text" xml:space="preserve">
+    <value>ApkCombo</value>
+  </data>
+  <data name="apkGkLinkBtn.Text" xml:space="preserve">
+    <value>ApkGk</value>
+  </data>
+  <data name="apkMirrorLinkBtn.Text" xml:space="preserve">
+    <value>Apk Mirror</value>
+  </data>
+  <data name="apkPureLinkBtn.Text" xml:space="preserve">
+    <value>ApkPure</value>
+  </data>
+  <data name="APKSelected" xml:space="preserve">
+    <value>Wybrano APK:</value>
+  </data>
+  <data name="apkSupportLinkBtn.Text" xml:space="preserve">
+    <value>Apk.support</value>
+  </data>
+  <data name="apktoolIssuesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Śledzenie problemów z Apktool</value>
+  </data>
+  <data name="APKToolVersion" xml:space="preserve">
+    <value>Wersja Apktool</value>
+  </data>
+  <data name="autoDelIdsigChkBox.Text" xml:space="preserve">
+    <value>Automatyczne usuwanie pliku idsig</value>
+  </data>
+  <data name="Baksmali" xml:space="preserve">
+    <value>Baksmali</value>
+  </data>
+  <data name="baksmaliBrowseInputDexBtn.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="baksmaliBrowseOutputBtn.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="bakSmaliGroupBox.Text" xml:space="preserve">
+    <value>Baksmali</value>
+  </data>
+  <data name="baksmaliIssuesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Śledzenie problemów Baksmali</value>
+  </data>
+  <data name="baksmaliUseOutputChkBox.Text" xml:space="preserve">
+    <value>Katalog wyjściowy folderu:</value>
+  </data>
+  <data name="basicInfoTabPage.Text" xml:space="preserve">
+    <value>Informacje podstawowe</value>
+  </data>
+  <data name="Build" xml:space="preserve">
+    <value>Build</value>
+  </data>
+  <data name="buildSetApiLvlChkBox.Text" xml:space="preserve">
+    <value>Ustaw poziom API pliku do wygenerowania, np. 14 dla ICS.</value>
+  </data>
+  <data name="button_BUILD_BrowseAaptPath.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="button_BUILD_BrowseFrameDir.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="button_BUILD_BrowseInputProjectDir.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="button_BUILD_BrowseOutputAppPath.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="button_BUILD_Build.Text" xml:space="preserve">
+    <value>Kompiluj</value>
+  </data>
+  <data name="button_DECODE_BrowseFrameDir.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="button_DECODE_BrowseInputAppPath.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="button_DECODE_BrowseOutputDirectory.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="button_DECODE_Decode.Text" xml:space="preserve">
+    <value>Dekompiluj</value>
+  </data>
+  <data name="button_IF_BrowseFrameDir.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="button_IF_BrowseInputFramePath.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="button_IF_InstallFramework.Text" xml:space="preserve">
+    <value>Zainstaluj</value>
+  </data>
+  <data name="button_OpenMainActivity.Text" xml:space="preserve">
+    <value>Główna aktywność smali</value>
+  </data>
+  <data name="button_SIGN_BrowseInputFile.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="button_SIGN_BrowseOutputFile.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="button_SIGN_BrowsePrivateKey.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="button_SIGN_BrowsePublicKey.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="button_SIGN_Sign.Text" xml:space="preserve">
+    <value>Podpisz</value>
+  </data>
+  <data name="button_ZIPALIGN_Align.Text" xml:space="preserve">
+    <value>Wyrównaj</value>
+  </data>
+  <data name="button_ZIPALIGN_BrowseInputFile.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="button_ZIPALIGN_BrowseOutputFile.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="CancelProcess" xml:space="preserve">
+    <value>Jesteś pewny, że chcesz anulować proces?</value>
+  </data>
+  <data name="CantDetectApkeditorVersion" xml:space="preserve">
+    <value>Nie można wykryć wersji APKEditor</value>
+  </data>
+  <data name="CantDetectApktoolVersion" xml:space="preserve">
+    <value>Nie można wykryć wersji apktool.</value>
+  </data>
+  <data name="ChangedTargetSdkTo29" xml:space="preserve">
+    <value>Zmieniono docelowy SDK na 29</value>
+  </data>
+  <data name="checkBox_BUILD_CopyOriginal.Text" xml:space="preserve">
+    <value>Skopiuj oryginalny plik AndroidManifest.xml i folder META-INF</value>
+  </data>
+  <data name="checkBox_BUILD_ForceAll.Text" xml:space="preserve">
+    <value>Pomiń wykrywanie zmian i zbuduj wszystkie pliki.</value>
+  </data>
+  <data name="checkBox_BUILD_NetSecConf.Text" xml:space="preserve">
+    <value>Dodaj ogólny plik konfiguracji zabezpieczeń sieci w wyjściowym pliku APK</value>
+  </data>
+  <data name="checkBox_BUILD_NoCrunch.Text" xml:space="preserve">
+    <value>Wyłącz przetwarzanie plików zasobów podczas kompilacji.</value>
+  </data>
+  <data name="checkBox_BUILD_OutputAppPath.Text" xml:space="preserve">
+    <value>Katalog wyjściowy APK:</value>
+  </data>
+  <data name="checkBox_BUILD_UseAapt.Text" xml:space="preserve">
+    <value>Używa aapt.exe znajdującego się w:</value>
+  </data>
+  <data name="checkBox_BUILD_UseFramework.Text" xml:space="preserve">
+    <value>Używa plików frameworka zlokalizowanych w:</value>
+  </data>
+  <data name="checkBox_DECODE_FixError.Text" xml:space="preserve">
+    <value>Napraw błędy ApkTool po dekompilacji</value>
+  </data>
+  <data name="checkBox_DECODE_Force.Text" xml:space="preserve">
+    <value>Wymuś usunięcie katalogu docelowego.</value>
+  </data>
+  <data name="checkBox_DECODE_KeepBrokenRes.Text" xml:space="preserve">
+    <value>Zachowaj zepsuty zasób.</value>
+  </data>
+  <data name="checkBox_DECODE_MatchOriginal.Text" xml:space="preserve">
+    <value>Utrzymuj pliki w stanie możliwie najbardziej zbliżonym do oryginału. Zapobiega odbudowie.</value>
+  </data>
+  <data name="checkBox_DECODE_NoDebugInfo.Text" xml:space="preserve">
+    <value>Nie wpisuj informacji debugowania (.local, .param, .line, itd.)</value>
+  </data>
+  <data name="checkBox_DECODE_NoRes.Text" xml:space="preserve">
+    <value>Nie dekoduj zasobów.</value>
+  </data>
+  <data name="checkBox_DECODE_NoSrc.Text" xml:space="preserve">
+    <value>Nie dekoduj źródeł.</value>
+  </data>
+  <data name="checkBox_DECODE_OnlyMainClasses.Text" xml:space="preserve">
+    <value>Rozmontuj tylko główne klasy dex (classes[0-9]*.dex) w katalogu głównym. (&lt;2.12.1)</value>
+  </data>
+  <data name="checkBox_DECODE_OutputDirectory.Text" xml:space="preserve">
+    <value>Katalog wyjściowy:</value>
+  </data>
+  <data name="checkBox_DECODE_UseFramework.Text" xml:space="preserve">
+    <value>Używa plików frameworka zlokalizowanych w:</value>
+  </data>
+  <data name="checkBox_IF_FramePath.Text" xml:space="preserve">
+    <value>Przechowuje pliki struktury w:</value>
+  </data>
+  <data name="checkBox_IF_Tag.Text" xml:space="preserve">
+    <value>Oznaczaj struktury za pomocą:</value>
+  </data>
+  <data name="checkBox_ZIPALIGN_CheckAlignment.Text" xml:space="preserve">
+    <value>Sprawdź tylko wyrównanie (nie modyfikuj pliku)</value>
+  </data>
+  <data name="checkBox_ZIPALIGN_OverwriteOutputFile.Text" xml:space="preserve">
+    <value>Nadpisz istniejący plik wyjściowy</value>
+  </data>
+  <data name="checkBox_ZIPALIGN_Recompress.Text" xml:space="preserve">
+    <value>Ponowna kompresja za pomocą Zopfli</value>
+  </data>
+  <data name="checkBox_ZIPALIGN_VerboseOutput.Text" xml:space="preserve">
+    <value>Szczegółowe dane wyjściowe</value>
+  </data>
+  <data name="checkBox1.Text" xml:space="preserve">
+    <value>Nadpisz plik wejściowy</value>
+  </data>
+  <data name="checkBox2.Text" xml:space="preserve">
+    <value>Zainstaluj APK po podpisaniu (najpierw upewnij się, że urządzenie jest wybrane w karcie ADB)</value>
+  </data>
+  <data name="checkBox3.Text" xml:space="preserve">
+    <value>Ustaw liczbę wątków, które mają zostać użyte.</value>
+  </data>
+  <data name="checkBox4.Text" xml:space="preserve">
+    <value>Ustaw liczbę wątków, które mają zostać użyte.</value>
+  </data>
+  <data name="checkBox7.Text" xml:space="preserve">
+    <value>Nie analizuj informacji APK podczas wybierania APK do dekompilacji</value>
+  </data>
+  <data name="CheckForUpdate" xml:space="preserve">
+    <value>Sprawdź dostępność aktualizacji</value>
+  </data>
+  <data name="checkForUpdateToolStripMenuItem.Text" xml:space="preserve">
+    <value>Sprawdź dostępność aktualizacji</value>
+  </data>
+  <data name="ClearFrameworkPrompt" xml:space="preserve">
+    <value>Po zmianie wersji Apktool konieczne jest wyczyszczenie pamięci podręcznej frameworka, aby uniknąć nieoczekiwanych błędów. Czy chcesz to teraz wyczyścić?</value>
+  </data>
+  <data name="clearFwBeforeDecodeChkBox.Text" xml:space="preserve">
+    <value>Wyczyść strukturę przed dekompilacją</value>
+  </data>
+  <data name="clearFwBtn.Text" xml:space="preserve">
+    <value>Wyczyść framework</value>
+  </data>
+  <data name="ClearingFramework" xml:space="preserve">
+    <value>Czyszczenie Frameworka</value>
+  </data>
+  <data name="clearLogToolStripMenuItem.Text" xml:space="preserve">
+    <value>Wyczyść logi</value>
+  </data>
+  <data name="ClearTempFolder" xml:space="preserve">
+    <value>Czyszczenie folderu tymczasowego</value>
+  </data>
+  <data name="clearTempFolderToolStripMenuItem.Text" xml:space="preserve">
+    <value>Wyczyść folder tymczasowy</value>
+  </data>
+  <data name="comApkOpenDir.Text" xml:space="preserve">
+    <value>Lokalizacja skompilowanego pliku APK</value>
+  </data>
+  <data name="CompileApk" xml:space="preserve">
+    <value>Kompiluj APK</value>
+  </data>
+  <data name="DebugMode" xml:space="preserve">
+    <value>Tryb debugowania</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Wyjście</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>Plik</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Pomoc</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="ErrorJavaDetect" xml:space="preserve">
+    <value>Java nie jest zainstalowana lub jest zainstalowana nieprawidłowo. Zainstaluj Javę lub ustaw niestandardową lokalizację w Ustawieniach.</value>
+  </data>
+  <data name="ErrorReadSettings" xml:space="preserve">
+    <value>Błąd odczytu ustawień!</value>
+  </data>
+  <data name="UpdateNewVersion" xml:space="preserve">
+    <value>Dostępna jest nowa wersja. Czy chcesz dokonać aktualizacji?</value>
+  </data>
+  <data name="UpdateNoUpdates" xml:space="preserve">
+    <value>Brak dostępnej aktualizacji.</value>
+  </data>
+  <data name="WarningDecodingFolderNotSelected" xml:space="preserve">
+    <value>Nie wybrano folderu dekodującego!</value>
+  </data>
+  <data name="WarningFileForDecodingNotSelected" xml:space="preserve">
+    <value>Nie wybrano pliku do dekodowania!</value>
+  </data>
+  <data name="WarningFileForSigningNotSelected" xml:space="preserve">
+    <value>Nie wybrano pliku do podpisania!</value>
+  </data>
+  <data name="WarningFrameworkNotSelected" xml:space="preserve">
+    <value>Nie wybrano struktury!</value>
+  </data>
+  <data name="ErrorSaveSettings" xml:space="preserve">
+    <value>Błąd podczas zapisywania ustawień!</value>
+  </data>
+  <data name="NeedRestart" xml:space="preserve">
+    <value>Aby zmiany zostały wprowadzone, musisz ponownie uruchomić program. Chcesz to zrobić teraz?</value>
+  </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>Plik nie został znaleziony</value>
+  </data>
+  <data name="FolderNotExist" xml:space="preserve">
+    <value>Folder nie istnieje</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Błąd</value>
+  </data>
+  <data name="Decode" xml:space="preserve">
+    <value>Dekoduj</value>
+  </data>
+  <data name="InstallFramework" xml:space="preserve">
+    <value>Zainstaluj framework</value>
+  </data>
+  <data name="Sign" xml:space="preserve">
+    <value>Podpis</value>
+  </data>
+  <data name="SystemLanguage" xml:space="preserve">
+    <value>Język systemu</value>
+  </data>
+  <data name="DoYouRealyWantToInstallCM" xml:space="preserve">
+    <value>Czy na pewno chcesz zainstalować menu kontekstowe?</value>
+  </data>
+  <data name="DoYouRealyWantToRemoveCM" xml:space="preserve">
+    <value>Czy na pewno chcesz usunąć menu kontekstowe?</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>Zrobione</value>
+  </data>
+  <data name="DecompilingSuccessfullyCompleted" xml:space="preserve">
+    <value>Dekompilacja zakończona pomyślnie. Katalog wyjściowy „{0}”.</value>
+  </data>
+  <data name="ErrorUpdateChecking" xml:space="preserve">
+    <value>Błąd sprawdzania aktualizacji:</value>
+  </data>
+  <data name="SignSuccessfullyCompleted" xml:space="preserve">
+    <value>Podpisywanie zakończone pomyślnie. Plik zapisany w „{0}”.</value>
+  </data>
+  <data name="ErrorCompiling" xml:space="preserve">
+    <value>Kompilacja nie powiodła się</value>
+  </data>
+  <data name="ErrorEnteringFrameworkTag" xml:space="preserve">
+    <value>Błąd podczas wprowadzania tagu framework.</value>
+  </data>
+  <data name="ErrorSelectedFileNotExist" xml:space="preserve">
+    <value>Wybrany plik nie istnieje.</value>
+  </data>
+  <data name="ErrorSelectingFrameworkDirectory" xml:space="preserve">
+    <value>Błąd podczas wybierania katalogu frameworka.</value>
+  </data>
+  <data name="ErrorSelectingFrameworkFile" xml:space="preserve">
+    <value>Błąd podczas wybierania pliku frameworka. Plik nie istnieje.</value>
+  </data>
+  <data name="ErrorSigning" xml:space="preserve">
+    <value>Podpisywanie nie powiodło się.</value>
+  </data>
+  <data name="FrameworkInstallationNotStarted" xml:space="preserve">
+    <value>Błąd. Instalacja frameworka nie została rozpoczęta.</value>
+  </data>
+  <data name="InstallingFramework" xml:space="preserve">
+    <value>Instalowanie frameworka</value>
+  </data>
+  <data name="Signing" xml:space="preserve">
+    <value>Podpisywanie</value>
+  </data>
+  <data name="SignInputFileNotFound" xml:space="preserve">
+    <value>Nie znaleziono pliku wejściowego.</value>
+  </data>
+  <data name="SignPrivateKeyNotFound" xml:space="preserve">
+    <value>Klucz prywatny nie został znaleziony.</value>
+  </data>
+  <data name="SignPublicKeyNotFound" xml:space="preserve">
+    <value>Klucz publiczny nie został znaleziony.</value>
+  </data>
+  <data name="ZIPArchives" xml:space="preserve">
+    <value>Archiwa ZIP</value>
+  </data>
+  <data name="DecodeCouldNotCreate" xml:space="preserve">
+    <value>Nie można utworzyć wybranego katalogu dekompilacyjnego, ponieważ zawiera nieprawidłowe znaki.</value>
+  </data>
+  <data name="DecodeDirNotSelected" xml:space="preserve">
+    <value>Nie wybrano katalogu dekompilacyjnego.</value>
+  </data>
+  <data name="DecodeSelectedFrameworkNotExist" xml:space="preserve">
+    <value>Wybrany katalog struktury nie istnieje.</value>
+  </data>
+  <data name="Decoding" xml:space="preserve">
+    <value>Dekodowanie</value>
+  </data>
+  <data name="ErrorDecompiling" xml:space="preserve">
+    <value>Dekompilacja nie powiodła się</value>
+  </data>
+  <data name="ExecutableFile" xml:space="preserve">
+    <value>Plik wykonywalny</value>
+  </data>
+  <data name="ErrorVersionParsing" xml:space="preserve">
+    <value>Nie udało się przeanalizować wersji</value>
+  </data>
+  <data name="FixAndroidManifest" xml:space="preserve">
+    <value>Naprawiono plik AndroidManifest.xml</value>
+  </data>
+  <data name="RemoveApkToolDummies" xml:space="preserve">
+    <value>Usunięto wszystkie fikcyjne elementy ApkTool</value>
+  </data>
+  <data name="ErrorSelectedFolderNotExist" xml:space="preserve">
+    <value>Wybrany folder nie istnieje.</value>
+  </data>
+  <data name="DecompiledAPKNotExist" xml:space="preserve">
+    <value>Dekompilowany katalog APK nie istnieje</value>
+  </data>
+  <data name="MainActivityFound" xml:space="preserve">
+    <value>Główna aktywność znaleziona w „{0}”</value>
+  </data>
+  <data name="MainActivityNotFoundPleaseFindManually" xml:space="preserve">
+    <value>Nie znaleziono MainActivity. Proszę znaleźć ją ręcznie.</value>
+  </data>
+  <data name="CompilingSuccessfullyCompleted" xml:space="preserve">
+    <value>Kompilacja zakończona pomyślnie. Katalog wyjściowy „{0}”</value>
+  </data>
+  <data name="ErrorZipalign" xml:space="preserve">
+    <value>Błąd Zipalign</value>
+  </data>
+  <data name="ZipalignFileSavedTo" xml:space="preserve">
+    <value>Zipalign został pomyślnie ukończony. Plik zapisany w „{0}”</value>
+  </data>
+  <data name="ErrorClearingFw" xml:space="preserve">
+    <value>Błąd czyszczenia frameworka</value>
+  </data>
+  <data name="FrameworkCacheCleared" xml:space="preserve">
+    <value>Pamięć podręczna struktury została wyczyszczona</value>
+  </data>
+  <data name="FrameworkInstalled" xml:space="preserve">
+    <value>Framework został pomyślnie zainstalowany</value>
+  </data>
+  <data name="FrameworkDirNotExist" xml:space="preserve">
+    <value>Katalog frameworka nie istnieje</value>
+  </data>
+  <data name="DecompilingDex" xml:space="preserve">
+    <value>Dekompilowanie dex</value>
+  </data>
+  <data name="ErrorSelectedOutputFolderNotExist" xml:space="preserve">
+    <value>Wybrany folder wyjściowy nie istnieje.</value>
+  </data>
+  <data name="CompilingDex" xml:space="preserve">
+    <value>Kompilacja dex</value>
+  </data>
+  <data name="DragDropNotSupported" xml:space="preserve">
+    <value>Działasz jako administrator. Przeciąganie i upuszczanie może nie być obsługiwane.</value>
+  </data>
+  <data name="DragDropSupported" xml:space="preserve">
+    <value>Obsługa funkcji „przeciągnij i upuść”</value>
+  </data>
+  <data name="ErrorNotAnApk" xml:space="preserve">
+    <value>Ten katalog nie jest pakietem Androida</value>
+  </data>
+  <data name="Smali" xml:space="preserve">
+    <value>Smali</value>
+  </data>
+  <data name="Zipalign" xml:space="preserve">
+    <value>Zipalign</value>
+  </data>
+  <data name="CompileDex" xml:space="preserve">
+    <value>Skompiluj DEX</value>
+  </data>
+  <data name="DecompileApk" xml:space="preserve">
+    <value>Dekompiluj APK</value>
+  </data>
+  <data name="DecompileDex" xml:space="preserve">
+    <value>Rozmontuj DEX</value>
+  </data>
+  <data name="GetApkInfo" xml:space="preserve">
+    <value>Wyświetl informacje o pliku APK</value>
+  </data>
+  <data name="NotDecompiledApk" xml:space="preserve">
+    <value>Ten folder nie jest zdekompilowanym plikiem APK</value>
+  </data>
+  <data name="NotDecompiledDex" xml:space="preserve">
+    <value>Ten folder nie jest zdekompilowanym DEX-em</value>
+  </data>
+  <data name="RequiredFilesMissing" xml:space="preserve">
+    <value>Brak wymaganych plików</value>
+  </data>
+  <data name="SignApk" xml:space="preserve">
+    <value>Podpisz APK</value>
+  </data>
+  <data name="TextFile" xml:space="preserve">
+    <value>Plik tekstowy</value>
+  </data>
+  <data name="ZipalignApk" xml:space="preserve">
+    <value>Zipalign APK</value>
+  </data>
+  <data name="CreateUnsignedApk" xml:space="preserve">
+    <value>Tworzenie niepodpisanego pliku APK</value>
+  </data>
+  <data name="MetainfNotExist" xml:space="preserve">
+    <value>Folder META-INF nie istnieje. Pominięto</value>
+  </data>
+  <data name="ErrorGettingApkInfo" xml:space="preserve">
+    <value>Wystąpił błąd podczas pobierania informacji APK</value>
+  </data>
+  <data name="InputDirectory" xml:space="preserve">
+    <value>Katalog wejściowy: {0}</value>
+  </data>
+  <data name="InputFile" xml:space="preserve">
+    <value>Plik wejściowy: {0}</value>
+  </data>
+  <data name="DeleteFile" xml:space="preserve">
+    <value>Usuń plik „{0}”</value>
+  </data>
+  <data name="CopyFileToTemp" xml:space="preserve">
+    <value>Skopiuj plik „{0}” do katalogu tymczasowego „{1}”</value>
+  </data>
+  <data name="CopyFolderToTemp" xml:space="preserve">
+    <value>Skopiuj zdekompilowany folder APK „{0}” do katalogu tymczasowego „{1}”</value>
+  </data>
+  <data name="DecodeDesDirExists" xml:space="preserve">
+    <value>Katalog docelowy „{0}” już istnieje. Włącz opcję „Wymuś usunięcie katalogu docelowego”, jeśli chcesz go nadpisać.</value>
+  </data>
+  <data name="MoveTempApkFileToOutput" xml:space="preserve">
+    <value>Przenieś folder tymczasowy „{0}” do katalogu wyjściowego „{1}”</value>
+  </data>
+  <data name="MoveTempApkToOutput" xml:space="preserve">
+    <value>Przenieś tymczasowy plik APK „{0}” do katalogu wyjściowego „{1}”</value>
+  </data>
+  <data name="ParsingApkInfo" xml:space="preserve">
+    <value>Analizowanie informacji APK...</value>
+  </data>
+  <data name="RestartApplicationPrompt" xml:space="preserve">
+    <value>Aby zastosować zmiany, wymagane jest ponowne uruchomienie. Czy chcesz ponownie uruchomić aplikację?</value>
+  </data>
+  <data name="DecompilingAllApkFiles" xml:space="preserve">
+    <value>Dekompilowanie wszystkich plików APK</value>
+  </data>
+  <data name="DetectedAsBase" xml:space="preserve">
+    <value>{0} wykryto jako bazę</value>
+  </data>
+  <data name="DetectedAsSplit" xml:space="preserve">
+    <value>{0} wykryto jako podzielone</value>
+  </data>
+  <data name="ExtractingAllApkFiles" xml:space="preserve">
+    <value>Wyodrębnianie wszystkich plików APK</value>
+  </data>
+  <data name="MergeFinishedMoveDir" xml:space="preserve">
+    <value>Scalanie zakończone. Przenoszenie katalogu do „{0}”</value>
+  </data>
+  <data name="MergingApk" xml:space="preserve">
+    <value>Scalanie APK</value>
+  </data>
+  <data name="MovingBasedirectory" xml:space="preserve">
+    <value>Przenoszenie katalogu bazowego do „{0}”</value>
+  </data>
+  <data name="DirNotExist" xml:space="preserve">
+    <value>Katalog „{0}” nie istnieje</value>
+  </data>
+  <data name="TempDirectory" xml:space="preserve">
+    <value>Katalog tymczasowy: „{0}”</value>
+  </data>
+  <data name="ErrorMerging" xml:space="preserve">
+    <value>Scalenie nie powiodło się</value>
+  </data>
+  <data name="MergingApkEditor" xml:space="preserve">
+    <value>Scalanie APK za pomocą APKEditor.jar</value>
+  </data>
+  <data name="GettingDevices" xml:space="preserve">
+    <value>Pobieranie urządzeń...</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Proszę czekać...</value>
+  </data>
+  <data name="ConfirmKillingAdbServer" xml:space="preserve">
+    <value>Czy na pewno chcesz wyłączyć serwer ADB? Może być konieczne ponowne podłączenie urządzenia lub ponowne uruchomienie emulatora.</value>
+  </data>
+  <data name="DeviceNotSelected" xml:space="preserve">
+    <value>Urządzenie nie zostało wybrane</value>
+  </data>
+  <data name="DeviceSelected" xml:space="preserve">
+    <value>Wybrano urządzenie „{0}”</value>
+  </data>
+  <data name="DevicesFound" xml:space="preserve">
+    <value>Znaleziono {0} urządzeń</value>
+  </data>
+  <data name="InstallApkFailed" xml:space="preserve">
+    <value>Instalacja APK nie powiodła się</value>
+  </data>
+  <data name="InstallApkSuccessful" xml:space="preserve">
+    <value>Instalacja APK zakończona pomyślnie</value>
+  </data>
+  <data name="InstallingApk" xml:space="preserve">
+    <value>Instalowanie APK</value>
+  </data>
+  <data name="InstallingApkPath" xml:space="preserve">
+    <value>Instalowanie APK „{0}”</value>
+  </data>
+  <data name="NoDevicesFound" xml:space="preserve">
+    <value>Nie znaleziono urządzeń. Upewnij się, że urządzenie jest podłączone do komputera z włączonym debugowaniem ADB. Jeśli używasz emulatora, uruchom go ponownie i poczekaj, aż się uruchomi.</value>
+  </data>
+  <data name="TimeEnded" xml:space="preserve">
+    <value>Czas zakończenia: {0}</value>
+  </data>
+  <data name="TimeStarted" xml:space="preserve">
+    <value>Czas rozpoczęcia: {0}</value>
+  </data>
+  <data name="DeletingFolder" xml:space="preserve">
+    <value>Usuwanie folderu: {0}</value>
+  </data>
+  <data name="DirectoryNotExist" xml:space="preserve">
+    <value>Katalog „{0}” nie istnieje</value>
+  </data>
+  <data name="OpenComFolder" xml:space="preserve">
+    <value>Otwórz folder wyjściowy kompilacji</value>
+  </data>
+  <data name="OpenDecFolder" xml:space="preserve">
+    <value>Otwórz folder wyjściowy dekompilacji</value>
+  </data>
+  <data name="FixApktoolYml" xml:space="preserve">
+    <value>Naprawiono apktool.yml</value>
+  </data>
+  <data name="CopyFileTo" xml:space="preserve">
+    <value>Kopiuj plik „{0}” do „{1}”</value>
+  </data>
+  <data name="SplitApkNotFound" xml:space="preserve">
+    <value>Nie wybrano opcji Podziel APK</value>
+  </data>
+  <data name="SettingsGeneral" xml:space="preserve">
+    <value>Ogólne</value>
+  </data>
+  <data name="SettingsLanguage" xml:space="preserve">
+    <value>Język</value>
+  </data>
+  <data name="SettingsContextMenu" xml:space="preserve">
+    <value>Menu kontekstowe</value>
+  </data>
+  <data name="SettingsTheme" xml:space="preserve">
+    <value>Motyw</value>
+  </data>
+  <data name="SettingsTempNote" xml:space="preserve">
+    <value>Proces będzie wolniejszy, ponieważ pliki zostaną przeniesione do folderu tymczasowego</value>
+  </data>
+  <data name="SettingsAdminRights" xml:space="preserve">
+    <value>Wymagane uprawnienia administratora</value>
+  </data>
+  <data name="SettingsClearLog" xml:space="preserve">
+    <value>Wyczyść dziennik przed podjęciem działania</value>
+  </data>
+  <data name="SettingsPlaySound" xml:space="preserve">
+    <value>Odtwórz dźwięk po zakończeniu</value>
+  </data>
+  <data name="SettingsCustomTemp" xml:space="preserve">
+    <value>Niestandardowa lokalizacja tymczasowa</value>
+  </data>
+  <data name="SettingsCustomJava" xml:space="preserve">
+    <value>Niestandardowa lokalizacja Java</value>
+  </data>
+  <data name="SettingsUtf8" xml:space="preserve">
+    <value>Obsługa nazw plików UTF-8</value>
+  </data>
+  <data name="SettingsCustomJvmArgs" xml:space="preserve">
+    <value>Niestandardowe argumenty JVM</value>
+  </data>
+  <data name="SettingsCheckUpdate" xml:space="preserve">
+    <value>Sprawdź aktualizacje podczas uruchamiania</value>
+  </data>
+  <data name="SettingsCustomApktool" xml:space="preserve">
+    <value>Niestandardowa lokalizacja apktool</value>
+  </data>
+  <data name="SettingsIgnoreOutputCM" xml:space="preserve">
+    <value>Ignoruj niestandardowy katalog wyjściowy dla menu kontekstowego</value>
+  </data>
+  <data name="SettingsInstall" xml:space="preserve">
+    <value>Zainstaluj</value>
+  </data>
+  <data name="SettingsUninstall" xml:space="preserve">
+    <value>Odinstaluj</value>
+  </data>
+  <data name="SettingsCancel" xml:space="preserve">
+    <value>Anulować</value>
+  </data>
+  <data name="ThemeAuto" xml:space="preserve">
+    <value>Automatyczny</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Światło</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Ciemny</value>
+  </data>
+  <data name="splitApkTxt.Text" xml:space="preserve">
+    <value>Scalenie podzielonego pliku APK w pojedynczy plik APK:</value>
+  </data>
+  <data name="selSplitApkBtn.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="mergeApkBtn.Text" xml:space="preserve">
+    <value>Scal</value>
+  </data>
+  <data name="decOutOpenDirBtn.Text" xml:space="preserve">
+    <value>Dekompiluj lokalizację wyjściową</value>
+  </data>
+  <data name="signApkOpenDirBtn.Text" xml:space="preserve">
+    <value>Lokalizacja podpisu APK</value>
+  </data>
+  <data name="decApkOpenDirBtn.Text" xml:space="preserve">
+    <value>Lokalizacja dekompilowanego pliku APK</value>
+  </data>
+  <data name="compileOutputOpenDirBtn.Text" xml:space="preserve">
+    <value>Kompiluj lokalizację wyjściową</value>
+  </data>
+  <data name="openApktoolYmlBtn.Text" xml:space="preserve">
+    <value>Apktool.yml</value>
+  </data>
+  <data name="openAndroidMainfestBtn.Text" xml:space="preserve">
+    <value>AndroidManifest.xml</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Plik APK do podpisania:</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Plik APK do wyrównania:</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Dekompilowany folder APK:</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Plik APK/XAPK/APKS/ZIP/APKM:</value>
+  </data>
+  <data name="tabPageMain.Text" xml:space="preserve">
+    <value>Główne</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Sygnatura:</value>
+  </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>Aktywność startowa:</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>Architektura:</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Plik:</value>
+  </data>
+  <data name="selApkFileInfoBtn.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Lokalizacje:</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Uprawnienia:</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Gęstości:</value>
+  </data>
+  <data name="psLinkBtn.Text" xml:space="preserve">
+    <value>Google Play</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Linki:</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Nazwa aplikacji:</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Nazwa pakietu:</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Wersja:</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Min. SDK</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Build:</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Rozmiary ekranu:</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Docelowy zestaw SDK:</value>
+  </data>
+  <data name="tabPageApkInfo.Text" xml:space="preserve">
+    <value>Informacje o APK</value>
+  </data>
+  <data name="decSetApiLvlChkBox.Text" xml:space="preserve">
+    <value>Ustaw poziom API pliku do wygenerowania, np. 14 dla ICS.</value>
+  </data>
+  <data name="groupBox_DECODE_Options.Text" xml:space="preserve">
+    <value>Opcje</value>
+  </data>
+  <data name="tabPageDecode.Text" xml:space="preserve">
+    <value>Dekoduj</value>
+  </data>
+  <data name="useAapt2ChkBox.Text" xml:space="preserve">
+    <value>Użyj aapt2 (aktualizuje apktool o eksperymentalny plik binarny aapt2). (&lt; 2.11.1)</value>
+  </data>
+  <data name="createUnsignApkChkBox.Text" xml:space="preserve">
+    <value>Utwórz niepodpisany plik APK z oryginalnym podpisem po kompilacji</value>
+  </data>
+  <data name="signAfterBuildChkBox.Text" xml:space="preserve">
+    <value>Podpis po zbudowaniu / zipalign</value>
+  </data>
+  <data name="zipalignAfterBuildChkBox.Text" xml:space="preserve">
+    <value>Zipalign po zbudowaniu</value>
+  </data>
+  <data name="groupBox_BUILD_Options.Text" xml:space="preserve">
+    <value>Opcje</value>
+  </data>
+  <data name="tabPageBuild.Text" xml:space="preserve">
+    <value>Build</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Hasło klucza prywatnego:</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Schemat v4:</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Schemat v3:</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Schemat v2:</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Schemat v1:</value>
+  </data>
+  <data name="selectKeyStoreFileBtn.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="useAliasChkBox.Text" xml:space="preserve">
+    <value>Alias:</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Zdecydowanie zaleca się korzystanie z własnego klucza utworzonego za pomocą Android Studio lub innych narzędzi.</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Hasło:</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>plik keystore/jks:</value>
+  </data>
+  <data name="useKeyStoreChkBox.Text" xml:space="preserve">
+    <value>Użyj magazynu kluczy</value>
+  </data>
+  <data name="useSigningOutputDir.Text" xml:space="preserve">
+    <value>Katalog wyjściowy APK:</value>
+  </data>
+  <data name="label_SIGN_PrivateKey.Text" xml:space="preserve">
+    <value>Klucz prywatny:</value>
+  </data>
+  <data name="label_SIGN_PublicKey.Text" xml:space="preserve">
+    <value>Klucz publiczny:</value>
+  </data>
+  <data name="groupBox_SIGN_Options.Text" xml:space="preserve">
+    <value>Opcje</value>
+  </data>
+  <data name="tabPageSign.Text" xml:space="preserve">
+    <value>Podpisz</value>
+  </data>
+  <data name="zipalignOutputDirChkBox.Text" xml:space="preserve">
+    <value>Katalog wyjściowy APK:</value>
+  </data>
+  <data name="signAfterZipalignChkBox.Text" xml:space="preserve">
+    <value>Podpis po zipalign</value>
+  </data>
+  <data name="label_ZIPALIGN_AlignmentBytes.Text" xml:space="preserve">
+    <value>Wyrównanie w bajtach, np. „4” zapewnia wyrównanie 32-bitowe</value>
+  </data>
+  <data name="groupBox_ZIPALIGN_Options.Text" xml:space="preserve">
+    <value>Opcje</value>
+  </data>
+  <data name="tabPageZipAlign.Text" xml:space="preserve">
+    <value>Wyrównaj Zip</value>
+  </data>
+  <data name="openFwFolderBtn.Text" xml:space="preserve">
+    <value>Otwórz folder frameworka</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Opcje</value>
+  </data>
+  <data name="groupBox_IF_Options.Text" xml:space="preserve">
+    <value>Zainstaluj Framework</value>
+  </data>
+  <data name="tabPageInstallFramework.Text" xml:space="preserve">
+    <value>Framework</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Mały folder do skompilowania:</value>
+  </data>
+  <data name="smaliUseOutputChkBox.Text" xml:space="preserve">
+    <value>Katalog wyjściowy Dex:</value>
+  </data>
+  <data name="comSmaliBtn.Text" xml:space="preserve">
+    <value>Kompiluj</value>
+  </data>
+  <data name="smaliBrowseOutputBtn.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="smaliBrowseInputDirBtn.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="smaliGroupBox.Text" xml:space="preserve">
+    <value>Smali</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Dekompilacja Dex:</value>
+  </data>
+  <data name="decSmaliBtn.Text" xml:space="preserve">
+    <value>Dekompiluj</value>
+  </data>
+  <data name="tabPageBaksmali.Text" xml:space="preserve">
+    <value>Baksmali</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>Wybrane urządzenie:</value>
+  </data>
+  <data name="killAdbBtn.Text" xml:space="preserve">
+    <value>Zabij proces adb</value>
+  </data>
+  <data name="installApkBtn.Text" xml:space="preserve">
+    <value>Zainstaluj APK</value>
+  </data>
+  <data name="refreshDevicesBtn.Text" xml:space="preserve">
+    <value>Odśwież</value>
+  </data>
+  <data name="selApkAdbBtn.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="overrideAbiCheckBox.Text" xml:space="preserve">
+    <value>Zastąp domyślny interfejs ABI platformy:</value>
+  </data>
+  <data name="setVendorChkBox.Text" xml:space="preserve">
+    <value>Ustaw dostawcę na Google Play (com.android.vending)</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>Wybrany plik APK:</value>
+  </data>
+  <data name="tabPageAdb.Text" xml:space="preserve">
+    <value>ADB</value>
+  </data>
+  <data name="toolStripStatusLabelStateImage.Text" xml:space="preserve">
+    <value>toolStripStatusLabel1</value>
+  </data>
+  <data name="toolStripStatusLabelStateText.Text" xml:space="preserve">
+    <value>Ładowanie...</value>
+  </data>
+  <data name="statusStrip1.Text" xml:space="preserve">
+    <value>Pasek statusu1</value>
+  </data>
+  <data name="copyToolStripMenuItem.Text" xml:space="preserve">
+    <value>Kopiuj</value>
+  </data>
+  <data name="newInsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Nowa instancja</value>
+  </data>
+  <data name="saveLogToFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Zapisz logi do pliku</value>
+  </data>
+  <data name="openTempFolderToolStripMenuItem.Text" xml:space="preserve">
+    <value>Otwórz folder tymczasowy</value>
+  </data>
+  <data name="exitToolStripMenuItem.Text" xml:space="preserve">
+    <value>Wyjście</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Plik</value>
+  </data>
+  <data name="useAPKEditorForDecompilingItem.Text" xml:space="preserve">
+    <value>Użyj APKEditor do dekompilacji</value>
+  </data>
+  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Otwórz ustawienia...</value>
+  </data>
+  <data name="settingsToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="reportAnIsuueToolStripMenuItem.Text" xml:space="preserve">
+    <value>Zgłoś problem</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Pomoc</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="CopyAll" xml:space="preserve">
+    <value>Kopiuj wszystko</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Ładowanie...</value>
+  </data>
+  <data name="Ready" xml:space="preserve">
+    <value>Gotowy</value>
+  </data>
+  <data name="SaveImageTitle" xml:space="preserve">
+    <value>Zapisz plik obrazu</value>
+  </data>
+  <data name="PngImage" xml:space="preserve">
+    <value>Obraz PNG</value>
+  </data>
+  <data name="FilterAndroidPackage" xml:space="preserve">
+    <value>Pakiet Androida ({0})|{0}</value>
+  </data>
+  <data name="FilterSplitApk" xml:space="preserve">
+    <value>Podziel pakiet APK ({0})|{0}</value>
+  </data>
+  <data name="FilterApkJarZip" xml:space="preserve">
+    <value>APK / JAR / ZIP ({0})|{0}</value>
+  </data>
+  <data name="FilterKeystore" xml:space="preserve">
+    <value>Magazyn kluczy ({0})|{0}</value>
+  </data>
+  <data name="FilterPublicKey" xml:space="preserve">
+    <value>Klucz publiczny ({0})|{0}</value>
+  </data>
+  <data name="FilterPrivateKey" xml:space="preserve">
+    <value>Klucz prywatny ({0})|{0}</value>
+  </data>
+  <data name="FilterApk" xml:space="preserve">
+    <value>Plik APK ({0})|{0}</value>
+  </data>
+  <data name="FilterDex" xml:space="preserve">
+    <value>Dex ({0})|{0}</value>
+  </data>
+  <data name="FilterJavaExe" xml:space="preserve">
+    <value>Java ({0})|{0}</value>
+  </data>
+  <data name="FilterApktool" xml:space="preserve">
+    <value>Narzędzia aplikacji ({0})|{0}</value>
+  </data>
+  <data name="SchemeDefault" xml:space="preserve">
+    <value>Domyślny</value>
+  </data>
+  <data name="SchemeTrue" xml:space="preserve">
+    <value>Prawda</value>
+  </data>
+  <data name="SchemeFalse" xml:space="preserve">
+    <value>Fałsz</value>
+  </data>
+</root>
